@@ -24,18 +24,18 @@
         "fields": [
           {
             "path": "#.pubkey",
-            "label": "Validator pubkey",
+            "label": "Validator public key",
             "format": "raw",
             "visible": "always"
           }
         ]
       },
       "initializeValidator((string moniker,string identity,string website,string securityContact,string details) description, uint32 commissionRate, uint96 withdrawalFeeInGwei, bytes pubkey, bytes signature)": {
-        "intent": "Initialize validator",
+        "intent": "Configure validator",
         "fields": [
           {
             "path": "#.description.moniker",
-            "label": "Moniker",
+            "label": "Validator name",
             "format": "raw",
             "visible": "always"
           },
@@ -72,20 +72,20 @@
           },
           {
             "path": "#.withdrawalFeeInGwei",
-            "label": "Withdrawal fee",
+            "label": "Validator fees",
             "format": "unit",
             "params": { "base": "0G", "decimals": 9 },
             "visible": "always"
           },
           {
             "path": "#.pubkey",
-            "label": "Validator pubkey",
+            "label": "Validator public key",
             "format": "raw",
             "visible": "always"
           },
           {
             "path": "#.signature",
-            "label": "BLS signature",
+            "label": "Signature",
             "format": "raw",
             "visible": "always"
           },
@@ -98,11 +98,11 @@
         ]
       },
       "createAndInitializeValidatorIfNecessary((string moniker,string identity,string website,string securityContact,string details) description, uint32 commissionRate, uint96 withdrawalFeeInGwei, bytes pubkey, bytes signature)": {
-        "intent": "Register validator",
+        "intent": "Register new validator",
         "fields": [
           {
             "path": "#.description.moniker",
-            "label": "Moniker",
+            "label": "Validator name",
             "format": "raw",
             "visible": "always"
           },
@@ -139,20 +139,20 @@
           },
           {
             "path": "#.withdrawalFeeInGwei",
-            "label": "Withdrawal fee",
+            "label": "Validator fees",
             "format": "unit",
             "params": { "base": "0G", "decimals": 9 },
             "visible": "always"
           },
           {
             "path": "#.pubkey",
-            "label": "Validator pubkey",
+            "label": "Validator public key",
             "format": "raw",
             "visible": "always"
           },
           {
             "path": "#.signature",
-            "label": "BLS signature",
+            "label": "Signature",
             "format": "raw",
             "visible": "always"
           },
