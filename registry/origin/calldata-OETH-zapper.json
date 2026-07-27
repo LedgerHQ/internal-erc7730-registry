@@ -7,45 +7,6 @@
           "chainId": 1,
           "address": "0x9858e47BCbBe6fBAC040519B02d7cd4B2C470C66"
         }
-      ],
-      "abi": [
-        {
-          "inputs": [],
-          "name": "deposit",
-          "outputs": [
-            {
-              "internalType": "uint256",
-              "name": "",
-              "type": "uint256"
-            }
-          ],
-          "stateMutability": "payable",
-          "type": "function"
-        },
-        {
-          "inputs": [
-            {
-              "internalType": "uint256",
-              "name": "amount",
-              "type": "uint256"
-            },
-            {
-              "internalType": "uint256",
-              "name": "minOETH",
-              "type": "uint256"
-            }
-          ],
-          "name": "depositSFRXETH",
-          "outputs": [
-            {
-              "internalType": "uint256",
-              "name": "",
-              "type": "uint256"
-            }
-          ],
-          "stateMutability": "nonpayable",
-          "type": "function"
-        }
       ]
     }
   },

@@ -1,72 +1,7 @@
 {
   "$schema": "../../specs/erc7730-v2.schema.json",
   "context": {
-    "contract": {
-      "abi": [
-        {
-          "inputs": [
-            {
-              "internalType": "uint256",
-              "name": "requestId",
-              "type": "uint256"
-            }
-          ],
-          "name": "claimRedeem",
-          "outputs": [
-            {
-              "internalType": "uint256",
-              "name": "assets",
-              "type": "uint256"
-            }
-          ],
-          "stateMutability": "nonpayable",
-          "type": "function"
-        },
-        {
-          "inputs": [
-            {
-              "internalType": "uint256",
-              "name": "assets",
-              "type": "uint256"
-            }
-          ],
-          "name": "deposit",
-          "outputs": [
-            {
-              "internalType": "uint256",
-              "name": "shares",
-              "type": "uint256"
-            }
-          ],
-          "stateMutability": "nonpayable",
-          "type": "function"
-        },
-        {
-          "inputs": [
-            {
-              "internalType": "uint256",
-              "name": "shares",
-              "type": "uint256"
-            }
-          ],
-          "name": "requestRedeem",
-          "outputs": [
-            {
-              "internalType": "uint256",
-              "name": "requestId",
-              "type": "uint256"
-            },
-            {
-              "internalType": "uint256",
-              "name": "assets",
-              "type": "uint256"
-            }
-          ],
-          "stateMutability": "nonpayable",
-          "type": "function"
-        }
-      ]
-    }
+    "contract": {}
   },
   "metadata": {
     "owner": "Origin Protocol",

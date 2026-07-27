@@ -7,61 +7,6 @@
           "chainId": 1,
           "address": "0x63898b3b6ef3d39332082178656e9862bee45c57"
         }
-      ],
-      "abi": [
-        {
-          "inputs": [],
-          "name": "collectRewards",
-          "outputs": [],
-          "stateMutability": "nonpayable",
-          "type": "function"
-        },
-        {
-          "inputs": [
-            {
-              "internalType": "uint256",
-              "name": "amountIn",
-              "type": "uint256"
-            },
-            {
-              "internalType": "uint256",
-              "name": "duration",
-              "type": "uint256"
-            },
-            {
-              "internalType": "address",
-              "name": "to",
-              "type": "address"
-            },
-            {
-              "internalType": "bool",
-              "name": "stakeRewards",
-              "type": "bool"
-            },
-            {
-              "internalType": "int256",
-              "name": "lockupId",
-              "type": "int256"
-            }
-          ],
-          "name": "stake",
-          "outputs": [],
-          "stateMutability": "nonpayable",
-          "type": "function"
-        },
-        {
-          "inputs": [
-            {
-              "internalType": "uint256",
-              "name": "lockupId",
-              "type": "uint256"
-            }
-          ],
-          "name": "unstake",
-          "outputs": [],
-          "stateMutability": "nonpayable",
-          "type": "function"
-        }
       ]
     }
   },

@@ -1,42 +1,7 @@
 {
   "$schema": "../../specs/erc7730-v2.schema.json",
   "context": {
-    "contract": {
-      "abi": [
-        {
-          "inputs": [
-            {
-              "name": "assets",
-              "type": "uint256"
-            },
-            {
-              "name": "receiver",
-              "type": "address"
-            }
-          ],
-          "name": "deposit",
-          "type": "function"
-        },
-        {
-          "inputs": [
-            {
-              "name": "shares",
-              "type": "uint256"
-            },
-            {
-              "name": "receiver",
-              "type": "address"
-            },
-            {
-              "name": "owner",
-              "type": "address"
-            }
-          ],
-          "name": "redeem",
-          "type": "function"
-        }
-      ]
-    }
+    "contract": {}
   },
   "metadata": {
     "owner": "Origin Protocol",
