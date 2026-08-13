@@ -4,10 +4,6 @@ on:
   push:
     branches:
       - master
-      - demo
-    paths-ignore:
-      - 'developer-preview/**'
-
 permissions:
   id-token: write
 
@@ -15,13 +11,10 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-env:
-  ETHERSCAN_API_HOST: proxyetherscan-ci.api.live.ledger.com
-
 jobs:
   validate_descriptors:
     name: 🔎 validate descriptors
-    runs-on: public-ledgerhq-shared-small
+    runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
 
@@ -36,42 +29,11 @@ jobs:
           python-version: '3.12'
           cache: 'pip'
 
-      - name: Login to Ledger JFrog
-        timeout-minutes: 10
-        uses: LedgerHQ/actions-security/actions/jfrog-login@actions/jfrog-login-1
-
-      - name: Setup pip
-        timeout-minutes: 10
-        run: jf pipc --global --repo-resolve=virtual-pypi-prod-green
-
       - name: Install ERC-7730 library
         timeout-minutes: 10
-        run: jf pip install erc7730
+        run: pip install erc7730
 
       - name: Validate ERC-7730 descriptors
-        timeout-minutes: 10
+        timeout-minutes: 30
         run: erc7730 lint registry --gha
 
-  update_cal:
-    name: 🔁 trigger updates
-    runs-on: public-ledgerhq-shared-small
-    timeout-minutes: 60
-    steps:
-
-      - name: Trigger update on LedgerHQ/crypto-assets
-        if: ${{ !cancelled() }}
-        timeout-minutes: 60
-        uses: peter-evans/repository-dispatch@v4
-        with:
-          token: ${{ secrets.CI_BOT_TOKEN }}
-          repository: LedgerHQ/crypto-assets
-          event-type: submodules
-
-      - name: Trigger update on LedgerHQ/python-erc7730
-        if: ${{ !cancelled() }}
-        timeout-minutes: 60
-        uses: peter-evans/repository-dispatch@v4
-        with:
-          token: ${{ secrets.CI_BOT_TOKEN }}
-          repository: LedgerHQ/python-erc7730
-          event-type: submodules
