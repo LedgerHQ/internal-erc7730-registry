@@ -17,7 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
-
       - name: Checkout
         timeout-minutes: 10
         uses: actions/checkout@v6.0.2
@@ -26,8 +25,8 @@ jobs:
         timeout-minutes: 10
         uses: actions/setup-python@v6
         with:
-          python-version: '3.12'
-          cache: 'pip'
+          python-version: "3.12"
+          cache: "pip"
 
       - name: Install ERC-7730 library
         timeout-minutes: 10
@@ -35,5 +34,4 @@ jobs:
 
       - name: Validate ERC-7730 descriptors
         timeout-minutes: 30
-        run: erc7730 lint registry --gha
-
+        run: find registry -name '*.json' ! -name '*.tests.json' -print0 | xargs -0 erc7730 lint --gha
