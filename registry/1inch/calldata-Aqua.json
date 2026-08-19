@@ -1,0 +1,62 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "context": {
+    "$id": "Aqua",
+    "contract": {
+      "deployments": [
+        { "chainId": 1, "address": "0x1111113ccf1426a8e30e2bff5e005d929bf6a90a" },
+        { "chainId": 8453, "address": "0x1111113ccf1426a8e30e2bff5e005d929bf6a90a" },
+        { "chainId": 10, "address": "0x1111113ccf1426a8e30e2bff5e005d929bf6a90a" },
+        { "chainId": 137, "address": "0x1111113ccf1426a8e30e2bff5e005d929bf6a90a" },
+        { "chainId": 42161, "address": "0x1111113ccf1426a8e30e2bff5e005d929bf6a90a" },
+        { "chainId": 43114, "address": "0x1111113ccf1426a8e30e2bff5e005d929bf6a90a" },
+        { "chainId": 56, "address": "0x1111113ccf1426a8e30e2bff5e005d929bf6a90a" },
+        { "chainId": 59144, "address": "0x1111113ccf1426a8e30e2bff5e005d929bf6a90a" },
+        { "chainId": 146, "address": "0x1111113ccf1426a8e30e2bff5e005d929bf6a90a" },
+        { "chainId": 130, "address": "0x1111113ccf1426a8e30e2bff5e005d929bf6a90a" },
+        { "chainId": 100, "address": "0x1111113ccf1426a8e30e2bff5e005d929bf6a90a" },
+        { "chainId": 324, "address": "0x1111113ccf1426a8e30e2bff5e005d929bf6a90a" }
+      ]
+    }
+  },
+  "metadata": {
+    "owner": "1inch Network",
+    "info": { "url": "https://1inch.com/aqua", "deploymentDate": "2026-07-19T13:45:47Z" },
+    "contractName": "AquaRouter"
+  },
+  "display": {
+    "definitions": {
+      "app": {
+        "label": "App",
+        "format": "addressName",
+        "params": { "types": ["contract"], "sources": ["local", "ens"] }
+      },
+      "token": {
+        "label": "Token",
+        "format": "addressName",
+        "params": { "types": ["token"] }
+      }
+    },
+    "formats": {
+      "ship(address app,bytes strategy,address[] tokens,uint256[] amounts)": {
+        "$id": "ship",
+        "intent": "Provide liquidity",
+        "fields": [
+          { "path": "app", "$ref": "$.display.definitions.app", "visible": "always" },
+          { "path": "#.tokens.[]", "$ref": "$.display.definitions.token", "visible": "always" },
+          { "path": "#.amounts.[]", "label": "Amount", "format": "raw", "visible": "always" },
+          { "path": "strategy", "label": "Strategy", "format": "raw", "visible": "always" }
+        ]
+      },
+      "dock(address app,bytes32 strategyHash,address[] tokens)": {
+        "$id": "dock",
+        "intent": "Withdraw liquidity",
+        "fields": [
+          { "path": "app", "$ref": "$.display.definitions.app", "visible": "always" },
+          { "path": "strategyHash", "label": "Strategy Hash", "format": "raw", "visible": "always" },
+          { "path": "#.tokens.[]", "$ref": "$.display.definitions.token", "visible": "always" }
+        ]
+      }
+    }
+  }
+}
