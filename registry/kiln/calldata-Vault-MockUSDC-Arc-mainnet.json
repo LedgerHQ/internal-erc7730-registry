@@ -7,10 +7,6 @@
   },
   "metadata": {
     "contractName": "Kiln Vault (Mock USDC)",
-    "constants": {
-      "underlyingToken": "0x3600000000000000000000000000000000000000",
-      "underlyingTicker": "USDC",
-      "vaultTicker": "amockUSDC"
-    }
+    "constants": { "underlyingToken": "0x3600000000000000000000000000000000000000", "underlyingTicker": "USDC", "vaultTicker": "amockUSDC" }
   }
 }

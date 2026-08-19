@@ -2,11 +2,7 @@
   "$schema": "../../specs/erc7730-v2.schema.json",
   "context": {
     "$id": "Figment Eth2 Depositor",
-    "contract": {
-      "deployments": [
-        { "chainId": 1, "address": "0xf0075b3cf8953d3e23b0ef65960913fd97eb5227" }
-      ]
-    }
+    "contract": { "deployments": [{ "chainId": 1, "address": "0xf0075b3cf8953d3e23b0ef65960913fd97eb5227" }] }
   },
   "metadata": { "owner": "Figment", "info": { "url": "https://figment.io/" }, "contractName": "Figment Eth2 Depositor" },
   "display": {

@@ -3,23 +3,12 @@
   "context": {
     "contract": {
       "deployments": [
-        {
-          "chainId": 1,
-          "address": "0x3D12e5770773f609b614E3a177D343dC41aeeE75"
-        },
-        {
-          "chainId": 8453,
-          "address": "0x3D12e5770773f609b614E3a177D343dC41aeeE75"
-        }
+        { "chainId": 1, "address": "0x3D12e5770773f609b614E3a177D343dC41aeeE75" },
+        { "chainId": 8453, "address": "0x3D12e5770773f609b614E3a177D343dC41aeeE75" }
       ]
     }
   },
-  "metadata": {
-    "owner": "Yield.xyz",
-    "info": {
-      "url": "https://yield.xyz/"
-    }
-  },
+  "metadata": { "owner": "Yield.xyz", "info": { "url": "https://yield.xyz/" } },
   "display": {
     "formats": {
       "borrow((address loanToken,address collateralToken,address oracle,address irm,uint256 lltv) marketParams,uint256 assets)": {
@@ -30,9 +19,7 @@
             "path": "assets",
             "label": "Amount to borrow",
             "format": "tokenAmount",
-            "params": {
-              "tokenPath": "marketParams.loanToken"
-            },
+            "params": { "tokenPath": "marketParams.loanToken" },
             "visible": "always"
           }
         ]
@@ -45,21 +32,14 @@
             "path": "assets",
             "label": "Amount to borrow",
             "format": "tokenAmount",
-            "params": {
-              "tokenPath": "marketParams.loanToken"
-            },
+            "params": { "tokenPath": "marketParams.loanToken" },
             "visible": "always"
           },
           {
             "path": "authOpen.authorized",
             "label": "Authorized address",
             "format": "addressName",
-            "params": {
-              "types": [
-                "contract",
-                "eoa"
-              ]
-            },
+            "params": { "types": ["contract", "eoa"] },
             "visible": "always"
           }
         ]
@@ -72,9 +52,7 @@
             "path": "assets",
             "label": "Supply amount",
             "format": "tokenAmount",
-            "params": {
-              "tokenPath": "marketParams.loanToken"
-            },
+            "params": { "tokenPath": "marketParams.loanToken" },
             "visible": "always"
           }
         ]
@@ -87,9 +65,7 @@
             "path": "assets",
             "label": "Collateral amount",
             "format": "tokenAmount",
-            "params": {
-              "tokenPath": "marketParams.collateralToken"
-            },
+            "params": { "tokenPath": "marketParams.collateralToken" },
             "visible": "always"
           }
         ]

@@ -81,9 +81,7 @@
         { "chainId": 16661, "address": "0x2a8e7c8bebe4e15764d449387954d9b53d1329a3" }
       ],
       "factory": {
-        "deployments": [
-          { "chainId": 16661, "address": "0xea224dBB52F57752044c0C86aD50930091F561B9" }
-        ],
+        "deployments": [{ "chainId": 16661, "address": "0xea224dBB52F57752044c0C86aD50930091F561B9" }],
         "deployEvent": "ValidatorCreated(bytes indexed pubkey, address indexed validator)"
       }
     }
@@ -92,10 +90,7 @@
     "owner": "0G",
     "contractName": "0GValidator",
     "info": { "url": "https://0g.ai" },
-    "constants": {
-      "nativeTokenTicker": "0G",
-      "nativeDecimals": 18
-    }
+    "constants": { "nativeTokenTicker": "0G", "nativeDecimals": 18 }
   },
   "display": {
     "formats": {
@@ -116,12 +111,7 @@
             "params": { "types": ["eoa"] },
             "visible": "always"
           },
-          {
-            "path": "@.value",
-            "label": "Delegated amount",
-            "format": "amount",
-            "visible": "always"
-          }
+          { "path": "@.value", "label": "Delegated amount", "format": "amount", "visible": "always" }
         ]
       },
       "undelegate(address withdrawalAddress, uint256 shares)": {
@@ -148,12 +138,7 @@
             "params": { "base": "shares", "decimals": 18 },
             "visible": "always"
           },
-          {
-            "path": "@.value",
-            "label": "Validator fees",
-            "format": "amount",
-            "visible": "always"
-          }
+          { "path": "@.value", "label": "Validator fees", "format": "amount", "visible": "always" }
         ]
       },
       "withdrawCommission(address withdrawalAddress)": {
