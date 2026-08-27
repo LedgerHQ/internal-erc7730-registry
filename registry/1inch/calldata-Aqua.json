@@ -1,0 +1,140 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "context": {
+    "$id": "Aqua",
+    "contract": {
+      "deployments": [
+        { "chainId": 1, "address": "0x1111113ccf1426a8e30e2bff5e005d929bf6a90a" },
+        { "chainId": 8453, "address": "0x1111113ccf1426a8e30e2bff5e005d929bf6a90a" },
+        { "chainId": 10, "address": "0x1111113ccf1426a8e30e2bff5e005d929bf6a90a" },
+        { "chainId": 137, "address": "0x1111113ccf1426a8e30e2bff5e005d929bf6a90a" },
+        { "chainId": 42161, "address": "0x1111113ccf1426a8e30e2bff5e005d929bf6a90a" },
+        { "chainId": 43114, "address": "0x1111113ccf1426a8e30e2bff5e005d929bf6a90a" },
+        { "chainId": 56, "address": "0x1111113ccf1426a8e30e2bff5e005d929bf6a90a" },
+        { "chainId": 59144, "address": "0x1111113ccf1426a8e30e2bff5e005d929bf6a90a" },
+        { "chainId": 146, "address": "0x1111113ccf1426a8e30e2bff5e005d929bf6a90a" },
+        { "chainId": 130, "address": "0x1111113ccf1426a8e30e2bff5e005d929bf6a90a" },
+        { "chainId": 100, "address": "0x1111113ccf1426a8e30e2bff5e005d929bf6a90a" },
+        { "chainId": 324, "address": "0x1111113ccf1426a8e30e2bff5e005d929bf6a90a" }
+      ]
+    }
+  },
+  "metadata": {
+    "owner": "1inch Network",
+    "info": { "url": "https://1inch.com/aqua", "deploymentDate": "2026-07-19T13:45:47Z" },
+    "contractName": "AquaRouter"
+  },
+  "display": {
+    "formats": {
+      "ship(address app,bytes strategy,address[] tokens,uint256[] amounts)": {
+        "$id": "ship",
+        "intent": "Authorize SwapVM strategy",
+        "fields": [
+          {
+            "$id": "strategyMaker",
+            "path": "#.strategy.[44:64]",
+            "label": "Liquidity from",
+            "format": "addressName",
+            "params": { "types": ["wallet"] },
+            "visible": "always"
+          },
+          {
+            "$id": "spendingCap",
+            "path": "#.amounts.[]",
+            "label": "Spending cap",
+            "format": "tokenAmount",
+            "params": { "tokenPath": "#.tokens.[]" },
+            "visible": "always"
+          },
+          {
+            "$id": "strategyProgram",
+            "path": "#.strategy.[160:]",
+            "label": "Unverified program",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "$id": "appAllowlist",
+            "path": "#.app",
+            "label": "App",
+            "format": "addressName",
+            "params": { "types": ["contract"] },
+            "visible": { "mustMatch": ["0x111111338c5091e8440b67b168bae16a668ac0de", "0x1111113db0e0ef9d0e3a50d5f094a3a57a26c0de"] }
+          },
+          {
+            "$id": "orderHeadGuard",
+            "path": "#.strategy.[0:32]",
+            "label": "Strategy encoding",
+            "format": "raw",
+            "visible": { "mustMatch": ["0x0000000000000000000000000000000000000000000000000000000000000020"] }
+          },
+          {
+            "$id": "orderProgramOffsetGuard",
+            "path": "#.strategy.[96:128]",
+            "label": "Program offset",
+            "format": "raw",
+            "visible": { "mustMatch": ["0x0000000000000000000000000000000000000000000000000000000000000060"] }
+          },
+          {
+            "$id": "traitsFlagGuard",
+            "path": "#.strategy.[64:65]",
+            "label": "Strategy flags",
+            "format": "raw",
+            "visible": { "mustMatch": ["0x40"] }
+          },
+          {
+            "$id": "hookTargetGuard",
+            "path": "#.strategy.[65:66]",
+            "label": "Hook targets",
+            "format": "raw",
+            "visible": { "mustMatch": ["0x00"] }
+          },
+          {
+            "$id": "receiverGuard",
+            "path": "#.strategy.[76:96]",
+            "label": "Proceeds receiver",
+            "format": "raw",
+            "visible": { "mustMatch": ["0x0000000000000000000000000000000000000000"] }
+          }
+        ]
+      },
+      "dock(address app,bytes32 strategyHash,address[] tokens)": {
+        "$id": "dock",
+        "intent": "Revoke app's access",
+        "fields": [
+          {
+            "$id": "dockApp",
+            "path": "#.app",
+            "label": "App",
+            "format": "addressName",
+            "params": { "types": ["contract"] },
+            "visible": "always"
+          },
+          {
+            "$id": "dockTokens",
+            "path": "#.tokens.[]",
+            "label": "Token",
+            "format": "addressName",
+            "params": { "types": ["token"] },
+            "visible": "always"
+          },
+          { "$id": "dockStrategyHash", "path": "#.strategyHash", "label": "Strategy", "format": "raw", "visible": "always" }
+        ]
+      },
+      "multicall(bytes[] data)": {
+        "$id": "multicall",
+        "intent": "Batch of Aqua operations",
+        "fields": [
+          {
+            "$id": "batchedCall",
+            "path": "#.data.[]",
+            "label": "Operation",
+            "format": "calldata",
+            "params": { "calleePath": "@.to" },
+            "visible": "always"
+          }
+        ]
+      }
+    }
+  }
+}
