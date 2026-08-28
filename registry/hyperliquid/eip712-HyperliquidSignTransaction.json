@@ -1,0 +1,88 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "context": {
+    "eip712": {
+      "deployments": [
+        { "chainId": 1, "address": "0x0000000000000000000000000000000000000000" },
+        { "chainId": 42161, "address": "0x0000000000000000000000000000000000000000" }
+      ],
+      "domain": { "name": "HyperliquidSignTransaction", "version": "1" }
+    }
+  },
+  "metadata": {
+    "owner": "Hyperliquid Labs",
+    "info": { "url": "https://hyperliquid.xyz" },
+    "constants": { "usdcToken": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831" }
+  },
+  "display": {
+    "formats": {
+      "HyperliquidTransaction:Withdraw(string hyperliquidChain,string destination,string amount,uint64 time)": {
+        "intent": "Withdraw from Hyperliquid",
+        "fields": [
+          { "path": "destination", "label": "Recipient", "format": "raw", "visible": "always" },
+          { "path": "amount", "label": "USDC amount", "format": "raw", "visible": "always" },
+          { "path": "hyperliquidChain", "label": "Chain", "format": "raw" },
+          { "label": "Time", "path": "time", "visible": "never" }
+        ]
+      },
+      "HyperliquidTransaction:ApproveAgent(string hyperliquidChain,address agentAddress,string agentName,uint64 nonce)": {
+        "intent": "Approve Hyperliquid agent",
+        "fields": [
+          {
+            "path": "agentAddress",
+            "label": "Agent",
+            "format": "addressName",
+            "params": { "types": ["eoa"], "sources": ["local"] },
+            "visible": "always"
+          },
+          { "path": "agentName", "label": "Agent name", "format": "raw", "visible": "always" },
+          { "path": "hyperliquidChain", "label": "Chain", "format": "raw", "visible": "always" },
+          { "path": "nonce", "label": "Nonce", "visible": "never" }
+        ]
+      },
+      "HyperliquidTransaction:ApproveBuilderFee(string hyperliquidChain,string maxFeeRate,address builder,uint64 nonce)": {
+        "intent": "Approve builder fee",
+        "fields": [
+          { "path": "maxFeeRate", "label": "Max fee rate", "format": "raw", "visible": "always" },
+          {
+            "path": "builder",
+            "label": "Builder",
+            "format": "addressName",
+            "params": { "types": ["eoa", "contract"], "sources": ["local"] },
+            "visible": "always"
+          },
+          { "path": "hyperliquidChain", "label": "Chain", "format": "raw", "visible": "always" },
+          { "path": "nonce", "label": "Nonce", "visible": "never" }
+        ]
+      },
+      "HyperliquidTransaction:SendAsset(string hyperliquidChain,string destination,string sourceDex,string destinationDex,string token,string amount,string fromSubAccount,uint64 nonce)": {
+        "intent": "Send asset on Hyperliquid",
+        "fields": [
+          { "path": "amount", "label": "Amount", "format": "raw", "visible": "always" },
+          { "path": "token", "label": "Token", "format": "raw", "visible": "always" },
+          { "path": "destination", "label": "Recipient", "format": "raw", "visible": "always" },
+          { "path": "sourceDex", "label": "From DEX", "format": "raw", "visible": "always" },
+          { "path": "destinationDex", "label": "To DEX", "format": "raw", "visible": "always" },
+          { "path": "fromSubAccount", "label": "From sub-account", "format": "raw", "visible": { "ifNotIn": [""] } },
+          { "path": "hyperliquidChain", "label": "Chain", "format": "raw", "visible": "always" },
+          { "path": "nonce", "label": "Nonce", "visible": "never" }
+        ]
+      },
+      "HyperliquidTransaction:UserSetAbstraction(string hyperliquidChain,address user,string abstraction,uint64 nonce)": {
+        "intent": "Set margin mode on Hyperliquid",
+        "fields": [
+          { "path": "abstraction", "label": "Margin mode", "format": "raw", "visible": "always" },
+          {
+            "path": "user",
+            "label": "Account",
+            "format": "addressName",
+            "params": { "types": ["wallet", "eoa"], "sources": ["local"] },
+            "visible": "always"
+          },
+          { "path": "hyperliquidChain", "label": "Chain", "format": "raw", "visible": "always" },
+          { "path": "nonce", "label": "Nonce", "visible": "never" }
+        ]
+      }
+    }
+  }
+}
