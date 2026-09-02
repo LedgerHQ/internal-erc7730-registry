@@ -1,0 +1,938 @@
+{
+  "$schema": "https://github.com/LedgerHQ/clear-signing-erc7730-registry/blob/master/specs/erc7730-v2.schema.json",
+  "context": {
+    "contract": {
+      "deployments": [
+        {
+          "chainId": 1,
+          "address": "0x38B0C12AB81976e9417D4ebfe2A34DB6DF22e6AD"
+        },
+        {
+          "chainId": 8453,
+          "address": "0x4D28D900e381eCE4B351302f1Abe588496793A2b"
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "owner": "Morpho DAO",
+    "contractName": "Morpho Blue Bundles",
+    "info": {
+      "url": "https://docs.morpho.org"
+    }
+  },
+  "display": {
+    "definitions": {
+      "loanAmount": {
+        "label": "Loan Amount",
+        "format": "tokenAmount",
+        "params": {
+          "tokenPath": "marketParams.loanToken"
+        }
+      },
+      "collateralAmount": {
+        "label": "Collateral Amount",
+        "format": "tokenAmount",
+        "params": {
+          "tokenPath": "marketParams.collateralToken"
+        }
+      },
+      "maxLtv": {
+        "label": "Max LTV",
+        "format": "raw"
+      },
+      "sigV": {
+        "label": "Sig V",
+        "format": "raw"
+      },
+      "sigR": {
+        "label": "Sig R",
+        "format": "raw"
+      },
+      "sigS": {
+        "label": "Sig S",
+        "format": "raw"
+      },
+      "authNonce": {
+        "label": "Auth Nonce",
+        "format": "raw"
+      },
+      "authDeadline": {
+        "label": "Auth Deadline",
+        "format": "date",
+        "params": {
+          "encoding": "timestamp"
+        }
+      },
+      "vault": {
+        "label": "Vault",
+        "format": "addressName",
+        "params": {
+          "types": [
+            "contract",
+            "eoa"
+          ]
+        }
+      },
+      "adapter": {
+        "label": "Adapter",
+        "format": "addressName",
+        "params": {
+          "types": [
+            "contract",
+            "eoa"
+          ]
+        }
+      },
+      "loanToken": {
+        "label": "Loan Token",
+        "format": "addressName",
+        "params": {
+          "types": [
+            "token"
+          ]
+        }
+      },
+      "collateralToken": {
+        "label": "Collateral Token",
+        "format": "addressName",
+        "params": {
+          "types": [
+            "token"
+          ]
+        }
+      },
+      "oracle": {
+        "label": "Oracle",
+        "format": "addressName",
+        "params": {
+          "types": [
+            "contract",
+            "eoa"
+          ]
+        }
+      },
+      "irm": {
+        "label": "IRM",
+        "format": "addressName",
+        "params": {
+          "types": [
+            "contract",
+            "eoa"
+          ]
+        }
+      },
+      "lltv": {
+        "label": "LLTV",
+        "format": "raw"
+      },
+      "fromIdle": {
+        "label": "From Idle",
+        "format": "raw"
+      },
+      "sourceAdapter": {
+        "label": "Source Adapter",
+        "format": "addressName",
+        "params": {
+          "types": [
+            "contract",
+            "eoa"
+          ]
+        }
+      },
+      "allocAssets": {
+        "label": "Alloc Assets",
+        "format": "raw"
+      },
+      "penalty": {
+        "label": "Penalty",
+        "format": "raw"
+      },
+      "referralFee": {
+        "label": "Referral Fee",
+        "format": "unit",
+        "params": {
+          "base": "%",
+          "decimals": 16
+        }
+      },
+      "feeRecipient": {
+        "label": "Fee Recipient",
+        "format": "addressName",
+        "params": {
+          "types": [
+            "contract",
+            "eoa"
+          ]
+        }
+      },
+      "validUntil": {
+        "label": "Valid Until",
+        "format": "date",
+        "params": {
+          "encoding": "timestamp"
+        }
+      },
+      "permitKind": {
+        "label": "Permit Kind",
+        "format": "raw"
+      },
+      "permitData": {
+        "label": "Permit Data",
+        "format": "raw"
+      }
+    },
+    "formats": {
+      "blueBundlesV1MigrateBorrowPosition((address loanToken,address collateralToken,address oracle,address irm,uint256 lltv) sourceMarketParams,(address loanToken,address collateralToken,address oracle,address irm,uint256 lltv) destMarketParams,uint256 maxLtv,((uint8 v,bytes32 r,bytes32 s) signature,uint256 nonce,uint256 deadline) signedAuthorization,(address vault,address adapter,(address loanToken,address collateralToken,address oracle,address irm,uint256 lltv) marketParams,bool fromIdle,address sourceAdapter,(address loanToken,address collateralToken,address oracle,address irm,uint256 lltv) sourceMarketParams,uint128 assets,uint64 penalty)[] reallocations,uint256 referralFeePct,address referralFeeRecipient,uint256 deadline)": {
+        "$id": "migrateBorrow",
+        "intent": "Migrate",
+        "fields": [
+          {
+            "path": "sourceMarketParams.loanToken",
+            "visible": "always",
+            "label": "Source Loan Token",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token"
+              ]
+            }
+          },
+          {
+            "path": "sourceMarketParams.collateralToken",
+            "visible": "always",
+            "label": "Source Collateral",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token"
+              ]
+            }
+          },
+          {
+            "path": "sourceMarketParams.oracle",
+            "visible": "never",
+            "label": "Source Oracle",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract",
+                "eoa"
+              ]
+            }
+          },
+          {
+            "path": "sourceMarketParams.irm",
+            "visible": "never",
+            "label": "Source IRM",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract",
+                "eoa"
+              ]
+            }
+          },
+          {
+            "path": "sourceMarketParams.lltv",
+            "visible": "never",
+            "label": "Source LLTV",
+            "format": "raw"
+          },
+          {
+            "path": "destMarketParams.loanToken",
+            "visible": "always",
+            "label": "Dest Loan Token",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token"
+              ]
+            }
+          },
+          {
+            "path": "destMarketParams.collateralToken",
+            "visible": "always",
+            "label": "Dest Collateral",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token"
+              ]
+            }
+          },
+          {
+            "path": "destMarketParams.oracle",
+            "visible": "never",
+            "label": "Dest Oracle",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract",
+                "eoa"
+              ]
+            }
+          },
+          {
+            "path": "destMarketParams.irm",
+            "visible": "never",
+            "label": "Dest IRM",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract",
+                "eoa"
+              ]
+            }
+          },
+          {
+            "path": "destMarketParams.lltv",
+            "visible": "never",
+            "label": "Dest LLTV",
+            "format": "raw"
+          },
+          {
+            "$ref": "$.display.definitions.maxLtv",
+            "path": "maxLtv",
+            "visible": "always"
+          },
+          {
+            "$ref": "$.display.definitions.sigV",
+            "path": "signedAuthorization.signature.v",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.sigR",
+            "path": "signedAuthorization.signature.r",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.sigS",
+            "path": "signedAuthorization.signature.s",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.authNonce",
+            "path": "signedAuthorization.nonce",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.authDeadline",
+            "path": "signedAuthorization.deadline",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.vault",
+            "path": "reallocations.[].vault",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.adapter",
+            "path": "reallocations.[].adapter",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.loanToken",
+            "path": "reallocations.[].marketParams.loanToken",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.collateralToken",
+            "path": "reallocations.[].marketParams.collateralToken",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.oracle",
+            "path": "reallocations.[].marketParams.oracle",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.irm",
+            "path": "reallocations.[].marketParams.irm",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.lltv",
+            "path": "reallocations.[].marketParams.lltv",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.fromIdle",
+            "path": "reallocations.[].fromIdle",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.sourceAdapter",
+            "path": "reallocations.[].sourceAdapter",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.loanToken",
+            "path": "reallocations.[].sourceMarketParams.loanToken",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.collateralToken",
+            "path": "reallocations.[].sourceMarketParams.collateralToken",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.oracle",
+            "path": "reallocations.[].sourceMarketParams.oracle",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.irm",
+            "path": "reallocations.[].sourceMarketParams.irm",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.lltv",
+            "path": "reallocations.[].sourceMarketParams.lltv",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.allocAssets",
+            "path": "reallocations.[].assets",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.penalty",
+            "path": "reallocations.[].penalty",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.referralFee",
+            "path": "referralFeePct",
+            "visible": "optional"
+          },
+          {
+            "$ref": "$.display.definitions.feeRecipient",
+            "path": "referralFeeRecipient",
+            "visible": "optional"
+          },
+          {
+            "$ref": "$.display.definitions.validUntil",
+            "path": "deadline",
+            "visible": "optional"
+          }
+        ]
+      },
+      "blueBundlesV1RepayAndWithdrawCollateral((address loanToken,address collateralToken,address oracle,address irm,uint256 lltv) marketParams,uint256 repayAssets,uint256 repayShares,uint256 maxRepayAssets,uint256 collateralAssets,uint256 maxLtv,(uint8 kind,bytes data) loanTokenPermit,((uint8 v,bytes32 r,bytes32 s) signature,uint256 nonce,uint256 deadline) signedAuthorization,uint256 referralFeePct,address referralFeeRecipient,uint256 deadline)": {
+        "$id": "repayWithdraw",
+        "intent": "Repay",
+        "fields": [
+          {
+            "$ref": "$.display.definitions.loanToken",
+            "path": "marketParams.loanToken",
+            "visible": "always"
+          },
+          {
+            "$ref": "$.display.definitions.collateralToken",
+            "path": "marketParams.collateralToken",
+            "visible": "always"
+          },
+          {
+            "$ref": "$.display.definitions.oracle",
+            "path": "marketParams.oracle",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.irm",
+            "path": "marketParams.irm",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.lltv",
+            "path": "marketParams.lltv",
+            "visible": "never"
+          },
+          {
+            "path": "repayAssets",
+            "visible": "always",
+            "$ref": "$.display.definitions.loanAmount",
+            "label": "Repay Amount"
+          },
+          {
+            "path": "repayShares",
+            "visible": "optional",
+            "label": "Repay Shares",
+            "format": "raw"
+          },
+          {
+            "path": "maxRepayAssets",
+            "visible": "optional",
+            "label": "Max Repay",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "marketParams.loanToken"
+            }
+          },
+          {
+            "path": "collateralAssets",
+            "visible": "always",
+            "$ref": "$.display.definitions.collateralAmount",
+            "label": "Collateral Out"
+          },
+          {
+            "$ref": "$.display.definitions.maxLtv",
+            "path": "maxLtv",
+            "visible": "optional"
+          },
+          {
+            "$ref": "$.display.definitions.permitKind",
+            "path": "loanTokenPermit.kind",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.permitData",
+            "path": "loanTokenPermit.data",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.sigV",
+            "path": "signedAuthorization.signature.v",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.sigR",
+            "path": "signedAuthorization.signature.r",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.sigS",
+            "path": "signedAuthorization.signature.s",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.authNonce",
+            "path": "signedAuthorization.nonce",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.authDeadline",
+            "path": "signedAuthorization.deadline",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.referralFee",
+            "path": "referralFeePct",
+            "visible": "optional"
+          },
+          {
+            "$ref": "$.display.definitions.feeRecipient",
+            "path": "referralFeeRecipient",
+            "visible": "optional"
+          },
+          {
+            "$ref": "$.display.definitions.validUntil",
+            "path": "deadline",
+            "visible": "optional"
+          }
+        ]
+      },
+      "blueBundlesV1Supply((address loanToken,address collateralToken,address oracle,address irm,uint256 lltv) marketParams,uint256 assets,(uint8 kind,bytes data) loanTokenPermit,uint256 referralFeePct,address referralFeeRecipient,uint256 deadline)": {
+        "$id": "supply",
+        "intent": "Supply",
+        "fields": [
+          {
+            "$ref": "$.display.definitions.loanToken",
+            "path": "marketParams.loanToken",
+            "visible": "always"
+          },
+          {
+            "$ref": "$.display.definitions.collateralToken",
+            "path": "marketParams.collateralToken",
+            "visible": "always"
+          },
+          {
+            "$ref": "$.display.definitions.oracle",
+            "path": "marketParams.oracle",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.irm",
+            "path": "marketParams.irm",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.lltv",
+            "path": "marketParams.lltv",
+            "visible": "never"
+          },
+          {
+            "path": "assets",
+            "visible": "always",
+            "$ref": "$.display.definitions.loanAmount",
+            "label": "Amount to Supply"
+          },
+          {
+            "$ref": "$.display.definitions.permitKind",
+            "path": "loanTokenPermit.kind",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.permitData",
+            "path": "loanTokenPermit.data",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.referralFee",
+            "path": "referralFeePct",
+            "visible": "optional"
+          },
+          {
+            "$ref": "$.display.definitions.feeRecipient",
+            "path": "referralFeeRecipient",
+            "visible": "optional"
+          },
+          {
+            "$ref": "$.display.definitions.validUntil",
+            "path": "deadline",
+            "visible": "optional"
+          }
+        ]
+      },
+      "blueBundlesV1SupplyCollateralAndBorrow((address loanToken,address collateralToken,address oracle,address irm,uint256 lltv) marketParams,uint256 collateralAssets,uint256 borrowAssets,uint256 maxLtv,(uint8 kind,bytes data) collateralPermit,((uint8 v,bytes32 r,bytes32 s) signature,uint256 nonce,uint256 deadline) signedAuthorization,(address vault,address adapter,(address loanToken,address collateralToken,address oracle,address irm,uint256 lltv) marketParams,bool fromIdle,address sourceAdapter,(address loanToken,address collateralToken,address oracle,address irm,uint256 lltv) sourceMarketParams,uint128 assets,uint64 penalty)[] reallocations,uint256 referralFeePct,address referralFeeRecipient,uint256 deadline)": {
+        "$id": "supplyBorrow",
+        "intent": "Borrow",
+        "fields": [
+          {
+            "$ref": "$.display.definitions.loanToken",
+            "path": "marketParams.loanToken",
+            "visible": "always"
+          },
+          {
+            "$ref": "$.display.definitions.collateralToken",
+            "path": "marketParams.collateralToken",
+            "visible": "always"
+          },
+          {
+            "$ref": "$.display.definitions.oracle",
+            "path": "marketParams.oracle",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.irm",
+            "path": "marketParams.irm",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.lltv",
+            "path": "marketParams.lltv",
+            "visible": "never"
+          },
+          {
+            "path": "collateralAssets",
+            "visible": "always",
+            "$ref": "$.display.definitions.collateralAmount"
+          },
+          {
+            "path": "borrowAssets",
+            "visible": "always",
+            "$ref": "$.display.definitions.loanAmount",
+            "label": "Borrow Amount"
+          },
+          {
+            "$ref": "$.display.definitions.maxLtv",
+            "path": "maxLtv",
+            "visible": "always"
+          },
+          {
+            "$ref": "$.display.definitions.permitKind",
+            "path": "collateralPermit.kind",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.permitData",
+            "path": "collateralPermit.data",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.sigV",
+            "path": "signedAuthorization.signature.v",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.sigR",
+            "path": "signedAuthorization.signature.r",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.sigS",
+            "path": "signedAuthorization.signature.s",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.authNonce",
+            "path": "signedAuthorization.nonce",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.authDeadline",
+            "path": "signedAuthorization.deadline",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.vault",
+            "path": "reallocations.[].vault",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.adapter",
+            "path": "reallocations.[].adapter",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.loanToken",
+            "path": "reallocations.[].marketParams.loanToken",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.collateralToken",
+            "path": "reallocations.[].marketParams.collateralToken",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.oracle",
+            "path": "reallocations.[].marketParams.oracle",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.irm",
+            "path": "reallocations.[].marketParams.irm",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.lltv",
+            "path": "reallocations.[].marketParams.lltv",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.fromIdle",
+            "path": "reallocations.[].fromIdle",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.sourceAdapter",
+            "path": "reallocations.[].sourceAdapter",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.loanToken",
+            "path": "reallocations.[].sourceMarketParams.loanToken",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.collateralToken",
+            "path": "reallocations.[].sourceMarketParams.collateralToken",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.oracle",
+            "path": "reallocations.[].sourceMarketParams.oracle",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.irm",
+            "path": "reallocations.[].sourceMarketParams.irm",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.lltv",
+            "path": "reallocations.[].sourceMarketParams.lltv",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.allocAssets",
+            "path": "reallocations.[].assets",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.penalty",
+            "path": "reallocations.[].penalty",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.referralFee",
+            "path": "referralFeePct",
+            "visible": "optional"
+          },
+          {
+            "$ref": "$.display.definitions.feeRecipient",
+            "path": "referralFeeRecipient",
+            "visible": "optional"
+          },
+          {
+            "$ref": "$.display.definitions.validUntil",
+            "path": "deadline",
+            "visible": "optional"
+          }
+        ]
+      },
+      "blueBundlesV1Withdraw((address loanToken,address collateralToken,address oracle,address irm,uint256 lltv) marketParams,uint256 withdrawAssets,uint256 withdrawShares,((uint8 v,bytes32 r,bytes32 s) signature,uint256 nonce,uint256 deadline) signedAuthorization,(address vault,address adapter,(address loanToken,address collateralToken,address oracle,address irm,uint256 lltv) marketParams,bool fromIdle,address sourceAdapter,(address loanToken,address collateralToken,address oracle,address irm,uint256 lltv) sourceMarketParams,uint128 assets,uint64 penalty)[] reallocations,uint256 referralFeePct,address referralFeeRecipient,uint256 deadline)": {
+        "$id": "withdraw",
+        "intent": "Withdraw",
+        "fields": [
+          {
+            "$ref": "$.display.definitions.loanToken",
+            "path": "marketParams.loanToken",
+            "visible": "always"
+          },
+          {
+            "$ref": "$.display.definitions.collateralToken",
+            "path": "marketParams.collateralToken",
+            "visible": "always"
+          },
+          {
+            "$ref": "$.display.definitions.oracle",
+            "path": "marketParams.oracle",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.irm",
+            "path": "marketParams.irm",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.lltv",
+            "path": "marketParams.lltv",
+            "visible": "never"
+          },
+          {
+            "path": "withdrawAssets",
+            "visible": "always",
+            "$ref": "$.display.definitions.loanAmount",
+            "label": "Withdraw Amount"
+          },
+          {
+            "path": "withdrawShares",
+            "visible": "optional",
+            "label": "Withdraw Shares",
+            "format": "raw"
+          },
+          {
+            "$ref": "$.display.definitions.sigV",
+            "path": "signedAuthorization.signature.v",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.sigR",
+            "path": "signedAuthorization.signature.r",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.sigS",
+            "path": "signedAuthorization.signature.s",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.authNonce",
+            "path": "signedAuthorization.nonce",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.authDeadline",
+            "path": "signedAuthorization.deadline",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.vault",
+            "path": "reallocations.[].vault",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.adapter",
+            "path": "reallocations.[].adapter",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.loanToken",
+            "path": "reallocations.[].marketParams.loanToken",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.collateralToken",
+            "path": "reallocations.[].marketParams.collateralToken",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.oracle",
+            "path": "reallocations.[].marketParams.oracle",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.irm",
+            "path": "reallocations.[].marketParams.irm",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.lltv",
+            "path": "reallocations.[].marketParams.lltv",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.fromIdle",
+            "path": "reallocations.[].fromIdle",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.sourceAdapter",
+            "path": "reallocations.[].sourceAdapter",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.loanToken",
+            "path": "reallocations.[].sourceMarketParams.loanToken",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.collateralToken",
+            "path": "reallocations.[].sourceMarketParams.collateralToken",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.oracle",
+            "path": "reallocations.[].sourceMarketParams.oracle",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.irm",
+            "path": "reallocations.[].sourceMarketParams.irm",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.lltv",
+            "path": "reallocations.[].sourceMarketParams.lltv",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.allocAssets",
+            "path": "reallocations.[].assets",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.penalty",
+            "path": "reallocations.[].penalty",
+            "visible": "never"
+          },
+          {
+            "$ref": "$.display.definitions.referralFee",
+            "path": "referralFeePct",
+            "visible": "optional"
+          },
+          {
+            "$ref": "$.display.definitions.feeRecipient",
+            "path": "referralFeeRecipient",
+            "visible": "optional"
+          },
+          {
+            "$ref": "$.display.definitions.validUntil",
+            "path": "deadline",
+            "visible": "optional"
+          }
+        ]
+      }
+    }
+  }
+}
