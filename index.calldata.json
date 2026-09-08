@@ -298,6 +298,7 @@
   "eip155:1:0xaeea95ad6dce50943a43ffb277e089a7c02b74d9": "registry/kiln/calldata-Vault-USDC-Morpho-Smokehouse-USDC-multisig.json",
   "eip155:1:0xafcc1c556ee0436c10a3054b3d615abb93a352b5": "registry/midas/calldata-MinterVault.json",
   "eip155:1:0xb02cc77ee137436d71b9de46958a3bb5d7346cca": "registry/midas/calldata-RedemptionVault.json",
+  "eip155:1:0xb276f62db0ce8ca2ca5bc522695be604521eac1c": "registry/fwa/calldata-FWA-Core.json",
   "eip155:1:0xb36fc5e542cb4fc562a624912f55da2758998113": "registry/serenita/calldata-EthVault.json",
   "eip155:1:0xb64bfc4e7de3638425dc36ed77da4d79bb4c59f6": "registry/kiln/calldata-Vault-WETH-Aave-v3.json",
   "eip155:1:0xb72668d6ff7a0e318f83097a754c6aed0f8af034": "registry/p2p/calldata-NativeTokenVault.json",
