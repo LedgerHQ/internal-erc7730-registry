@@ -15,7 +15,7 @@
       "listingId": { "label": "Listing ID", "format": "raw" },
       "acquisitionPaid": { "label": "Amount to pay", "format": "amount" },
       "maxAcquisitionFee": { "label": "Max acquisition fee", "format": "amount" },
-      "minWeightedValue": { "label": "Min pool value", "format": "raw" },
+      "minWeightedValue": { "label": "Min pool EV basis", "format": "raw" },
       "maxNegativeSlippage": { "label": "Max neg. slippage", "format": "unit", "params": { "base": "bps" } }
     },
     "formats": {
@@ -71,7 +71,7 @@
         "fields": [
           { "path": "@.value", "$ref": "$.display.definitions.acquisitionPaid", "visible": "always" },
           { "path": "maxAcquisitionFee", "$ref": "$.display.definitions.maxAcquisitionFee", "visible": "always" },
-          { "path": "minWeightedValue", "$ref": "$.display.definitions.minWeightedValue", "visible": "never" }
+          { "path": "minWeightedValue", "$ref": "$.display.definitions.minWeightedValue", "visible": "always" }
         ]
       },
       "acquire(uint256 maxAcquisitionFee, uint256 minWeightedValue, uint256 maxNegativeSlippageBps)": {
@@ -84,7 +84,7 @@
             "$ref": "$.display.definitions.maxNegativeSlippage",
             "visible": "always"
           },
-          { "path": "minWeightedValue", "$ref": "$.display.definitions.minWeightedValue", "visible": "never" }
+          { "path": "minWeightedValue", "$ref": "$.display.definitions.minWeightedValue", "visible": "always" }
         ]
       },
       "acquireBatch(uint256 count, uint256 maxAcquisitionFee, uint256 minWeightedValue)": {
@@ -93,7 +93,7 @@
           { "path": "count", "label": "Number of NFTs", "format": "raw", "visible": "always" },
           { "path": "@.value", "$ref": "$.display.definitions.acquisitionPaid", "visible": "always" },
           { "path": "maxAcquisitionFee", "label": "Max fee per NFT", "format": "amount", "visible": "always" },
-          { "path": "minWeightedValue", "$ref": "$.display.definitions.minWeightedValue", "visible": "never" }
+          { "path": "minWeightedValue", "$ref": "$.display.definitions.minWeightedValue", "visible": "always" }
         ]
       },
       "acquireBatch(uint256 count, uint256 maxAcquisitionFee, uint256 minWeightedValue, uint256 maxNegativeSlippageBps)": {
@@ -107,7 +107,7 @@
             "$ref": "$.display.definitions.maxNegativeSlippage",
             "visible": "always"
           },
-          { "path": "minWeightedValue", "$ref": "$.display.definitions.minWeightedValue", "visible": "never" }
+          { "path": "minWeightedValue", "$ref": "$.display.definitions.minWeightedValue", "visible": "always" }
         ]
       },
       "keepNFT(uint256 listingId)": {
