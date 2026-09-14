@@ -1,0 +1,351 @@
+{
+  "$schema": "../../../specs/erc7730-tests.schema.json",
+  "tests": [
+    {
+      "description": "Hyperliquid withdraw - 1 USDC",
+      "data": {
+        "domain": {
+          "name": "HyperliquidSignTransaction",
+          "version": "1",
+          "chainId": 42161,
+          "verifyingContract": "0x0000000000000000000000000000000000000000"
+        },
+        "types": {
+          "EIP712Domain": [
+            {
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "name": "version",
+              "type": "string"
+            },
+            {
+              "name": "chainId",
+              "type": "uint256"
+            },
+            {
+              "name": "verifyingContract",
+              "type": "address"
+            }
+          ],
+          "HyperliquidTransaction:Withdraw": [
+            {
+              "name": "hyperliquidChain",
+              "type": "string"
+            },
+            {
+              "name": "destination",
+              "type": "string"
+            },
+            {
+              "name": "amount",
+              "type": "string"
+            },
+            {
+              "name": "time",
+              "type": "uint64"
+            }
+          ]
+        },
+        "primaryType": "HyperliquidTransaction:Withdraw",
+        "message": {
+          "hyperliquidChain": "Mainnet",
+          "destination": "0x110cdBba7FE6434Ec4CE3464CC523942ad6Fb784",
+          "amount": "1",
+          "time": 1773826878818
+        }
+      },
+      "expectedTexts": [
+        "Recipient",
+        "0x110cdBba7FE6434Ec4CE3464CC523942ad6Fb784",
+        "USDC amount",
+        "1"
+      ]
+    },
+    {
+      "description": "Approve the agent wallet named LiquidWeb",
+      "data": {
+        "domain": {
+          "name": "HyperliquidSignTransaction",
+          "version": "1",
+          "chainId": 42161,
+          "verifyingContract": "0x0000000000000000000000000000000000000000"
+        },
+        "types": {
+          "EIP712Domain": [
+            {
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "name": "version",
+              "type": "string"
+            },
+            {
+              "name": "chainId",
+              "type": "uint256"
+            },
+            {
+              "name": "verifyingContract",
+              "type": "address"
+            }
+          ],
+          "HyperliquidTransaction:ApproveAgent": [
+            {
+              "name": "hyperliquidChain",
+              "type": "string"
+            },
+            {
+              "name": "agentAddress",
+              "type": "address"
+            },
+            {
+              "name": "agentName",
+              "type": "string"
+            },
+            {
+              "name": "nonce",
+              "type": "uint64"
+            }
+          ]
+        },
+        "primaryType": "HyperliquidTransaction:ApproveAgent",
+        "message": {
+          "hyperliquidChain": "Mainnet",
+          "agentAddress": "0xf4ee8ffec72325c06496fdd7b06d64d924853b08",
+          "agentName": "LiquidWeb",
+          "nonce": 1782320625655
+        }
+      },
+      "expectedTexts": [
+        "Approve Hyperliquid agent",
+        "Agent",
+        "0xf4ee8ffec72325c06496fdd7b06d64d924853b08",
+        "Agent name",
+        "LiquidWeb",
+        "Chain",
+        "Mainnet"
+      ]
+    },
+    {
+      "description": "Approve a builder to charge up to 0.1% fee",
+      "data": {
+        "domain": {
+          "name": "HyperliquidSignTransaction",
+          "version": "1",
+          "chainId": 42161,
+          "verifyingContract": "0x0000000000000000000000000000000000000000"
+        },
+        "types": {
+          "EIP712Domain": [
+            {
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "name": "version",
+              "type": "string"
+            },
+            {
+              "name": "chainId",
+              "type": "uint256"
+            },
+            {
+              "name": "verifyingContract",
+              "type": "address"
+            }
+          ],
+          "HyperliquidTransaction:ApproveBuilderFee": [
+            {
+              "name": "hyperliquidChain",
+              "type": "string"
+            },
+            {
+              "name": "maxFeeRate",
+              "type": "string"
+            },
+            {
+              "name": "builder",
+              "type": "address"
+            },
+            {
+              "name": "nonce",
+              "type": "uint64"
+            }
+          ]
+        },
+        "primaryType": "HyperliquidTransaction:ApproveBuilderFee",
+        "message": {
+          "hyperliquidChain": "Mainnet",
+          "maxFeeRate": "0.1%",
+          "builder": "0x6d4e7f472e6a491b98cbeed327417e310ae8ce48",
+          "nonce": 1782320653394
+        }
+      },
+      "expectedTexts": [
+        "Approve builder fee",
+        "Max fee rate",
+        "0.1%",
+        "Builder",
+        "0x6d4e7f472e6a491b98cbeed327417e310ae8ce48",
+        "Chain",
+        "Mainnet"
+      ]
+    },
+    {
+      "description": "Send 16 USDC from the spot balance to another account's perps balance",
+      "data": {
+        "domain": {
+          "name": "HyperliquidSignTransaction",
+          "version": "1",
+          "chainId": 1,
+          "verifyingContract": "0x0000000000000000000000000000000000000000"
+        },
+        "types": {
+          "EIP712Domain": [
+            {
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "name": "version",
+              "type": "string"
+            },
+            {
+              "name": "chainId",
+              "type": "uint256"
+            },
+            {
+              "name": "verifyingContract",
+              "type": "address"
+            }
+          ],
+          "HyperliquidTransaction:SendAsset": [
+            {
+              "name": "hyperliquidChain",
+              "type": "string"
+            },
+            {
+              "name": "destination",
+              "type": "string"
+            },
+            {
+              "name": "sourceDex",
+              "type": "string"
+            },
+            {
+              "name": "destinationDex",
+              "type": "string"
+            },
+            {
+              "name": "token",
+              "type": "string"
+            },
+            {
+              "name": "amount",
+              "type": "string"
+            },
+            {
+              "name": "fromSubAccount",
+              "type": "string"
+            },
+            {
+              "name": "nonce",
+              "type": "uint64"
+            }
+          ]
+        },
+        "primaryType": "HyperliquidTransaction:SendAsset",
+        "message": {
+          "hyperliquidChain": "Mainnet",
+          "destination": "0x8dcbc37d7a57af463308d912a94c19be47d07431",
+          "sourceDex": "spot",
+          "destinationDex": "",
+          "token": "USDC:0x6d1e7cde53ba9467b783cb7c530ce054",
+          "amount": "16",
+          "fromSubAccount": "",
+          "nonce": 1782320280122
+        }
+      },
+      "expectedTexts": [
+        "Send asset on Hyperliquid",
+        "Amount",
+        "16",
+        "Token",
+        "USDC:0x6d1e7cde53ba9467b783cb7c530ce054",
+        "Recipient",
+        "0x8dcbc37d7a57af463308d912a94c19be47d07431",
+        "From DEX",
+        "spot",
+        "Chain",
+        "Mainnet"
+      ]
+    },
+    {
+      "description": "Switch the account to unified account margin mode",
+      "data": {
+        "domain": {
+          "name": "HyperliquidSignTransaction",
+          "version": "1",
+          "chainId": 42161,
+          "verifyingContract": "0x0000000000000000000000000000000000000000"
+        },
+        "types": {
+          "EIP712Domain": [
+            {
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "name": "version",
+              "type": "string"
+            },
+            {
+              "name": "chainId",
+              "type": "uint256"
+            },
+            {
+              "name": "verifyingContract",
+              "type": "address"
+            }
+          ],
+          "HyperliquidTransaction:UserSetAbstraction": [
+            {
+              "name": "hyperliquidChain",
+              "type": "string"
+            },
+            {
+              "name": "user",
+              "type": "address"
+            },
+            {
+              "name": "abstraction",
+              "type": "string"
+            },
+            {
+              "name": "nonce",
+              "type": "uint64"
+            }
+          ]
+        },
+        "primaryType": "HyperliquidTransaction:UserSetAbstraction",
+        "message": {
+          "hyperliquidChain": "Mainnet",
+          "user": "0x63b1fcc3ab82903971846a6996f972be9ae9157a",
+          "abstraction": "unifiedAccount",
+          "nonce": 1782320588098
+        }
+      },
+      "expectedTexts": [
+        "Set margin mode on Hyperliquid",
+        "Margin mode",
+        "unifiedAccount",
+        "Account",
+        "0x63b1fcc3ab82903971846a6996f972be9ae9157a",
+        "Chain",
+        "Mainnet"
+      ]
+    }
+  ]
+}
