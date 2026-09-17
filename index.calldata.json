@@ -640,5 +640,6 @@
   "eip155:98866:0xe6f0c60fca2bd97d633a3d9d49dbefdf19636d8c": "registry/midas/calldata-MinterVault.json",
   "eip155:98866:0xf22ad227b3082557dbda8ad99b694eb295c06092": "registry/midas/calldata-RedemptionVault.json",
   "eip155:999:0x36094abe5e589691b8f60505823a72f5fdedc953": "registry/midas/calldata-RedemptionVault.json",
+  "eip155:999:0x5281602adc446a94eb48d055f514a6d8d5bee176": "registry/1inch/calldata-AggregationRouterV6.json",
   "eip155:999:0x65d0a14dd083c38244542bac0e0cd16d51c37458": "registry/midas/calldata-MinterVault.json"
 }
