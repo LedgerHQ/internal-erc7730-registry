@@ -267,6 +267,7 @@
   "eip155:1:0x8f382ae7bbdbecda835d26ce3ba64010eaee1386": "registry/midas/calldata-MinterVault.json",
   "eip155:1:0x900c7589200010d6c6ecaae5b06ebe653bc2d82a": "registry/safe/calldata-SafeToL2Setup-1.5.0.json",
   "eip155:1:0x91e677b07f7af907ec9a428aafa9fc14a0d3a338": "registry/p2p/calldata-EigenPodManager.json",
+  "eip155:1:0x958c41181182e76f221331b2755b77d9e1426a98": "registry/fwa/calldata-FWA-V2.json",
   "eip155:1:0x95eef579155cd2c5510f312c8fa39208c3be01a8": "registry/morpho/calldata-re7_labs-Re7USDT.json",
   "eip155:1:0x974c8fbf4fd795f66b85b73ebc988a51f1a040a9": "registry/morpho/calldata-hakutora-hUSDC.json",
   "eip155:1:0x97acdfb3956403c4c6bbe837dc611e3a6ba1b3a7": "registry/midas/calldata-RedemptionVault.json",
