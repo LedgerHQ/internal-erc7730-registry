@@ -50,6 +50,47 @@
         "Receive minimum",
         "1 WETH"
       ]
+    },
+    {
+      "description": "1inch Fusion order on HyperEVM (chain 999)",
+      "data": {
+        "types": {
+          "EIP712Domain": [
+            { "name": "name", "type": "string" },
+            { "name": "version", "type": "string" },
+            { "name": "chainId", "type": "uint256" },
+            { "name": "verifyingContract", "type": "address" }
+          ],
+          "Order": [
+            { "name": "salt", "type": "uint256" },
+            { "name": "maker", "type": "address" },
+            { "name": "receiver", "type": "address" },
+            { "name": "makerAsset", "type": "address" },
+            { "name": "takerAsset", "type": "address" },
+            { "name": "makingAmount", "type": "uint256" },
+            { "name": "takingAmount", "type": "uint256" },
+            { "name": "makerTraits", "type": "uint256" }
+          ]
+        },
+        "primaryType": "Order",
+        "domain": {
+          "name": "1inch Aggregation Router",
+          "version": "6",
+          "chainId": 999,
+          "verifyingContract": "0x5281602aDc446A94eb48D055f514A6d8D5bee176"
+        },
+        "message": {
+          "salt": "302357368713181524892475652225363975130963530049976006226483784064610590287",
+          "maker": "0x61577e59f9252909561f5f0c9a25bf9fe93cae0d",
+          "receiver": "0x65497e56cf49c51f1c1d54dc9005a7b38b98b30f",
+          "makerAsset": "0x5555555555555555555555555555555555555555",
+          "takerAsset": "0xf2e6a23b1aa09565fdb3a77af7772709de3f4f95",
+          "makingAmount": "311526470000000000",
+          "takingAmount": "195808727227",
+          "makerTraits": "62419173104490761595518734106350460423668723480624227146749314810679014719488"
+        }
+      },
+      "expectedTexts": ["1inch Order", "From", "To", "Send", "WHYPE", "Receive minimum", "LILLY"]
     }
   ]
 }

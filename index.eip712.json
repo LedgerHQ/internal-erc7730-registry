@@ -4956,5 +4956,15 @@
         ]
       }
     ]
+  },
+  "eip155:999:0x5281602adc446a94eb48d055f514a6d8d5bee176": {
+    "Order": [
+      {
+        "path": "registry/1inch/eip712-AggregationRouterV6.json",
+        "encodeTypeHashes": [
+          "0x3af21ec5a20011b88d3b7b4ed7c806cef05a5980cf34974bcd53566a131f7e4c"
+        ]
+      }
+    ]
   }
 }
