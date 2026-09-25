@@ -1,0 +1,2072 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "context": {
+    "contract": {
+      "deployments": [
+        {
+          "chainId": 1,
+          "address": "0x69460570c93f9de5e2edbc3052bf10125f0ca22d"
+        },
+        {
+          "chainId": 42161,
+          "address": "0x69460570c93f9de5e2edbc3052bf10125f0ca22d"
+        },
+        {
+          "chainId": 43114,
+          "address": "0x69460570c93f9de5e2edbc3052bf10125f0ca22d"
+        },
+        {
+          "chainId": 8453,
+          "address": "0x69460570c93f9de5e2edbc3052bf10125f0ca22d"
+        },
+        {
+          "chainId": 56,
+          "address": "0x69460570c93f9de5e2edbc3052bf10125f0ca22d"
+        },
+        {
+          "chainId": 59144,
+          "address": "0x69460570c93f9de5e2edbc3052bf10125f0ca22d"
+        },
+        {
+          "chainId": 10,
+          "address": "0x69460570c93f9de5e2edbc3052bf10125f0ca22d"
+        },
+        {
+          "chainId": 137,
+          "address": "0x69460570c93f9de5e2edbc3052bf10125f0ca22d"
+        },
+        {
+          "chainId": 146,
+          "address": "0x69460570c93f9de5e2edbc3052bf10125f0ca22d"
+        },
+        {
+          "chainId": 100,
+          "address": "0x69460570c93f9de5e2edbc3052bf10125f0ca22d"
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "owner": "Rango Exchange",
+    "info": {
+      "url": "https://rango.exchange"
+    }
+  },
+  "display": {
+    "formats": {
+      "genericBridge((uint8,(address,address,bytes,uint256,uint256,bool)[],address,uint256,bool,bool,uint256,uint256) bridgeRequest,(address,address,uint256,(address,uint256,uint8)[],uint256,uint16,string) request)": {
+        "$id": "genericBridge",
+        "intent": "Bridge",
+        "fields": [
+          {
+            "path": "request.token",
+            "label": "Token",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "request.token"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "bridgeRequest.bridgeId",
+            "label": "Bridge ID",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.calls",
+            "label": "Bridge Calls",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "path": "bridgeRequest.recipient",
+            "label": "Recipient",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "bridgeRequest.dstChainId",
+            "label": "Destination Chain ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "bridgeRequest.hasInterchainMessage",
+            "label": "Interchain Msg",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.hasDestinationSwap",
+            "label": "Has Destination Swap",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.extraFee",
+            "label": "Extra Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.extraERC20Fee",
+            "label": "Extra ERC20 Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.requestId",
+            "label": "Request ID",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.affiliateFees",
+            "label": "Affiliate Fees",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.totalAffiliateFee",
+            "label": "Total Affiliate Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.dAppTag",
+            "label": "App Tag",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.dAppName",
+            "label": "Referring App",
+            "format": "raw",
+            "visible": "optional"
+          }
+        ]
+      },
+      "genericSwapAndBridge((address,address,address,uint256,(address,uint256,uint8)[],uint256,uint256,bool,uint16,string) request,(address,address,address,address,bool,uint256,bytes)[] calls,(uint8,(address,address,bytes,uint256,uint256,bool)[],address,uint256,bool,bool,uint256,uint256) bridgeRequest)": {
+        "$id": "genericSwapAndBridge",
+        "intent": "Swap and bridge",
+        "fields": [
+          {
+            "path": "request.fromToken",
+            "label": "From Token",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.toToken",
+            "label": "To Token",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.amountIn",
+            "label": "Amount In",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "request.fromToken"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.minimumAmountExpected",
+            "label": "Minimum Received",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "request.toToken"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.feeFromInputToken",
+            "label": "Fee From Input Token",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "calls",
+            "label": "Swap Route Calls",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "path": "bridgeRequest.bridgeId",
+            "label": "Bridge ID",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.calls",
+            "label": "Bridge Calls",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "path": "bridgeRequest.recipient",
+            "label": "Recipient",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "bridgeRequest.dstChainId",
+            "label": "Destination Chain ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "bridgeRequest.hasInterchainMessage",
+            "label": "Interchain Msg",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.hasDestinationSwap",
+            "label": "Has Destination Swap",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.extraFee",
+            "label": "Extra Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.extraERC20Fee",
+            "label": "Extra ERC20 Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.requestId",
+            "label": "Request ID",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.affiliateFees",
+            "label": "Affiliate Fees",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.totalAffiliateFee",
+            "label": "Total Affiliate Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.dAppTag",
+            "label": "App Tag",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.dAppName",
+            "label": "Referring App",
+            "format": "raw",
+            "visible": "optional"
+          }
+        ]
+      },
+      "onChainSwaps((address,address,address,uint256,uint256,uint256,uint256,address,uint256,bool,uint16,string) request,(address,address,address,address,bool,uint256,bytes)[] calls,address receiver)": {
+        "$id": "onChainSwaps",
+        "intent": "Swap",
+        "fields": [
+          {
+            "path": "request.fromToken",
+            "label": "From Token",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.toToken",
+            "label": "To Token",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.amountIn",
+            "label": "Amount In",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "request.fromToken"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.minimumAmountExpected",
+            "label": "Minimum Received",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "request.toToken"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "receiver",
+            "label": "Receiver",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "calls",
+            "label": "Swap Route Calls",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "path": "request.platformFee",
+            "label": "Platform Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.destinationExecutorFee",
+            "label": "Dest Executor Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.affiliateFee",
+            "label": "Affiliate Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.affiliatorAddress",
+            "label": "Affiliate Address",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet",
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "request.feeFromInputToken",
+            "label": "Fee From Input Token",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.requestId",
+            "label": "Request ID",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.dAppTag",
+            "label": "App Tag",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.dAppName",
+            "label": "Referring App",
+            "format": "raw",
+            "visible": "optional"
+          }
+        ]
+      },
+      "acrossBridge((address,address,address,address,uint32,uint32,address,uint256,uint256,uint32,bytes) request,(address,address,uint256,uint256,uint256,address,uint256,uint16,string) bridgeRequest)": {
+        "$id": "acrossBridge",
+        "intent": "Bridge",
+        "fields": [
+          {
+            "path": "bridgeRequest.token",
+            "label": "Token",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "bridgeRequest.amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "bridgeRequest.token"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.recipient",
+            "label": "Recipient",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.destinationChainId",
+            "label": "Destination Chain ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "request.outputToken",
+            "label": "Destination Token",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.spokePoolAddress",
+            "label": "Spoke Pool",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "request.depositor",
+            "label": "Depositor",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "request.exclusiveRelayer",
+            "label": "Exclusive Relayer",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet",
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "request.fillDeadline",
+            "label": "Fill Deadline",
+            "format": "date",
+            "params": {
+              "encoding": "timestamp"
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "request.exclusivityDeadline",
+            "label": "Exclusivity Deadline",
+            "format": "date",
+            "params": {
+              "encoding": "timestamp"
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "request.totalRelayFeeAmount",
+            "label": "Total Relay Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.quoteTimestamp",
+            "label": "Quote Timestamp",
+            "format": "date",
+            "params": {
+              "encoding": "timestamp"
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "request.message",
+            "label": "Message",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "path": "bridgeRequest.requestId",
+            "label": "Request ID",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.platformFee",
+            "label": "Platform Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.affiliateFee",
+            "label": "Affiliate Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.affiliatorAddress",
+            "label": "Affiliate Address",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet",
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.destinationExecutorFee",
+            "label": "Dest Executor Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.dAppTag",
+            "label": "App Tag",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.dAppName",
+            "label": "Referring App",
+            "format": "raw",
+            "visible": "optional"
+          }
+        ]
+      },
+      "acrossSwapAndBridge((address,address,address,uint256,uint256,uint256,uint256,address,uint256,bool,uint16,string) request,(address,address,address,address,bool,uint256,bytes)[] calls,(address,address,address,address,uint32,uint32,address,uint256,uint256,uint32,bytes) bridgeRequest)": {
+        "$id": "acrossSwapAndBridge",
+        "intent": "Swap and bridge",
+        "fields": [
+          {
+            "path": "request.fromToken",
+            "label": "From Token",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.toToken",
+            "label": "To Token",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.amountIn",
+            "label": "Amount In",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "request.fromToken"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.minimumAmountExpected",
+            "label": "Minimum Received",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "request.toToken"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.feeFromInputToken",
+            "label": "Fee From Input Token",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "calls",
+            "label": "Swap Route Calls",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "path": "bridgeRequest.recipient",
+            "label": "Recipient",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "bridgeRequest.destinationChainId",
+            "label": "Destination Chain ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "bridgeRequest.outputToken",
+            "label": "Destination Token",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "bridgeRequest.spokePoolAddress",
+            "label": "Spoke Pool",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.depositor",
+            "label": "Depositor",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.exclusiveRelayer",
+            "label": "Exclusive Relayer",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet",
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.fillDeadline",
+            "label": "Fill Deadline",
+            "format": "date",
+            "params": {
+              "encoding": "timestamp"
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.exclusivityDeadline",
+            "label": "Exclusivity Deadline",
+            "format": "date",
+            "params": {
+              "encoding": "timestamp"
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.totalRelayFeeAmount",
+            "label": "Total Relay Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.quoteTimestamp",
+            "label": "Quote Timestamp",
+            "format": "date",
+            "params": {
+              "encoding": "timestamp"
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.message",
+            "label": "Message",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "path": "request.requestId",
+            "label": "Request ID",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.platformFee",
+            "label": "Platform Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.destinationExecutorFee",
+            "label": "Dest Executor Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.affiliateFee",
+            "label": "Affiliate Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.affiliatorAddress",
+            "label": "Affiliate Address",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet",
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "request.dAppTag",
+            "label": "App Tag",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.dAppName",
+            "label": "Referring App",
+            "format": "raw",
+            "visible": "optional"
+          }
+        ]
+      },
+      "cctpBridge((uint32,bytes32,uint256) request,(address,address,uint256,uint256,uint256,address,uint256,uint16,string) bridgeRequest)": {
+        "$id": "cctpBridge",
+        "intent": "Bridge",
+        "fields": [
+          {
+            "path": "bridgeRequest.token",
+            "label": "Token",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "bridgeRequest.amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "bridgeRequest.token"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.recipient.[-20:]",
+            "label": "Recipient",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.destinationChainId",
+            "label": "Destination Chain ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "request.destinationDomainId",
+            "label": "CCTP Domain ID",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.requestId",
+            "label": "Request ID",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.platformFee",
+            "label": "Platform Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.affiliateFee",
+            "label": "Affiliate Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.affiliatorAddress",
+            "label": "Affiliate Address",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet",
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.destinationExecutorFee",
+            "label": "Dest Executor Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.dAppTag",
+            "label": "App Tag",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.dAppName",
+            "label": "Referring App",
+            "format": "raw",
+            "visible": "optional"
+          }
+        ]
+      },
+      "cctpSwapAndBridge((address,address,address,uint256,uint256,uint256,uint256,address,uint256,bool,uint16,string) request,(address,address,address,address,bool,uint256,bytes)[] calls,(uint32,bytes32,uint256) bridgeRequest)": {
+        "$id": "cctpSwapAndBridge",
+        "intent": "Swap and bridge",
+        "fields": [
+          {
+            "path": "request.fromToken",
+            "label": "From Token",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.toToken",
+            "label": "To Token",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.amountIn",
+            "label": "Amount In",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "request.fromToken"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.minimumAmountExpected",
+            "label": "Minimum Received",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "request.toToken"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.feeFromInputToken",
+            "label": "Fee From Input Token",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "calls",
+            "label": "Swap Route Calls",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "path": "bridgeRequest.recipient.[-20:]",
+            "label": "Recipient",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "bridgeRequest.destinationChainId",
+            "label": "Destination Chain ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "bridgeRequest.destinationDomainId",
+            "label": "CCTP Domain ID",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.requestId",
+            "label": "Request ID",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.platformFee",
+            "label": "Platform Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.destinationExecutorFee",
+            "label": "Dest Executor Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.affiliateFee",
+            "label": "Affiliate Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.affiliatorAddress",
+            "label": "Affiliate Address",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet",
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "request.dAppTag",
+            "label": "App Tag",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.dAppName",
+            "label": "Referring App",
+            "format": "raw",
+            "visible": "optional"
+          }
+        ]
+      },
+      "chainFlipBridge((uint32,bytes,uint32,bytes,uint256,bytes) request,(address,address,uint256,uint256,uint256,address,uint256,uint16,string) bridgeRequest)": {
+        "$id": "chainFlipBridge",
+        "intent": "Bridge",
+        "fields": [
+          {
+            "path": "bridgeRequest.token",
+            "label": "Token",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "bridgeRequest.amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "bridgeRequest.token"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.dstChain",
+            "label": "Destination Chain",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "request.dstAddress",
+            "label": "Destination Address",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "request.dstToken",
+            "label": "Destination Token ID",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.gasAmount",
+            "label": "Dest Gas Amount",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.message",
+            "label": "Message",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "path": "request.cfParameters",
+            "label": "ChainFlip Parameters",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "path": "bridgeRequest.requestId",
+            "label": "Request ID",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.platformFee",
+            "label": "Platform Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.affiliateFee",
+            "label": "Affiliate Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.affiliatorAddress",
+            "label": "Affiliate Address",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet",
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.destinationExecutorFee",
+            "label": "Dest Executor Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.dAppTag",
+            "label": "App Tag",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.dAppName",
+            "label": "Referring App",
+            "format": "raw",
+            "visible": "optional"
+          }
+        ]
+      },
+      "chainFlipSwapAndBridge((address,address,address,uint256,uint256,uint256,uint256,address,uint256,bool,uint16,string) request,(address,address,address,address,bool,uint256,bytes)[] calls,(uint32,bytes,uint32,bytes,uint256,bytes) bridgeRequest)": {
+        "$id": "chainFlipSwapAndBridge",
+        "intent": "Swap and bridge",
+        "fields": [
+          {
+            "path": "request.fromToken",
+            "label": "From Token",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.toToken",
+            "label": "To Token",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.amountIn",
+            "label": "Amount In",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "request.fromToken"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.minimumAmountExpected",
+            "label": "Minimum Received",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "request.toToken"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.feeFromInputToken",
+            "label": "Fee From Input Token",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "calls",
+            "label": "Swap Route Calls",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "path": "bridgeRequest.dstChain",
+            "label": "Destination Chain",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "bridgeRequest.dstAddress",
+            "label": "Destination Address",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "bridgeRequest.dstToken",
+            "label": "Destination Token ID",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.gasAmount",
+            "label": "Dest Gas Amount",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.message",
+            "label": "Message",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "path": "bridgeRequest.cfParameters",
+            "label": "ChainFlip Parameters",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "path": "request.requestId",
+            "label": "Request ID",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.platformFee",
+            "label": "Platform Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.destinationExecutorFee",
+            "label": "Dest Executor Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.affiliateFee",
+            "label": "Affiliate Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.affiliatorAddress",
+            "label": "Affiliate Address",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet",
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "request.dAppTag",
+            "label": "App Tag",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.dAppName",
+            "label": "Referring App",
+            "format": "raw",
+            "visible": "optional"
+          }
+        ]
+      },
+      "swftBridge((string,string,uint256) request,(address,address,uint256,uint256,uint256,address,uint256,uint16,string) bridgeRequest)": {
+        "$id": "swftBridge",
+        "intent": "Bridge",
+        "fields": [
+          {
+            "path": "bridgeRequest.token",
+            "label": "Token",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "bridgeRequest.amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "bridgeRequest.token"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.destination",
+            "label": "Destination Address",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "request.toToken",
+            "label": "Destination Token",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.minReturnAmount",
+            "label": "Min Return Amount",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.requestId",
+            "label": "Request ID",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.platformFee",
+            "label": "Platform Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.affiliateFee",
+            "label": "Affiliate Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.affiliatorAddress",
+            "label": "Affiliate Address",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet",
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.destinationExecutorFee",
+            "label": "Dest Executor Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.dAppTag",
+            "label": "App Tag",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.dAppName",
+            "label": "Referring App",
+            "format": "raw",
+            "visible": "optional"
+          }
+        ]
+      },
+      "swftSwapAndBridge((address,address,address,uint256,uint256,uint256,uint256,address,uint256,bool,uint16,string) request,(address,address,address,address,bool,uint256,bytes)[] calls,(string,string,uint256) bridgeRequest)": {
+        "$id": "swftSwapAndBridge",
+        "intent": "Swap and bridge",
+        "fields": [
+          {
+            "path": "request.fromToken",
+            "label": "From Token",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.toToken",
+            "label": "To Token",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.amountIn",
+            "label": "Amount In",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "request.fromToken"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.minimumAmountExpected",
+            "label": "Minimum Received",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "request.toToken"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.feeFromInputToken",
+            "label": "Fee From Input Token",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "calls",
+            "label": "Swap Route Calls",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "path": "bridgeRequest.destination",
+            "label": "Destination Address",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "bridgeRequest.toToken",
+            "label": "Destination Token",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.minReturnAmount",
+            "label": "Min Return Amount",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.requestId",
+            "label": "Request ID",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.platformFee",
+            "label": "Platform Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.destinationExecutorFee",
+            "label": "Dest Executor Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.affiliateFee",
+            "label": "Affiliate Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.affiliatorAddress",
+            "label": "Affiliate Address",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet",
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "request.dAppTag",
+            "label": "App Tag",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.dAppName",
+            "label": "Referring App",
+            "format": "raw",
+            "visible": "optional"
+          }
+        ]
+      },
+      "stargateV2Bridge((address,uint32,uint16,bytes32,uint256,address,uint256,bytes,bytes,bytes) stargateRequest,(address,address,uint256,uint256,uint256,address,uint256,uint16,string) bridgeRequest)": {
+        "$id": "stargateV2Bridge",
+        "intent": "Bridge",
+        "fields": [
+          {
+            "path": "bridgeRequest.token",
+            "label": "Token",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "bridgeRequest.amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "bridgeRequest.token"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "stargateRequest.recipientAddress.[-20:]",
+            "label": "Recipient",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "stargateRequest.dstChainId",
+            "label": "Destination Chain ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "stargateRequest.dstEid",
+            "label": "LZ Endpoint ID",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "stargateRequest.poolContract",
+            "label": "Pool Contract",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "stargateRequest.minAmountLD",
+            "label": "Minimum Received",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "bridgeRequest.token"
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "stargateRequest.refundAddress",
+            "label": "Refund Address",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "stargateRequest.nativeFee",
+            "label": "Native Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "stargateRequest.extraOptions",
+            "label": "Extra Options",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "path": "stargateRequest.composeMsg",
+            "label": "Compose Message",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "path": "stargateRequest.oftCmd",
+            "label": "OFT Command",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "path": "bridgeRequest.requestId",
+            "label": "Request ID",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.platformFee",
+            "label": "Platform Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.affiliateFee",
+            "label": "Affiliate Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.affiliatorAddress",
+            "label": "Affiliate Address",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet",
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.destinationExecutorFee",
+            "label": "Dest Executor Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.dAppTag",
+            "label": "App Tag",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "bridgeRequest.dAppName",
+            "label": "Referring App",
+            "format": "raw",
+            "visible": "optional"
+          }
+        ]
+      },
+      "stargateV2SwapAndBridge((address,address,address,uint256,uint256,uint256,uint256,address,uint256,bool,uint16,string) request,(address,address,address,address,bool,uint256,bytes)[] calls,(address,uint32,uint16,bytes32,uint256,address,uint256,bytes,bytes,bytes) stargateV2Request)": {
+        "$id": "stargateV2SwapAndBridge",
+        "intent": "Swap and bridge",
+        "fields": [
+          {
+            "path": "request.fromToken",
+            "label": "From Token",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.toToken",
+            "label": "To Token",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.amountIn",
+            "label": "Amount In",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "request.fromToken"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.minimumAmountExpected",
+            "label": "Minimum Received",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "request.toToken"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "request.feeFromInputToken",
+            "label": "Fee From Input Token",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "calls",
+            "label": "Swap Route Calls",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "path": "stargateV2Request.recipientAddress.[-20:]",
+            "label": "Recipient",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "stargateV2Request.dstChainId",
+            "label": "Destination Chain ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "stargateV2Request.dstEid",
+            "label": "LZ Endpoint ID",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "stargateV2Request.poolContract",
+            "label": "Pool Contract",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "stargateV2Request.minAmountLD",
+            "label": "Minimum Received",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "request.toToken"
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "stargateV2Request.refundAddress",
+            "label": "Refund Address",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "stargateV2Request.nativeFee",
+            "label": "Native Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "stargateV2Request.extraOptions",
+            "label": "Extra Options",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "path": "stargateV2Request.composeMsg",
+            "label": "Compose Message",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "path": "stargateV2Request.oftCmd",
+            "label": "OFT Command",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "path": "request.requestId",
+            "label": "Request ID",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.platformFee",
+            "label": "Platform Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.destinationExecutorFee",
+            "label": "Dest Executor Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.affiliateFee",
+            "label": "Affiliate Fee",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.affiliatorAddress",
+            "label": "Affiliate Address",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet",
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "optional"
+          },
+          {
+            "path": "request.dAppTag",
+            "label": "App Tag",
+            "format": "raw",
+            "visible": "optional"
+          },
+          {
+            "path": "request.dAppName",
+            "label": "Referring App",
+            "format": "raw",
+            "visible": "optional"
+          }
+        ]
+      }
+    }
+  }
+}
