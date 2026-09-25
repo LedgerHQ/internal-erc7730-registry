@@ -1,0 +1,76 @@
+{
+  "$schema": "../../../specs/erc7730-tests.schema.json",
+  "tests": [
+    {
+      "description": "Map a Hyperliquid transfer nonce to a Relay request (withdraw flow)",
+      "data": {
+        "domain": {
+          "name": "RelayNonceMapping",
+          "version": "2",
+          "chainId": 1,
+          "verifyingContract": "0x0000000000000000000000000000000000000000"
+        },
+        "types": {
+          "EIP712Domain": [
+            {
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "name": "version",
+              "type": "string"
+            },
+            {
+              "name": "chainId",
+              "type": "uint256"
+            },
+            {
+              "name": "verifyingContract",
+              "type": "address"
+            }
+          ],
+          "NonceMapping": [
+            {
+              "name": "chainId",
+              "type": "string"
+            },
+            {
+              "name": "wallet",
+              "type": "address"
+            },
+            {
+              "name": "depositor",
+              "type": "address"
+            },
+            {
+              "name": "id",
+              "type": "bytes32"
+            },
+            {
+              "name": "nonce",
+              "type": "uint256"
+            }
+          ]
+        },
+        "primaryType": "NonceMapping",
+        "message": {
+          "chainId": "hyperliquid",
+          "wallet": "0xf3d63166f0ca56c3c1a3508fce03ff0cf3fb691e",
+          "depositor": "0xf3d63166f0ca56c3c1a3508fce03ff0cf3fb691e",
+          "id": "0x7b3e352d6bb600f7d937250968dc9b9c7deaf34b3787fb2312fc7374603f1667",
+          "nonce": 1765463670254
+        }
+      },
+      "expectedTexts": [
+        "Link transfer to Relay request",
+        "Request ID",
+        "0x7b3e352d6bb600f7d937250968dc9b9c7deaf34b3787fb2312fc7374603f1667",
+        "Wallet",
+        "0xf3d63166f0ca56c3c1a3508fce03ff0cf3fb691e",
+        "Depositor",
+        "Chain",
+        "hyperliquid"
+      ]
+    }
+  ]
+}

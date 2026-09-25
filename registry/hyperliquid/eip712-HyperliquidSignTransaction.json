@@ -25,6 +25,24 @@
           { "label": "Time", "path": "time", "visible": "never" }
         ]
       },
+      "HyperliquidTransaction:UsdSend(string hyperliquidChain,string destination,string amount,uint64 time)": {
+        "intent": "Send USDC on Hyperliquid",
+        "fields": [
+          { "path": "destination", "label": "Recipient", "format": "raw", "visible": "always" },
+          { "path": "amount", "label": "USDC amount", "format": "raw", "visible": "always" },
+          { "path": "hyperliquidChain", "label": "Chain", "format": "raw", "visible": "always" },
+          { "path": "time", "label": "Time", "visible": "never" }
+        ]
+      },
+      "HyperliquidTransaction:UsdClassTransfer(string hyperliquidChain,string amount,bool toPerp,uint64 nonce)": {
+        "intent": "Move USDC spot <> perps",
+        "fields": [
+          { "path": "amount", "label": "USDC amount", "format": "raw", "visible": "always" },
+          { "path": "toPerp", "label": "To perps", "format": "raw", "visible": "always" },
+          { "path": "hyperliquidChain", "label": "Chain", "format": "raw", "visible": "always" },
+          { "path": "nonce", "label": "Nonce", "visible": "never" }
+        ]
+      },
       "HyperliquidTransaction:ApproveAgent(string hyperliquidChain,address agentAddress,string agentName,uint64 nonce)": {
         "intent": "Approve Hyperliquid agent",
         "fields": [

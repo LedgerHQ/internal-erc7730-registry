@@ -64,6 +64,136 @@
       ]
     },
     {
+      "description": "Send 5 USDC to another Hyperliquid account",
+      "data": {
+        "domain": {
+          "name": "HyperliquidSignTransaction",
+          "version": "1",
+          "chainId": 42161,
+          "verifyingContract": "0x0000000000000000000000000000000000000000"
+        },
+        "types": {
+          "EIP712Domain": [
+            {
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "name": "version",
+              "type": "string"
+            },
+            {
+              "name": "chainId",
+              "type": "uint256"
+            },
+            {
+              "name": "verifyingContract",
+              "type": "address"
+            }
+          ],
+          "HyperliquidTransaction:UsdSend": [
+            {
+              "name": "hyperliquidChain",
+              "type": "string"
+            },
+            {
+              "name": "destination",
+              "type": "string"
+            },
+            {
+              "name": "amount",
+              "type": "string"
+            },
+            {
+              "name": "time",
+              "type": "uint64"
+            }
+          ]
+        },
+        "primaryType": "HyperliquidTransaction:UsdSend",
+        "message": {
+          "hyperliquidChain": "Mainnet",
+          "destination": "0x8dcbc37d7a57af463308d912a94c19be47d07431",
+          "amount": "5",
+          "time": 1782320700000
+        }
+      },
+      "expectedTexts": [
+        "Send USDC on Hyperliquid",
+        "Recipient",
+        "0x8dcbc37d7a57af463308d912a94c19be47d07431",
+        "USDC amount",
+        "5",
+        "Chain",
+        "Mainnet"
+      ]
+    },
+    {
+      "description": "Transfer 10 USDC from spot to perps",
+      "data": {
+        "domain": {
+          "name": "HyperliquidSignTransaction",
+          "version": "1",
+          "chainId": 42161,
+          "verifyingContract": "0x0000000000000000000000000000000000000000"
+        },
+        "types": {
+          "EIP712Domain": [
+            {
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "name": "version",
+              "type": "string"
+            },
+            {
+              "name": "chainId",
+              "type": "uint256"
+            },
+            {
+              "name": "verifyingContract",
+              "type": "address"
+            }
+          ],
+          "HyperliquidTransaction:UsdClassTransfer": [
+            {
+              "name": "hyperliquidChain",
+              "type": "string"
+            },
+            {
+              "name": "amount",
+              "type": "string"
+            },
+            {
+              "name": "toPerp",
+              "type": "bool"
+            },
+            {
+              "name": "nonce",
+              "type": "uint64"
+            }
+          ]
+        },
+        "primaryType": "HyperliquidTransaction:UsdClassTransfer",
+        "message": {
+          "hyperliquidChain": "Mainnet",
+          "amount": "10",
+          "toPerp": true,
+          "nonce": 1782320750000
+        }
+      },
+      "expectedTexts": [
+        "Move USDC spot <> perps",
+        "USDC amount",
+        "10",
+        "To perps",
+        "true",
+        "Chain",
+        "Mainnet"
+      ]
+    },
+    {
       "description": "Approve the agent wallet named LiquidWeb",
       "data": {
         "domain": {
