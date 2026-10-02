@@ -1,6 +1,6 @@
 {
   "$schema": "../../specs/erc7730-v2.schema.json",
-  "$comment": "chains shown raw: it is a uint256 packing several 16-bit Gas.zip IDs, and the Ethereum app rejects enums on non-uint8 fields. bytes32 recipients must be zero-padded EVM addresses: non-EVM recipients are rejected, not shown truncated.",
+  "$comment": "chains uses an enum: needs an Ethereum app that accepts enums on non-uint8 fields. chains packs several 16-bit IDs, so multi-destination deposits match no entry and are blind. Enum entries are 8-bit, so chains with a Gas.zip ID above 255 (e.g. Ink, 392) cannot be listed and are blind too. bytes32 recipients must be zero-padded EVM addresses: non-EVM recipients are rejected, not shown truncated.",
   "context": {
     "$id": "GasZipV2",
     "contract": {
@@ -25,14 +25,45 @@
       ]
     }
   },
-  "metadata": { "owner": "Gas.zip", "info": { "url": "https://www.gas.zip/" }, "contractName": "GasZipV2" },
+  "metadata": {
+    "owner": "Gas.zip",
+    "info": { "url": "https://www.gas.zip/" },
+    "contractName": "GasZipV2",
+    "enums": {
+      "gasZipShortChainId": {
+        "14": "BNB Chain",
+        "15": "Avalanche",
+        "17": "Polygon",
+        "21": "Celo",
+        "38": "Flare",
+        "51": "zkSync Era",
+        "54": "Base",
+        "55": "OP Mainnet",
+        "57": "Arbitrum One",
+        "58": "opBNB",
+        "59": "Linea",
+        "95": "Immutable zkEVM",
+        "96": "Blast",
+        "110": "Abstract",
+        "240": "Gravity",
+        "246": "Sei",
+        "255": "Ethereum"
+      }
+    }
+  },
   "display": {
     "formats": {
       "deposit(uint256 chains, bytes32 to)": {
         "intent": "Bridge gas with Gas.zip",
         "fields": [
           { "path": "@.value", "label": "Amount", "format": "amount", "visible": "always" },
-          { "path": "chains", "label": "Dest. Gas.zip ID", "format": "raw", "visible": "always" },
+          {
+            "path": "chains",
+            "label": "Destination chain",
+            "format": "enum",
+            "params": { "$ref": "$.metadata.enums.gasZipShortChainId" },
+            "visible": "always"
+          },
           {
             "path": "to.[0:20]",
             "label": "Recipient",
@@ -52,7 +83,13 @@
         "intent": "Bridge gas with Gas.zip",
         "fields": [
           { "path": "@.value", "label": "Amount", "format": "amount", "visible": "always" },
-          { "path": "chains", "label": "Dest. Gas.zip ID", "format": "raw", "visible": "always" },
+          {
+            "path": "chains",
+            "label": "Destination chain",
+            "format": "enum",
+            "params": { "$ref": "$.metadata.enums.gasZipShortChainId" },
+            "visible": "always"
+          },
           {
             "path": "to",
             "label": "Recipient",

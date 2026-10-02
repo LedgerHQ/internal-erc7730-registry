@@ -218,7 +218,8 @@
       "expectedTexts": [
         "Bridge",
         "Amount to bridge",
-        "Destination domain",
+        "Destination chain",
+        "Polygon PoS",
         "Recipient",
         "Rango fee",
         "Executor fee",
@@ -233,7 +234,8 @@
       "expectedTexts": [
         "Bridge",
         "Amount to bridge",
-        "Destination domain",
+        "Destination chain",
+        "Solana",
         "Recipient",
         "Rango fee",
         "Executor fee",
@@ -245,13 +247,13 @@
       "description": "cctpBridge USDC to CCTP domain 5 (Solana, non-EVM bytes32 recipient), Rango fee (real onchain) - chain 42161",
       "rawTx": "0x02f9024f82a4b1568084018f62f88305aad49469460570c93f9de5e2edbc3052bf10125f0ca22d80b901e43410816d00000000000000000000000000000000000000000000000000000000000000053017ddda913216dc00403791e1964cb25870e423f4054c7622b484cffa8ec7db000000000000000000000000000000000000000000000000000000004c414e41000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000f1f687688e994332b2d6e360abc02216000000000000000000000000af88d065e77c8cc2239327c5edb3a432268e58310000000000000000000000000000000000000000000000000000000000b2f99b000000000000000000000000000000000000000000000000000000000000465000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003db1500000000000000000000000000000000000000000000000000000000000007be0000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000000b506c75746f6e5374616765000000000000000000000000000000000000000000c080a0eb70e2147b57a726c2738419d16255e386cba14156f056b1a9e7a900fcc00ff4a0776794631108868dfd2213792c5156ff2f5dba8e91078fadbd4bce4a878ee474",
       "txHash": "0xdaf492f84c290c41d7448ca413528ca9ea91c80e8e676dbb8dbc0319f12f2ac7",
-      "expectedTexts": ["Bridge", "Amount to bridge", "Destination domain", "Recipient", "Rango fee", "Executor fee", "Affiliate fee"]
+      "expectedTexts": ["Bridge", "Amount to bridge", "Destination chain", "Solana", "Recipient", "Rango fee", "Executor fee", "Affiliate fee"]
     },
     {
       "description": "cctpBridge USDC to CCTP domain 3 (Arbitrum), Rango fee (real onchain) - chain 8453",
       "rawTx": "0x02f90251822105438307a1208366ff30830597309469460570c93f9de5e2edbc3052bf10125f0ca22d80b901e43410816d0000000000000000000000000000000000000000000000000000000000000003000000000000000000000000557d8030b6f588c98e70edd0c6a570730907993c000000000000000000000000000000000000000000000000000000000000a4b1000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000c0e104aa25204131b79a5ca59ffa6f52000000000000000000000000833589fcd6edb6e08f4c7c32d4f71b54bda029130000000000000000000000000000000000000000000000000000000007e2a95b000000000000000000000000000000000000000000000000000000000002055400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000221600000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000000552616e676f000000000000000000000000000000000000000000000000000000c080a06180a8ee2c75600c229efccbeaaf178fb1a1dc44d85365a5dcadead798021ddca04f79e31a47c979aa2f64e929847e798a5dadbf98173ba10ee8304a02f51f1359",
       "txHash": "0x4aa51eb8b7b7e319266049b810f82ecf21a93caf0910e101c57d353c2162f5a6",
-      "expectedTexts": ["Bridge", "Amount to bridge", "Destination domain", "Recipient", "Rango fee", "Executor fee", "Affiliate fee"]
+      "expectedTexts": ["Bridge", "Amount to bridge", "Destination chain", "Arbitrum", "Recipient", "Rango fee", "Executor fee", "Affiliate fee"]
     },
     {
       "description": "cctpSwapAndBridge native to USDC, CCTP domain 5 (Solana, non-EVM bytes32 recipient), affiliate fee (real onchain) - chain 137",
@@ -261,7 +263,8 @@
         "Swap and bridge",
         "Amount to send",
         "Minimum to bridge",
-        "Destination domain",
+        "Destination chain",
+        "Solana",
         "Recipient",
         "Rango fee",
         "Executor fee",
@@ -278,7 +281,8 @@
         "Swap and bridge",
         "Amount to send",
         "Minimum to bridge",
-        "Destination domain",
+        "Destination chain",
+        "Solana",
         "Recipient",
         "Rango fee",
         "Executor fee",
@@ -295,7 +299,8 @@
         "Swap and bridge",
         "Amount to send",
         "Minimum to bridge",
-        "Destination domain",
+        "Destination chain",
+        "Arbitrum",
         "Recipient",
         "Rango fee",
         "Executor fee",
@@ -311,7 +316,8 @@
         "Swap and bridge",
         "Amount to send",
         "Minimum to bridge",
-        "Destination domain",
+        "Destination chain",
+        "Base",
         "Recipient",
         "Rango fee",
         "Executor fee",
