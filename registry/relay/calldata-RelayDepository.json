@@ -1,0 +1,79 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "$comment": "No destination shown: Relay settles off-chain against the order id.",
+  "context": {
+    "$id": "RelayDepository",
+    "contract": {
+      "deployments": [
+        { "chainId": 1, "address": "0x4cD00E387622C35bDDB9b4c962C136462338BC31" },
+        { "chainId": 10, "address": "0x4cD00E387622C35bDDB9b4c962C136462338BC31" },
+        { "chainId": 56, "address": "0x4cD00E387622C35bDDB9b4c962C136462338BC31" },
+        { "chainId": 100, "address": "0x4cD00E387622C35bDDB9b4c962C136462338BC31" },
+        { "chainId": 130, "address": "0x4cD00E387622C35bDDB9b4c962C136462338BC31" },
+        { "chainId": 137, "address": "0x4cD00E387622C35bDDB9b4c962C136462338BC31" },
+        { "chainId": 143, "address": "0x4cD00E387622C35bDDB9b4c962C136462338BC31" },
+        { "chainId": 146, "address": "0x4cD00E387622C35bDDB9b4c962C136462338BC31" },
+        { "chainId": 480, "address": "0x4cD00E387622C35bDDB9b4c962C136462338BC31" },
+        { "chainId": 999, "address": "0x4cD00E387622C35bDDB9b4c962C136462338BC31" },
+        { "chainId": 2741, "address": "0x4cD00E387622C35bDDB9b4c962C136462338BC31" },
+        { "chainId": 8453, "address": "0x4cD00E387622C35bDDB9b4c962C136462338BC31" },
+        { "chainId": 33139, "address": "0x4cD00E387622C35bDDB9b4c962C136462338BC31" },
+        { "chainId": 42161, "address": "0x4cD00E387622C35bDDB9b4c962C136462338BC31" },
+        { "chainId": 42220, "address": "0x4cD00E387622C35bDDB9b4c962C136462338BC31" },
+        { "chainId": 43114, "address": "0x4cD00E387622C35bDDB9b4c962C136462338BC31" },
+        { "chainId": 80094, "address": "0x4cD00E387622C35bDDB9b4c962C136462338BC31" },
+        { "chainId": 81457, "address": "0x4cD00E387622C35bDDB9b4c962C136462338BC31" }
+      ]
+    }
+  },
+  "metadata": { "owner": "Relay", "info": { "url": "https://relay.link" }, "contractName": "RelayDepository" },
+  "display": {
+    "formats": {
+      "depositNative(address depositor, bytes32 id)": {
+        "$id": "depositNative",
+        "intent": "Deposit to Relay order",
+        "fields": [
+          { "path": "@.value", "label": "Amount", "format": "amount", "visible": "always" },
+          {
+            "path": "depositor",
+            "label": "Depositor",
+            "format": "addressName",
+            "params": { "types": ["wallet", "eoa", "contract"], "sources": ["local", "ens"] },
+            "visible": "always"
+          },
+          { "path": "id", "label": "Relay order ID", "format": "raw", "visible": "always" }
+        ]
+      },
+      "depositErc20(address depositor, address token, uint256 amount, bytes32 id)": {
+        "$id": "depositErc20",
+        "intent": "Deposit to Relay order",
+        "fields": [
+          { "path": "amount", "label": "Amount", "format": "tokenAmount", "params": { "tokenPath": "token" }, "visible": "always" },
+          {
+            "path": "depositor",
+            "label": "Depositor",
+            "format": "addressName",
+            "params": { "types": ["wallet", "eoa", "contract"], "sources": ["local", "ens"] },
+            "visible": "always"
+          },
+          { "path": "id", "label": "Relay order ID", "format": "raw", "visible": "always" }
+        ]
+      },
+      "depositErc20(address depositor, address token, bytes32 id)": {
+        "$id": "depositErc20FullAllowance",
+        "intent": "Deposit allowance to Relay",
+        "fields": [
+          { "path": "token", "label": "Token (all allowed)", "format": "tokenTicker", "visible": "always" },
+          {
+            "path": "depositor",
+            "label": "Depositor",
+            "format": "addressName",
+            "params": { "types": ["wallet", "eoa", "contract"], "sources": ["local", "ens"] },
+            "visible": "always"
+          },
+          { "path": "id", "label": "Relay order ID", "format": "raw", "visible": "always" }
+        ]
+      }
+    }
+  }
+}
