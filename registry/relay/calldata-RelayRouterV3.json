@@ -1,6 +1,6 @@
 {
   "$schema": "../../specs/erc7730-v2.schema.json",
-  "$comment": "allowFailure=true rejected: a silently skipped call would leave the displayed action unexecuted. cleanup* amount 0 means the whole balance. multicall and cleanupErc20sViaCall Call fields have no spender: a single spender for an array of calls is rejected by Ethereum app releases up to 1.22.x.",
+  "$comment": "allowFailure=true rejected: a silently skipped call would leave the displayed action unexecuted. cleanup* amount 0 means the whole balance.",
   "context": {
     "$id": "RelayRouterV3",
     "contract": {
@@ -40,7 +40,7 @@
             "path": "calls.[].callData",
             "label": "Call",
             "format": "calldata",
-            "params": { "calleePath": "calls.[].target", "amountPath": "calls.[].value" },
+            "params": { "calleePath": "calls.[].target", "amountPath": "calls.[].value", "spenderPath": "@.to" },
             "visible": "always"
           },
           {
@@ -97,7 +97,7 @@
             "path": "datas.[]",
             "label": "Call",
             "format": "calldata",
-            "params": { "calleePath": "tos.[]" },
+            "params": { "calleePath": "tos.[]", "spenderPath": "@.to" },
             "visible": "always"
           }
         ]
