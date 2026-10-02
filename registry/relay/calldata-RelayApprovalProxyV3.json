@@ -1,6 +1,6 @@
 {
   "$schema": "../../specs/erc7730-v2.schema.json",
-  "$comment": "allowFailure=true rejected: a silently skipped call would leave the displayed action unexecuted. Call has no spender: the sub-calls run from RelayRouterV3, but a single spender for an array of calls is rejected by Ethereum app releases up to 1.22.x (one value per call required).",
+  "$comment": "allowFailure=true rejected: a silently skipped call would leave the displayed action unexecuted.",
   "context": {
     "$id": "RelayApprovalProxyV3",
     "contract": {
@@ -29,7 +29,8 @@
   "metadata": {
     "owner": "Relay",
     "info": { "url": "https://relay.link" },
-    "contractName": "RelayApprovalProxyV3"
+    "contractName": "RelayApprovalProxyV3",
+    "constants": { "relayRouter": "0xB92fe925DC43a0ECdE6c8b1a2709c170Ec4fFf4f" }
   },
   "display": {
     "formats": {
@@ -49,7 +50,7 @@
             "path": "calls.[].callData",
             "label": "Call",
             "format": "calldata",
-            "params": { "calleePath": "calls.[].target", "amountPath": "calls.[].value" },
+            "params": { "calleePath": "calls.[].target", "amountPath": "calls.[].value", "spender": "$.metadata.constants.relayRouter" },
             "visible": "always"
           },
           {
@@ -86,7 +87,7 @@
             "path": "calls.[].callData",
             "label": "Call",
             "format": "calldata",
-            "params": { "calleePath": "calls.[].target", "amountPath": "calls.[].value" },
+            "params": { "calleePath": "calls.[].target", "amountPath": "calls.[].value", "spender": "$.metadata.constants.relayRouter" },
             "visible": "always"
           },
           {
@@ -143,7 +144,7 @@
             "path": "calls.[].callData",
             "label": "Call",
             "format": "calldata",
-            "params": { "calleePath": "calls.[].target", "amountPath": "calls.[].value" },
+            "params": { "calleePath": "calls.[].target", "amountPath": "calls.[].value", "spender": "$.metadata.constants.relayRouter" },
             "visible": "always"
           },
           {
@@ -189,7 +190,7 @@
             "path": "calls.[].callData",
             "label": "Call",
             "format": "calldata",
-            "params": { "calleePath": "calls.[].target", "amountPath": "calls.[].value" },
+            "params": { "calleePath": "calls.[].target", "amountPath": "calls.[].value", "spender": "$.metadata.constants.relayRouter" },
             "visible": "always"
           },
           {

@@ -1,6 +1,6 @@
 {
   "$schema": "../../specs/erc7730-v2.schema.json",
-  "$comment": "Chain IDs shown raw (Wormhole uint16, CCTP uint32): the Ethereum app rejects enums on non-uint8 fields (app-ethereum-dev@2c90ee9). destAddr/tokenOut are bytes32 (possibly non-EVM), so shown raw. Amounts in Mayan 8-decimal units, so shown raw.",
+  "$comment": "Chain IDs use enums: needs an Ethereum app that accepts enums on non-uint8 fields (rejected since app-ethereum-dev@2c90ee9). Enums cover destinations seen in traffic only; unlisted IDs are blind. destAddr/tokenOut are bytes32 (possibly non-EVM), so shown raw. Amounts in Mayan 8-decimal units, so shown raw.",
   "metadata": {
     "owner": "Mayan Finance",
     "info": {
@@ -8,17 +8,75 @@
     },
     "constants": {
       "addressAsNull": "0x0000000000000000000000000000000000000000"
+    },
+    "enums": {
+      "wormholeChain": {
+        "1": "Solana",
+        "2": "Ethereum",
+        "4": "BNB Chain",
+        "5": "Polygon",
+        "6": "Avalanche",
+        "21": "Sui",
+        "23": "Arbitrum",
+        "24": "Optimism",
+        "30": "Base",
+        "38": "Linea",
+        "44": "Unichain",
+        "47": "HyperEVM",
+        "48": "Monad",
+        "51": "Fogo"
+      },
+      "cctpDomain": {
+        "0": "Ethereum",
+        "1": "Avalanche",
+        "2": "OP Mainnet",
+        "3": "Arbitrum",
+        "4": "Noble",
+        "5": "Solana",
+        "6": "Base",
+        "7": "Polygon PoS",
+        "8": "Sui",
+        "9": "Aptos",
+        "10": "Unichain",
+        "11": "Linea",
+        "12": "Codex",
+        "13": "Sonic",
+        "14": "World Chain",
+        "15": "Monad",
+        "16": "Sei",
+        "17": "BNB Smart Chain",
+        "18": "XDC",
+        "19": "HyperEVM",
+        "21": "Ink",
+        "22": "Plume",
+        "25": "Starknet",
+        "26": "Arc",
+        "27": "Stellar",
+        "28": "EDGE",
+        "29": "Injective",
+        "30": "Morph",
+        "31": "Pharos",
+        "32": "Cronos",
+        "33": "Plasma",
+        "37": "X Layer"
+      }
     }
   },
   "display": {
     "definitions": {
       "wormholeDestChain": {
-        "label": "Dest. Wormhole ID",
-        "format": "raw"
+        "label": "Destination chain",
+        "format": "enum",
+        "params": {
+          "$ref": "$.metadata.enums.wormholeChain"
+        }
       },
       "cctpDestDomain": {
-        "label": "Dest. CCTP domain",
-        "format": "raw"
+        "label": "Destination chain",
+        "format": "enum",
+        "params": {
+          "$ref": "$.metadata.enums.cctpDomain"
+        }
       },
       "destAddr": {
         "label": "Recipient",

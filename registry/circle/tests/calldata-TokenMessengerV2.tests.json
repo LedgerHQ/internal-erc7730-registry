@@ -5,7 +5,7 @@
       "description": "depositForBurn fast to Arbitrum (EVM recipient) (real onchain) - chain 1",
       "rawTx": "0x02f901520182173d840b8f82f6849649a6848301d2a59428b5a0e9c621a5badaa536219b3a228c8168cf5d80b8e48e0250ee000000000000000000000000000000000000000000000000000000514051ce7100000000000000000000000000000000000000000000000000000000000000030000000000000000000000001a44a6bc450d233049d629c27792c5309d9ca12d000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb480000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000514051ce7000000000000000000000000000000000000000000000000000000000000003e8c080a03d69677fe91dc771febf30f4cbaf413211ca9141d30da7031e074da9dbd5f7bea020bda9bd293376d8ae651c1c146af7cace0c5dd9835fbaeb3acdc53dbf56cc27",
       "txHash": "0x823b0e4da0005c4003476eefae5ec4f6fcf9b656b62a8d2b9fb75bb8474980cb",
-      "expectedTexts": ["Bridge with CCTP", "Amount", "Dest. CCTP domain", "3", "Recipient", "Max fee", "Finality threshold"]
+      "expectedTexts": ["Bridge with CCTP", "Amount", "Destination chain", "Arbitrum", "Recipient", "Max fee", "Finality threshold"]
     },
     {
       "description": "depositForBurn standard to Solana (bytes32 recipient, destination caller set) (real onchain) - chain 1",
@@ -14,8 +14,8 @@
       "expectedTexts": [
         "Bridge with CCTP",
         "Amount",
-        "Dest. CCTP domain",
-        "5",
+        "Destination chain",
+        "Solana",
         "Recipient",
         "Max fee",
         "Destination caller",
@@ -29,8 +29,8 @@
       "expectedTexts": [
         "Bridge with CCTP",
         "Amount",
-        "Dest. CCTP domain",
-        "19",
+        "Destination chain",
+        "HyperEVM",
         "Recipient",
         "Max fee",
         "Destination caller",
@@ -42,7 +42,7 @@
       "description": "depositForBurn standard to Arbitrum (real onchain) - chain 8453",
       "rawTx": "0x02f90153822105830af52b830f4240836acfc083022e999428b5a0e9c621a5badaa536219b3a228c8168cf5d80b8e48e0250ee000000000000000000000000000000000000000000000000000000030e05ea8d0000000000000000000000000000000000000000000000000000000000000003000000000000000000000000ef1ec136931ab5728b0783fd87d109c9d15d31f1000000000000000000000000833589fcd6edb6e08f4c7c32d4f71b54bda029130000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000007d0c001a019487051284727e41786537bcab8c97b0eb5ca8288dfcf9b0a84dfb558842042a0625c9a760f072c93e06db70478937747ebd0e850c70a1e5033383f1043e66cba",
       "txHash": "0xad335b79f24fe3476830eb36270bfe07d314a57659253c74445167ea1b8a6ff3",
-      "expectedTexts": ["Bridge with CCTP", "Amount", "Dest. CCTP domain", "3", "Recipient", "Max fee", "Finality threshold"]
+      "expectedTexts": ["Bridge with CCTP", "Amount", "Destination chain", "Arbitrum", "Recipient", "Max fee", "Finality threshold"]
     },
     {
       "description": "depositForBurnWithHook fast to Stellar (recipient = destination caller) (real onchain) - chain 8453",
@@ -51,8 +51,8 @@
       "expectedTexts": [
         "Bridge with CCTP",
         "Amount",
-        "Dest. CCTP domain",
-        "27",
+        "Destination chain",
+        "Stellar",
         "Recipient",
         "Max fee",
         "Destination caller",
@@ -64,7 +64,7 @@
       "description": "depositForBurnWithHook standard to Arc (real onchain) - chain 8453",
       "rawTx": "0x02f901b182210550830f424083a7d8c0830261ec9428b5a0e9c621a5badaa536219b3a228c8168cf5d80b90144779b432d0000000000000000000000000000000000000000000000000000000055607441000000000000000000000000000000000000000000000000000000000000001a000000000000000000000000d106a17faaddb13d40e2bebd44262c67972d4bd2000000000000000000000000833589fcd6edb6e08f4c7c32d4f71b54bda0291300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003dbb00000000000000000000000000000000000000000000000000000000000007d000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000020636374702d666f72776172640000000000000000000000000000000000000000c080a0f434aaf0bfc565e9d8b18df5d149305718f78b89c76a7d781d1fe1c691f5ba87a04c4ba88d673e91250f61ef76859acc92e98bf4fd936e6b35779a1a279c716a6c",
       "txHash": "0x520876be6c560bf17a89f4588f3b3df33422561f339ad713e3a8fc06bc22e726",
-      "expectedTexts": ["Bridge with CCTP", "Amount", "Dest. CCTP domain", "26", "Recipient", "Max fee", "Finality threshold", "Hook data"]
+      "expectedTexts": ["Bridge with CCTP", "Amount", "Destination chain", "Arc", "Recipient", "Max fee", "Finality threshold", "Hook data"]
     }
   ]
 }

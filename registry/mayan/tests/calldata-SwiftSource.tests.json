@@ -8,13 +8,13 @@
       "expectedTexts": [
         "Bridge via Mayan Swift",
         "Amount sent",
-        "Dest. Wormhole ID",
+        "Destination chain",
         "Recipient",
         "Token out",
         "Min received (raw)",
         "Deadline",
         "Refund to",
-        "1"
+        "Solana"
       ]
     }
   ]
