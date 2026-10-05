@@ -55,7 +55,6 @@
             "path": "token",
             "label": "Token",
             "format": "tokenTicker",
-            "params": { "nativeCurrencyAddress": "$.metadata.constants.nativeToken" },
             "visible": "always"
           },
           {

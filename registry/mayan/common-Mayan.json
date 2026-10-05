@@ -11,6 +11,7 @@
     }
   },
   "display": {
+    "formats": {},
     "definitions": {
       "wormholeDestChain": {
         "label": "Dest. Wormhole ID",
