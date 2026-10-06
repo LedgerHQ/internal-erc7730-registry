@@ -2,9 +2,9 @@
   "$schema": "../../specs/erc7730-v2.schema.json",
   "includes": "common-erc4626-vaults-multichain.json",
   "metadata": {
-    "owner": "RE7 Labs",
-    "info": { "url": "https://www.re7.capital" },
-    "constants": { "underlyingTicker": "USDC", "vaultTicker": "Re7USDC" },
+    "owner": "Yearn",
+    "info": { "url": "https://yearn.fi/apps" },
+    "constants": { "underlyingTicker": "USDC", "vaultTicker": "ymvOG-USDC" },
     "maps": {
       "underlyingToken": {
         "$keyType": "chainId",
@@ -15,8 +15,8 @@
   "context": {
     "contract": {
       "deployments": [
-        { "chainId": 1, "address": "0x60d715515d4411f7F43e4206dc5d4a3677f0eC78" },
-        { "chainId": 8453, "address": "0x12AFDeFb2237a5963e7BAb3e2D46ad0eee70406e" }
+        { "chainId": 1, "address": "0xF9bdDd4A9b3A45f980e11fDDE96e16364dDBEc49" },
+        { "chainId": 8453, "address": "0xef417a2512C5a41f69AE4e021648b69a7CdE5D03" }
       ]
     }
   }
