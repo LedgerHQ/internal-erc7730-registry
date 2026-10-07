@@ -13,7 +13,11 @@
     "definitions": {
       "maturity": { "label": "Maturity", "format": "date", "params": { "encoding": "timestamp" } },
       "onBehalf": { "label": "On behalf of", "format": "addressName", "params": { "types": ["eoa", "contract"] } },
-      "recipient": { "label": "Recipient", "format": "addressName", "params": { "types": ["eoa", "contract"] } }
+      "recipient": { "label": "Recipient", "format": "addressName", "params": { "types": ["eoa", "contract"] } },
+      "collateralToken": { "label": "Collateral token", "format": "addressName", "params": { "types": ["token"] } },
+      "collateralLltv": { "label": "Collateral LLTV", "format": "unit", "params": { "base": "%", "decimals": 16 } },
+      "collateralOracle": { "label": "Collateral oracle", "format": "addressName", "params": { "types": ["contract"] } },
+      "liquidatorGate": { "label": "Liquidator gate", "format": "addressName", "params": { "types": ["contract"] } }
     },
     "formats": {
       "take(((uint256 chainId,address midnight,address loanToken,(address token,uint256 lltv,uint256 liquidationCursor,address oracle)[] collateralParams,uint256 maturity,uint256 rcfThreshold,address enterGate,address liquidatorGate) market,bool buy,address maker,uint256 start,uint256 expiry,uint256 tick,bytes32 group,address callback,bytes callbackData,address receiverIfMakerIsSeller,address ratifier,bool reduceOnly,uint128 maxUnits,uint128 maxAssets,uint256 continuousFeeCap) offer,bytes ratifierData,uint256 units,address taker,address receiverIfTakerIsSeller,address takerCallback,bytes takerCallbackData)": {
@@ -29,11 +33,23 @@
             "params": { "types": ["token"] },
             "visible": "always"
           },
-          { "path": "offer.market.collateralParams.[]", "label": "Collateral params", "format": "raw", "visible": "never" },
+          { "path": "offer.market.collateralParams.[].token", "$ref": "$.display.definitions.collateralToken", "visible": "always" },
+          { "path": "offer.market.collateralParams.[].lltv", "$ref": "$.display.definitions.collateralLltv", "visible": "always" },
+          { "path": "offer.market.collateralParams.[].oracle", "$ref": "$.display.definitions.collateralOracle", "visible": "always" },
+          {
+            "path": "offer.market.collateralParams.[].liquidationCursor",
+            "label": "Liquidation cursor",
+            "format": "raw",
+            "visible": "never"
+          },
           { "path": "offer.market.maturity", "$ref": "$.display.definitions.maturity", "visible": "always" },
           { "path": "offer.market.rcfThreshold", "label": "RCF threshold", "format": "raw", "visible": "never" },
           { "path": "offer.market.enterGate", "label": "Enter gate", "format": "raw", "visible": "never" },
-          { "path": "offer.market.liquidatorGate", "label": "Liquidator gate", "format": "raw", "visible": "never" },
+          {
+            "path": "offer.market.liquidatorGate",
+            "$ref": "$.display.definitions.liquidatorGate",
+            "visible": { "ifNotIn": ["0x0000000000000000000000000000000000000000"] }
+          },
           { "path": "offer.buy", "label": "Maker is lender", "format": "raw", "visible": "always" },
           {
             "path": "offer.maker",
@@ -44,7 +60,7 @@
           },
           { "path": "offer.start", "label": "Offer start", "format": "raw", "visible": "never" },
           { "path": "offer.expiry", "label": "Offer expiry", "format": "raw", "visible": "never" },
-          { "path": "offer.tick", "label": "Price tick", "format": "raw", "visible": "never" },
+          { "path": "offer.tick", "label": "Price tick", "format": "raw", "visible": "always" },
           { "path": "offer.group", "label": "Offer group", "format": "raw", "visible": "never" },
           { "path": "offer.callback", "label": "Maker callback", "format": "raw", "visible": "never" },
           { "path": "offer.callbackData", "label": "Callback data", "format": "raw", "visible": "never" },
@@ -63,7 +79,11 @@
             "visible": "always"
           },
           { "path": "taker", "$ref": "$.display.definitions.onBehalf", "visible": "always" },
-          { "path": "receiverIfTakerIsSeller", "$ref": "$.display.definitions.recipient", "visible": "optional" },
+          {
+            "path": "receiverIfTakerIsSeller",
+            "$ref": "$.display.definitions.recipient",
+            "visible": { "ifNotIn": ["0x0000000000000000000000000000000000000000"] }
+          },
           {
             "path": "takerCallback",
             "label": "Taker callback",
@@ -87,7 +107,15 @@
             "params": { "types": ["token"] },
             "visible": "always"
           },
-          { "path": "market.collateralParams.[]", "label": "Collateral params", "format": "raw", "visible": "never" },
+          { "path": "market.collateralParams.[].token", "$ref": "$.display.definitions.collateralToken", "visible": "always" },
+          { "path": "market.collateralParams.[].lltv", "label": "Collateral LLTV", "format": "raw", "visible": "never" },
+          { "path": "market.collateralParams.[].oracle", "label": "Collateral oracle", "format": "raw", "visible": "never" },
+          {
+            "path": "market.collateralParams.[].liquidationCursor",
+            "label": "Liquidation cursor",
+            "format": "raw",
+            "visible": "never"
+          },
           { "path": "market.maturity", "$ref": "$.display.definitions.maturity", "visible": "always" },
           { "path": "market.rcfThreshold", "label": "RCF threshold", "format": "raw", "visible": "never" },
           { "path": "market.enterGate", "label": "Enter gate", "format": "raw", "visible": "never" },
@@ -116,7 +144,15 @@
             "params": { "types": ["token"] },
             "visible": "always"
           },
-          { "path": "market.collateralParams.[]", "label": "Collateral params", "format": "raw", "visible": "never" },
+          { "path": "market.collateralParams.[].token", "$ref": "$.display.definitions.collateralToken", "visible": "always" },
+          { "path": "market.collateralParams.[].lltv", "label": "Collateral LLTV", "format": "raw", "visible": "never" },
+          { "path": "market.collateralParams.[].oracle", "label": "Collateral oracle", "format": "raw", "visible": "never" },
+          {
+            "path": "market.collateralParams.[].liquidationCursor",
+            "label": "Liquidation cursor",
+            "format": "raw",
+            "visible": "never"
+          },
           { "path": "market.maturity", "$ref": "$.display.definitions.maturity", "visible": "always" },
           { "path": "market.rcfThreshold", "label": "RCF threshold", "format": "raw", "visible": "never" },
           { "path": "market.enterGate", "label": "Enter gate", "format": "raw", "visible": "never" },
@@ -152,7 +188,15 @@
             "params": { "types": ["token"] },
             "visible": "always"
           },
-          { "path": "market.collateralParams.[]", "label": "Collateral params", "format": "raw", "visible": "never" },
+          { "path": "market.collateralParams.[].token", "$ref": "$.display.definitions.collateralToken", "visible": "always" },
+          { "path": "market.collateralParams.[].lltv", "label": "Collateral LLTV", "format": "raw", "visible": "never" },
+          { "path": "market.collateralParams.[].oracle", "label": "Collateral oracle", "format": "raw", "visible": "never" },
+          {
+            "path": "market.collateralParams.[].liquidationCursor",
+            "label": "Liquidation cursor",
+            "format": "raw",
+            "visible": "never"
+          },
           { "path": "market.maturity", "$ref": "$.display.definitions.maturity", "visible": "always" },
           { "path": "market.rcfThreshold", "label": "RCF threshold", "format": "raw", "visible": "never" },
           { "path": "market.enterGate", "label": "Enter gate", "format": "raw", "visible": "never" },
@@ -175,7 +219,15 @@
             "params": { "types": ["token"] },
             "visible": "always"
           },
-          { "path": "market.collateralParams.[]", "label": "Collateral params", "format": "raw", "visible": "never" },
+          { "path": "market.collateralParams.[].token", "$ref": "$.display.definitions.collateralToken", "visible": "always" },
+          { "path": "market.collateralParams.[].lltv", "label": "Collateral LLTV", "format": "raw", "visible": "never" },
+          { "path": "market.collateralParams.[].oracle", "label": "Collateral oracle", "format": "raw", "visible": "never" },
+          {
+            "path": "market.collateralParams.[].liquidationCursor",
+            "label": "Liquidation cursor",
+            "format": "raw",
+            "visible": "never"
+          },
           { "path": "market.maturity", "$ref": "$.display.definitions.maturity", "visible": "always" },
           { "path": "market.rcfThreshold", "label": "RCF threshold", "format": "raw", "visible": "never" },
           { "path": "market.enterGate", "label": "Enter gate", "format": "raw", "visible": "never" },
@@ -199,7 +251,15 @@
             "params": { "types": ["token"] },
             "visible": "always"
           },
-          { "path": "market.collateralParams.[]", "label": "Collateral params", "format": "raw", "visible": "never" },
+          { "path": "market.collateralParams.[].token", "$ref": "$.display.definitions.collateralToken", "visible": "always" },
+          { "path": "market.collateralParams.[].lltv", "label": "Collateral LLTV", "format": "raw", "visible": "never" },
+          { "path": "market.collateralParams.[].oracle", "label": "Collateral oracle", "format": "raw", "visible": "never" },
+          {
+            "path": "market.collateralParams.[].liquidationCursor",
+            "label": "Liquidation cursor",
+            "format": "raw",
+            "visible": "never"
+          },
           { "path": "market.maturity", "$ref": "$.display.definitions.maturity", "visible": "always" },
           { "path": "market.rcfThreshold", "label": "RCF threshold", "format": "raw", "visible": "never" },
           { "path": "market.enterGate", "label": "Enter gate", "format": "raw", "visible": "never" },

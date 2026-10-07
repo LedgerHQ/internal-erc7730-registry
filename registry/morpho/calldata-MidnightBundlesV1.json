@@ -17,7 +17,11 @@
       "collateralRecipient": { "label": "Collateral recipient", "format": "addressName", "params": { "types": ["eoa", "contract"] } },
       "referralFee": { "label": "Referral fee", "format": "unit", "params": { "base": "%", "decimals": 16 } },
       "feeRecipient": { "label": "Fee recipient", "format": "addressName", "params": { "types": ["eoa", "contract"] } },
-      "validUntil": { "label": "Valid until", "format": "date", "params": { "encoding": "timestamp" } }
+      "validUntil": { "label": "Valid until", "format": "date", "params": { "encoding": "timestamp" } },
+      "collateralToken": { "label": "Collateral token", "format": "addressName", "params": { "types": ["token"] } },
+      "collateralLltv": { "label": "Collateral LLTV", "format": "unit", "params": { "base": "%", "decimals": 16 } },
+      "collateralOracle": { "label": "Collateral oracle", "format": "addressName", "params": { "types": ["contract"] } },
+      "liquidatorGate": { "label": "Liquidator gate", "format": "addressName", "params": { "types": ["contract"] } }
     },
     "formats": {
       "midnightBundlesV1BuyWithUnitsTargetAndWithdrawCollateral(uint256 targetUnits,uint256 maxBuyerAssets,address taker,bool reduceOnly,(uint8 kind,bytes data) loanTokenPermit,(((uint256 chainId,address midnight,address loanToken,(address token,uint256 lltv,uint256 liquidationCursor,address oracle)[] collateralParams,uint256 maturity,uint256 rcfThreshold,address enterGate,address liquidatorGate) market,bool buy,address maker,uint256 start,uint256 expiry,uint256 tick,bytes32 group,address callback,bytes callbackData,address receiverIfMakerIsSeller,address ratifier,bool reduceOnly,uint128 maxUnits,uint128 maxAssets,uint256 continuousFeeCap) offer,bytes ratifierData,uint256 units)[] offerFills,(uint256 collateralIndex,uint256 assets)[] collateralWithdrawals,address collateralReceiver,uint256 referralFeePct,address referralFeeRecipient,uint256 maxContinuousFee,uint256 deadline)": {
@@ -43,8 +47,35 @@
           { "path": "loanTokenPermit.kind", "label": "Permit kind", "format": "raw", "visible": "never" },
           { "path": "loanTokenPermit.data", "label": "Permit data", "format": "raw", "visible": "never" },
           { "path": "offerFills.[0].offer.market.maturity", "$ref": "$.display.definitions.maturity", "visible": "always" },
+          {
+            "path": "offerFills.[0].offer.market.collateralParams.[].token",
+            "$ref": "$.display.definitions.collateralToken",
+            "visible": "always"
+          },
+          {
+            "path": "offerFills.[0].offer.market.collateralParams.[].lltv",
+            "$ref": "$.display.definitions.collateralLltv",
+            "visible": "always"
+          },
+          {
+            "path": "offerFills.[0].offer.market.collateralParams.[].oracle",
+            "$ref": "$.display.definitions.collateralOracle",
+            "visible": "always"
+          },
+          {
+            "path": "offerFills.[0].offer.market.collateralParams.[].liquidationCursor",
+            "label": "Liquidation cursor",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "path": "offerFills.[0].offer.market.liquidatorGate",
+            "$ref": "$.display.definitions.liquidatorGate",
+            "visible": { "ifNotIn": ["0x0000000000000000000000000000000000000000"] }
+          },
           { "path": "offerFills.[]", "label": "Offers", "format": "raw", "visible": "never" },
-          { "path": "collateralWithdrawals.[]", "label": "Withdrawals", "format": "raw", "visible": "never" },
+          { "path": "collateralWithdrawals.[].collateralIndex", "label": "Collateral index", "format": "raw", "visible": "always" },
+          { "path": "collateralWithdrawals.[].assets", "label": "Withdraw collateral", "format": "raw", "visible": "always" },
           { "path": "collateralReceiver", "$ref": "$.display.definitions.collateralRecipient", "visible": "always" },
           { "path": "referralFeePct", "$ref": "$.display.definitions.referralFee", "visible": "always" },
           { "path": "referralFeeRecipient", "$ref": "$.display.definitions.feeRecipient", "visible": "always" },
@@ -75,8 +106,35 @@
           { "path": "loanTokenPermit.kind", "label": "Permit kind", "format": "raw", "visible": "never" },
           { "path": "loanTokenPermit.data", "label": "Permit data", "format": "raw", "visible": "never" },
           { "path": "offerFills.[0].offer.market.maturity", "$ref": "$.display.definitions.maturity", "visible": "always" },
+          {
+            "path": "offerFills.[0].offer.market.collateralParams.[].token",
+            "$ref": "$.display.definitions.collateralToken",
+            "visible": "always"
+          },
+          {
+            "path": "offerFills.[0].offer.market.collateralParams.[].lltv",
+            "$ref": "$.display.definitions.collateralLltv",
+            "visible": "always"
+          },
+          {
+            "path": "offerFills.[0].offer.market.collateralParams.[].oracle",
+            "$ref": "$.display.definitions.collateralOracle",
+            "visible": "always"
+          },
+          {
+            "path": "offerFills.[0].offer.market.collateralParams.[].liquidationCursor",
+            "label": "Liquidation cursor",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "path": "offerFills.[0].offer.market.liquidatorGate",
+            "$ref": "$.display.definitions.liquidatorGate",
+            "visible": { "ifNotIn": ["0x0000000000000000000000000000000000000000"] }
+          },
           { "path": "offerFills.[]", "label": "Offers", "format": "raw", "visible": "never" },
-          { "path": "collateralWithdrawals.[]", "label": "Withdrawals", "format": "raw", "visible": "never" },
+          { "path": "collateralWithdrawals.[].collateralIndex", "label": "Collateral index", "format": "raw", "visible": "always" },
+          { "path": "collateralWithdrawals.[].assets", "label": "Withdraw collateral", "format": "raw", "visible": "always" },
           { "path": "collateralReceiver", "$ref": "$.display.definitions.collateralRecipient", "visible": "always" },
           { "path": "referralFeePct", "$ref": "$.display.definitions.referralFee", "visible": "always" },
           { "path": "referralFeeRecipient", "$ref": "$.display.definitions.feeRecipient", "visible": "always" },
@@ -88,7 +146,6 @@
         "$id": "sellWithUnitsTarget",
         "intent": "Borrow or sell",
         "fields": [
-          { "path": "collateralSupplies.[]", "label": "Supplies", "format": "raw", "visible": "never" },
           {
             "path": "targetUnits",
             "label": "Units to sell",
@@ -107,6 +164,36 @@
           { "path": "reduceOnly", "label": "Reduce only", "format": "raw", "visible": "never" },
           { "path": "receiver", "$ref": "$.display.definitions.recipient", "visible": "always" },
           { "path": "offerFills.[0].offer.market.maturity", "$ref": "$.display.definitions.maturity", "visible": "always" },
+          {
+            "path": "offerFills.[0].offer.market.collateralParams.[].token",
+            "$ref": "$.display.definitions.collateralToken",
+            "visible": "always"
+          },
+          {
+            "path": "offerFills.[0].offer.market.collateralParams.[].lltv",
+            "$ref": "$.display.definitions.collateralLltv",
+            "visible": "always"
+          },
+          {
+            "path": "offerFills.[0].offer.market.collateralParams.[].oracle",
+            "$ref": "$.display.definitions.collateralOracle",
+            "visible": "always"
+          },
+          {
+            "path": "offerFills.[0].offer.market.collateralParams.[].liquidationCursor",
+            "label": "Liquidation cursor",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "path": "offerFills.[0].offer.market.liquidatorGate",
+            "$ref": "$.display.definitions.liquidatorGate",
+            "visible": { "ifNotIn": ["0x0000000000000000000000000000000000000000"] }
+          },
+          { "path": "collateralSupplies.[].collateralIndex", "label": "Collateral index", "format": "raw", "visible": "always" },
+          { "path": "collateralSupplies.[].assets", "label": "Supply collateral", "format": "raw", "visible": "always" },
+          { "path": "collateralSupplies.[].permit.kind", "label": "Permit kind", "format": "raw", "visible": "never" },
+          { "path": "collateralSupplies.[].permit.data", "label": "Permit data", "format": "raw", "visible": "never" },
           { "path": "offerFills.[]", "label": "Offers", "format": "raw", "visible": "never" },
           { "path": "referralFeePct", "$ref": "$.display.definitions.referralFee", "visible": "always" },
           { "path": "referralFeeRecipient", "$ref": "$.display.definitions.feeRecipient", "visible": "always" },
@@ -118,7 +205,6 @@
         "$id": "sellWithAssetsTarget",
         "intent": "Borrow or sell",
         "fields": [
-          { "path": "collateralSupplies.[]", "label": "Supplies", "format": "raw", "visible": "never" },
           {
             "path": "targetSellerAssets",
             "label": "Amount to receive",
@@ -137,6 +223,36 @@
           { "path": "reduceOnly", "label": "Reduce only", "format": "raw", "visible": "never" },
           { "path": "receiver", "$ref": "$.display.definitions.recipient", "visible": "always" },
           { "path": "offerFills.[0].offer.market.maturity", "$ref": "$.display.definitions.maturity", "visible": "always" },
+          {
+            "path": "offerFills.[0].offer.market.collateralParams.[].token",
+            "$ref": "$.display.definitions.collateralToken",
+            "visible": "always"
+          },
+          {
+            "path": "offerFills.[0].offer.market.collateralParams.[].lltv",
+            "$ref": "$.display.definitions.collateralLltv",
+            "visible": "always"
+          },
+          {
+            "path": "offerFills.[0].offer.market.collateralParams.[].oracle",
+            "$ref": "$.display.definitions.collateralOracle",
+            "visible": "always"
+          },
+          {
+            "path": "offerFills.[0].offer.market.collateralParams.[].liquidationCursor",
+            "label": "Liquidation cursor",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "path": "offerFills.[0].offer.market.liquidatorGate",
+            "$ref": "$.display.definitions.liquidatorGate",
+            "visible": { "ifNotIn": ["0x0000000000000000000000000000000000000000"] }
+          },
+          { "path": "collateralSupplies.[].collateralIndex", "label": "Collateral index", "format": "raw", "visible": "always" },
+          { "path": "collateralSupplies.[].assets", "label": "Supply collateral", "format": "raw", "visible": "always" },
+          { "path": "collateralSupplies.[].permit.kind", "label": "Permit kind", "format": "raw", "visible": "never" },
+          { "path": "collateralSupplies.[].permit.data", "label": "Permit data", "format": "raw", "visible": "never" },
           { "path": "offerFills.[]", "label": "Offers", "format": "raw", "visible": "never" },
           { "path": "referralFeePct", "$ref": "$.display.definitions.referralFee", "visible": "always" },
           { "path": "referralFeeRecipient", "$ref": "$.display.definitions.feeRecipient", "visible": "always" },
@@ -157,7 +273,15 @@
             "params": { "types": ["token"] },
             "visible": "always"
           },
-          { "path": "market.collateralParams.[]", "label": "Collateral params", "format": "raw", "visible": "never" },
+          { "path": "market.collateralParams.[].token", "$ref": "$.display.definitions.collateralToken", "visible": "always" },
+          { "path": "market.collateralParams.[].lltv", "label": "Collateral LLTV", "format": "raw", "visible": "never" },
+          { "path": "market.collateralParams.[].oracle", "label": "Collateral oracle", "format": "raw", "visible": "never" },
+          {
+            "path": "market.collateralParams.[].liquidationCursor",
+            "label": "Liquidation cursor",
+            "format": "raw",
+            "visible": "never"
+          },
           { "path": "market.maturity", "$ref": "$.display.definitions.maturity", "visible": "always" },
           { "path": "market.rcfThreshold", "label": "RCF threshold", "format": "raw", "visible": "never" },
           { "path": "market.enterGate", "label": "Enter gate", "format": "raw", "visible": "never" },
@@ -172,7 +296,8 @@
           { "path": "onBehalf", "$ref": "$.display.definitions.onBehalf", "visible": "always" },
           { "path": "loanTokenPermit.kind", "label": "Permit kind", "format": "raw", "visible": "never" },
           { "path": "loanTokenPermit.data", "label": "Permit data", "format": "raw", "visible": "never" },
-          { "path": "collateralWithdrawals.[]", "label": "Withdrawals", "format": "raw", "visible": "never" },
+          { "path": "collateralWithdrawals.[].collateralIndex", "label": "Collateral index", "format": "raw", "visible": "always" },
+          { "path": "collateralWithdrawals.[].assets", "label": "Withdraw collateral", "format": "raw", "visible": "always" },
           { "path": "collateralReceiver", "$ref": "$.display.definitions.collateralRecipient", "visible": "always" },
           { "path": "referralFeePct", "$ref": "$.display.definitions.referralFee", "visible": "always" },
           { "path": "referralFeeRecipient", "$ref": "$.display.definitions.feeRecipient", "visible": "always" },
