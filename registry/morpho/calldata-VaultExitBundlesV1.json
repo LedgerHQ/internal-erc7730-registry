@@ -1,0 +1,96 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "context": {
+    "contract": {
+      "deployments": [
+        { "chainId": 1, "address": "0xaf85aF286637A033BE7d59ED8cC566afa3309B02" },
+        { "chainId": 10, "address": "0x80De0F063aC662a4ee86c2F4Db0b52746094ad62" },
+        { "chainId": 130, "address": "0x0628B860947fA0c195988F65d53850546A489732" },
+        { "chainId": 137, "address": "0x7Ae2B7012c82ea18a6BeE98ad09a684C88d6e36a" },
+        { "chainId": 143, "address": "0xB04b831893A6E2E02Be347cD259690c5Bc7D0675" },
+        { "chainId": 480, "address": "0xcf7b4a40f25A6b839A93b8A8b45297F2a5383E73" },
+        { "chainId": 988, "address": "0x258d5c815CCE7017E24c63a7669F51ABcD0Dd4e5" },
+        { "chainId": 999, "address": "0xC1749C8d50bc645D5116ccf4C858Bc45cB981Ac4" },
+        { "chainId": 8453, "address": "0xE52E169C342C096C4949ABb944DC9f30E3F5Ea84" },
+        { "chainId": 42161, "address": "0x7B885a940164eD51A068725f577a12197b76109b" },
+        { "chainId": 747474, "address": "0xa434ABcc7e945b804c87B4f3c0a76b20651d4863" }
+      ]
+    }
+  },
+  "metadata": { "owner": "Morpho", "contractName": "Morpho Vault Exit Bundles V1", "info": { "url": "https://morpho.org/" } },
+  "display": {
+    "definitions": {
+      "vault": { "label": "Vault", "format": "addressName", "params": { "types": ["contract", "token"] } },
+      "adapter": { "label": "Adapter", "format": "addressName", "params": { "types": ["contract"] } },
+      "referralFee": { "label": "Referral fee", "format": "unit", "params": { "base": "%", "decimals": 16 } },
+      "feeRecipient": { "label": "Fee recipient", "format": "addressName", "params": { "types": ["eoa", "contract"] } },
+      "validUntil": { "label": "Valid until", "format": "date", "params": { "encoding": "timestamp" } }
+    },
+    "formats": {
+      "vaultExitBundlesV1ForceWithdrawVaultV2(address vault,address adapter,uint256 exitAssets,uint256 minSharePriceE27,(uint256 value,uint256 nonce,uint256 deadline,uint8 v,bytes32 r,bytes32 s) sharesPermit,uint256 referralFeePct,address referralFeeRecipient,uint256 deadline)": {
+        "$id": "forceWithdrawVaultV2",
+        "intent": "Force withdraw",
+        "fields": [
+          { "path": "vault", "$ref": "$.display.definitions.vault", "visible": "always" },
+          { "path": "adapter", "$ref": "$.display.definitions.adapter", "visible": "optional" },
+          { "path": "exitAssets", "label": "Withdraw amount", "format": "raw", "visible": "always" },
+          { "path": "minSharePriceE27", "label": "Min share price", "format": "raw", "visible": "never" },
+          { "path": "sharesPermit.value", "label": "Permit value", "format": "raw", "visible": "never" },
+          { "path": "sharesPermit.nonce", "label": "Permit nonce", "format": "raw", "visible": "never" },
+          { "path": "sharesPermit.deadline", "label": "Permit deadline", "format": "raw", "visible": "never" },
+          { "path": "sharesPermit.v", "label": "Sig V", "format": "raw", "visible": "never" },
+          { "path": "sharesPermit.r", "label": "Sig R", "format": "raw", "visible": "never" },
+          { "path": "sharesPermit.s", "label": "Sig S", "format": "raw", "visible": "never" },
+          { "path": "referralFeePct", "$ref": "$.display.definitions.referralFee", "visible": "always" },
+          { "path": "referralFeeRecipient", "$ref": "$.display.definitions.feeRecipient", "visible": "always" },
+          { "path": "deadline", "$ref": "$.display.definitions.validUntil", "visible": "optional" }
+        ]
+      },
+      "vaultExitBundlesV1InKindRedemptionVaultV2(address vault,address adapter,(address loanToken,address collateralToken,address oracle,address irm,uint256 lltv)[] marketParamsList,uint256 exitAssets,(uint256 value,uint256 nonce,uint256 deadline,uint8 v,bytes32 r,bytes32 s) sharesPermit,uint256 deadline)": {
+        "$id": "inKindRedemptionVaultV2",
+        "intent": "Redeem in kind",
+        "fields": [
+          { "path": "vault", "$ref": "$.display.definitions.vault", "visible": "always" },
+          { "path": "adapter", "$ref": "$.display.definitions.adapter", "visible": "optional" },
+          { "path": "marketParamsList.[]", "label": "Markets", "format": "raw", "visible": "never" },
+          {
+            "path": "exitAssets",
+            "label": "Exit amount",
+            "format": "tokenAmount",
+            "params": { "tokenPath": "marketParamsList.[0].loanToken" },
+            "visible": "always"
+          },
+          { "path": "sharesPermit.value", "label": "Permit value", "format": "raw", "visible": "never" },
+          { "path": "sharesPermit.nonce", "label": "Permit nonce", "format": "raw", "visible": "never" },
+          { "path": "sharesPermit.deadline", "label": "Permit deadline", "format": "raw", "visible": "never" },
+          { "path": "sharesPermit.v", "label": "Sig V", "format": "raw", "visible": "never" },
+          { "path": "sharesPermit.r", "label": "Sig R", "format": "raw", "visible": "never" },
+          { "path": "sharesPermit.s", "label": "Sig S", "format": "raw", "visible": "never" },
+          { "path": "deadline", "$ref": "$.display.definitions.validUntil", "visible": "optional" }
+        ]
+      },
+      "vaultExitBundlesV1InKindRedemptionVaultV1(address vault,(address loanToken,address collateralToken,address oracle,address irm,uint256 lltv)[] marketParamsList,uint256 exitAssets,(uint256 value,uint256 nonce,uint256 deadline,uint8 v,bytes32 r,bytes32 s) sharesPermit,uint256 deadline)": {
+        "$id": "inKindRedemptionVaultV1",
+        "intent": "Redeem in kind",
+        "fields": [
+          { "path": "vault", "$ref": "$.display.definitions.vault", "visible": "always" },
+          { "path": "marketParamsList.[]", "label": "Markets", "format": "raw", "visible": "never" },
+          {
+            "path": "exitAssets",
+            "label": "Exit amount",
+            "format": "tokenAmount",
+            "params": { "tokenPath": "marketParamsList.[0].loanToken" },
+            "visible": "always"
+          },
+          { "path": "sharesPermit.value", "label": "Permit value", "format": "raw", "visible": "never" },
+          { "path": "sharesPermit.nonce", "label": "Permit nonce", "format": "raw", "visible": "never" },
+          { "path": "sharesPermit.deadline", "label": "Permit deadline", "format": "raw", "visible": "never" },
+          { "path": "sharesPermit.v", "label": "Sig V", "format": "raw", "visible": "never" },
+          { "path": "sharesPermit.r", "label": "Sig R", "format": "raw", "visible": "never" },
+          { "path": "sharesPermit.s", "label": "Sig S", "format": "raw", "visible": "never" },
+          { "path": "deadline", "$ref": "$.display.definitions.validUntil", "visible": "optional" }
+        ]
+      }
+    }
+  }
+}
