@@ -4,19 +4,19 @@
   "metadata": {
     "owner": "Steakhouse Financial",
     "info": { "url": "https://www.steakhouse.financial" },
-    "constants": { "underlyingTicker": "wUSDM", "vaultTicker": "steakUSDM" },
+    "constants": { "underlyingTicker": "USDT0", "vaultTicker": "bbqUSDT0" },
     "maps": {
       "underlyingToken": {
         "$keyType": "chainId",
-        "values": { "1": "0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812", "8453": "0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812" }
+        "values": { "137": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F", "143": "0xe7cd86e13AC4309349F30B3435a9d337750fC82D" }
       }
     }
   },
   "context": {
     "contract": {
       "deployments": [
-        { "chainId": 1, "address": "0xbeef033b4520267C5acFcb45414117b633fCb3Dd" },
-        { "chainId": 8453, "address": "0xBEef03f0BF3cb2e348393008a826538AaDD7d183" }
+        { "chainId": 137, "address": "0xB7c9988D3922F25a336a469F3bB26CA61FE79e24" },
+        { "chainId": 143, "address": "0x961a59Fe249b9795FAE7fA35f9E89629689D5278" }
       ]
     }
   }
