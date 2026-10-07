@@ -1,0 +1,95 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "context": {
+    "contract": {
+      "deployments": [
+        { "chainId": 1, "address": "0x02912516d49dE997db75B9D7858faAE59209650B" },
+        { "chainId": 10, "address": "0x112088363eE4CcF3F37EaBD98FDDeEd98F0Be485" },
+        { "chainId": 130, "address": "0x40755e3e2513D71cB79DC3Eeefd8Eb848d9cd899" },
+        { "chainId": 137, "address": "0x386ABE0188b7FADA897cE4dF9d72E8F57915B103" },
+        { "chainId": 143, "address": "0xcDDc5311A7ccDb2A7Bf97299149bE1D687F3C76e" },
+        { "chainId": 480, "address": "0x768BBD5F6c22b2498cC9C19832d3AEE08240755a" },
+        { "chainId": 988, "address": "0x2b910f5368e4939A2906ADa85c21fc0e51C4A861" },
+        { "chainId": 999, "address": "0xB5173417e28482c61C14A4C2e217b158fF0db666" },
+        { "chainId": 8453, "address": "0x2B08A911f48dE25A7e305D910Afb5597aBE8ea7B" },
+        { "chainId": 42161, "address": "0x5afAb0B2414E30c92a708234ea1b383Ce6317ED5" },
+        { "chainId": 747474, "address": "0x2464F4d0a4481732e7cC90ADD5abF986A48A06Dd" }
+      ]
+    }
+  },
+  "metadata": { "owner": "Morpho", "contractName": "Morpho Vault Bundles V1", "info": { "url": "https://morpho.org/" } },
+  "display": {
+    "definitions": {
+      "vault": { "label": "Vault", "format": "addressName", "params": { "types": ["contract", "token"] } },
+      "referralFee": { "label": "Referral fee", "format": "unit", "params": { "base": "%", "decimals": 16 } },
+      "feeRecipient": { "label": "Fee recipient", "format": "addressName", "params": { "types": ["eoa", "contract"] } },
+      "validUntil": { "label": "Valid until", "format": "date", "params": { "encoding": "timestamp" } }
+    },
+    "formats": {
+      "vaultBundlesV1Deposit(address vault,uint256 assets,uint256 maxSharePriceE27,(uint8 kind,bytes data) assetPermit,uint256 referralFeePct,address referralFeeRecipient,uint256 deadline)": {
+        "$id": "deposit",
+        "intent": "Deposit",
+        "fields": [
+          { "path": "vault", "$ref": "$.display.definitions.vault", "visible": "always" },
+          { "path": "assets", "label": "Deposit amount", "format": "raw", "visible": "always" },
+          { "path": "maxSharePriceE27", "label": "Max share price", "format": "raw", "visible": "never" },
+          { "path": "assetPermit.kind", "label": "Permit kind", "format": "raw", "visible": "never" },
+          { "path": "assetPermit.data", "label": "Permit data", "format": "raw", "visible": "never" },
+          { "path": "referralFeePct", "$ref": "$.display.definitions.referralFee", "visible": "always" },
+          { "path": "referralFeeRecipient", "$ref": "$.display.definitions.feeRecipient", "visible": "always" },
+          { "path": "deadline", "$ref": "$.display.definitions.validUntil", "visible": "optional" }
+        ]
+      },
+      "vaultBundlesV1Withdraw(address vault,uint256 assets,uint256 shares,(uint256 value,uint256 nonce,uint256 deadline,uint8 v,bytes32 r,bytes32 s) sharesPermit,uint256 referralFeePct,address referralFeeRecipient,uint256 deadline)": {
+        "$id": "withdraw",
+        "intent": "Withdraw",
+        "fields": [
+          { "path": "vault", "$ref": "$.display.definitions.vault", "visible": "always" },
+          { "path": "assets", "label": "Withdraw amount", "format": "raw", "visible": "always" },
+          {
+            "path": "shares",
+            "label": "Shares to redeem",
+            "format": "tokenAmount",
+            "params": { "tokenPath": "vault" },
+            "visible": "always"
+          },
+          { "path": "sharesPermit.value", "label": "Permit value", "format": "raw", "visible": "never" },
+          { "path": "sharesPermit.nonce", "label": "Permit nonce", "format": "raw", "visible": "never" },
+          { "path": "sharesPermit.deadline", "label": "Permit deadline", "format": "raw", "visible": "never" },
+          { "path": "sharesPermit.v", "label": "Sig V", "format": "raw", "visible": "never" },
+          { "path": "sharesPermit.r", "label": "Sig R", "format": "raw", "visible": "never" },
+          { "path": "sharesPermit.s", "label": "Sig S", "format": "raw", "visible": "never" },
+          { "path": "referralFeePct", "$ref": "$.display.definitions.referralFee", "visible": "always" },
+          { "path": "referralFeeRecipient", "$ref": "$.display.definitions.feeRecipient", "visible": "always" },
+          { "path": "deadline", "$ref": "$.display.definitions.validUntil", "visible": "optional" }
+        ]
+      },
+      "vaultBundlesV1Migrate(address sourceVault,address destVault,uint256 assetsWithdrawn,uint256 sharesRedeemed,uint256 destMaxSharePriceE27,(uint256 value,uint256 nonce,uint256 deadline,uint8 v,bytes32 r,bytes32 s) sharesPermit,uint256 referralFeePct,address referralFeeRecipient,uint256 deadline)": {
+        "$id": "migrate",
+        "intent": "Migrate vault position",
+        "fields": [
+          { "path": "sourceVault", "$ref": "$.display.definitions.vault", "label": "From vault", "visible": "always" },
+          { "path": "destVault", "$ref": "$.display.definitions.vault", "label": "To vault", "visible": "always" },
+          { "path": "assetsWithdrawn", "label": "Withdraw amount", "format": "raw", "visible": "always" },
+          {
+            "path": "sharesRedeemed",
+            "label": "Shares to redeem",
+            "format": "tokenAmount",
+            "params": { "tokenPath": "sourceVault" },
+            "visible": "always"
+          },
+          { "path": "destMaxSharePriceE27", "label": "Max share price", "format": "raw", "visible": "never" },
+          { "path": "sharesPermit.value", "label": "Permit value", "format": "raw", "visible": "never" },
+          { "path": "sharesPermit.nonce", "label": "Permit nonce", "format": "raw", "visible": "never" },
+          { "path": "sharesPermit.deadline", "label": "Permit deadline", "format": "raw", "visible": "never" },
+          { "path": "sharesPermit.v", "label": "Sig V", "format": "raw", "visible": "never" },
+          { "path": "sharesPermit.r", "label": "Sig R", "format": "raw", "visible": "never" },
+          { "path": "sharesPermit.s", "label": "Sig S", "format": "raw", "visible": "never" },
+          { "path": "referralFeePct", "$ref": "$.display.definitions.referralFee", "visible": "always" },
+          { "path": "referralFeeRecipient", "$ref": "$.display.definitions.feeRecipient", "visible": "always" },
+          { "path": "deadline", "$ref": "$.display.definitions.validUntil", "visible": "optional" }
+        ]
+      }
+    }
+  }
+}
