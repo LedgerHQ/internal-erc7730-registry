@@ -1,0 +1,184 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "context": {
+    "contract": {
+      "deployments": [
+        { "chainId": 1, "address": "0x7c00dBB2b6b6b9B28745332e550dC8782Fcf77EC" },
+        { "chainId": 8453, "address": "0x091183d729BE9f808c212b475E387A12E67850A7" }
+      ]
+    }
+  },
+  "metadata": { "owner": "Morpho", "contractName": "Morpho Midnight Bundles V1", "info": { "url": "https://morpho.org/" } },
+  "display": {
+    "definitions": {
+      "maturity": { "label": "Maturity", "format": "date", "params": { "encoding": "timestamp" } },
+      "onBehalf": { "label": "On behalf of", "format": "addressName", "params": { "types": ["eoa", "contract"] } },
+      "recipient": { "label": "Recipient", "format": "addressName", "params": { "types": ["eoa", "contract"] } },
+      "collateralRecipient": { "label": "Collateral recipient", "format": "addressName", "params": { "types": ["eoa", "contract"] } },
+      "referralFee": { "label": "Referral fee", "format": "unit", "params": { "base": "%", "decimals": 16 } },
+      "feeRecipient": { "label": "Fee recipient", "format": "addressName", "params": { "types": ["eoa", "contract"] } },
+      "validUntil": { "label": "Valid until", "format": "date", "params": { "encoding": "timestamp" } }
+    },
+    "formats": {
+      "midnightBundlesV1BuyWithUnitsTargetAndWithdrawCollateral(uint256 targetUnits,uint256 maxBuyerAssets,address taker,bool reduceOnly,(uint8 kind,bytes data) loanTokenPermit,(((uint256 chainId,address midnight,address loanToken,(address token,uint256 lltv,uint256 liquidationCursor,address oracle)[] collateralParams,uint256 maturity,uint256 rcfThreshold,address enterGate,address liquidatorGate) market,bool buy,address maker,uint256 start,uint256 expiry,uint256 tick,bytes32 group,address callback,bytes callbackData,address receiverIfMakerIsSeller,address ratifier,bool reduceOnly,uint128 maxUnits,uint128 maxAssets,uint256 continuousFeeCap) offer,bytes ratifierData,uint256 units)[] offerFills,(uint256 collateralIndex,uint256 assets)[] collateralWithdrawals,address collateralReceiver,uint256 referralFeePct,address referralFeeRecipient,uint256 maxContinuousFee,uint256 deadline)": {
+        "$id": "buyWithUnitsTarget",
+        "intent": "Lend or repay",
+        "fields": [
+          {
+            "path": "targetUnits",
+            "label": "Units to buy",
+            "format": "tokenAmount",
+            "params": { "tokenPath": "offerFills.[0].offer.market.loanToken" },
+            "visible": "always"
+          },
+          {
+            "path": "maxBuyerAssets",
+            "label": "Max to pay",
+            "format": "tokenAmount",
+            "params": { "tokenPath": "offerFills.[0].offer.market.loanToken" },
+            "visible": "always"
+          },
+          { "path": "taker", "$ref": "$.display.definitions.onBehalf", "visible": "always" },
+          { "path": "reduceOnly", "label": "Reduce only", "format": "raw", "visible": "never" },
+          { "path": "loanTokenPermit.kind", "label": "Permit kind", "format": "raw", "visible": "never" },
+          { "path": "loanTokenPermit.data", "label": "Permit data", "format": "raw", "visible": "never" },
+          { "path": "offerFills.[0].offer.market.maturity", "$ref": "$.display.definitions.maturity", "visible": "always" },
+          { "path": "offerFills.[]", "label": "Offers", "format": "raw", "visible": "never" },
+          { "path": "collateralWithdrawals.[]", "label": "Withdrawals", "format": "raw", "visible": "never" },
+          { "path": "collateralReceiver", "$ref": "$.display.definitions.collateralRecipient", "visible": "always" },
+          { "path": "referralFeePct", "$ref": "$.display.definitions.referralFee", "visible": "always" },
+          { "path": "referralFeeRecipient", "$ref": "$.display.definitions.feeRecipient", "visible": "always" },
+          { "path": "maxContinuousFee", "label": "Max continuous fee", "format": "raw", "visible": "never" },
+          { "path": "deadline", "$ref": "$.display.definitions.validUntil", "visible": "optional" }
+        ]
+      },
+      "midnightBundlesV1BuyWithAssetsTargetAndWithdrawCollateral(uint256 targetBuyerAssets,uint256 minUnits,address taker,bool reduceOnly,(uint8 kind,bytes data) loanTokenPermit,(((uint256 chainId,address midnight,address loanToken,(address token,uint256 lltv,uint256 liquidationCursor,address oracle)[] collateralParams,uint256 maturity,uint256 rcfThreshold,address enterGate,address liquidatorGate) market,bool buy,address maker,uint256 start,uint256 expiry,uint256 tick,bytes32 group,address callback,bytes callbackData,address receiverIfMakerIsSeller,address ratifier,bool reduceOnly,uint128 maxUnits,uint128 maxAssets,uint256 continuousFeeCap) offer,bytes ratifierData,uint256 units)[] offerFills,(uint256 collateralIndex,uint256 assets)[] collateralWithdrawals,address collateralReceiver,uint256 referralFeePct,address referralFeeRecipient,uint256 maxContinuousFee,uint256 deadline)": {
+        "$id": "buyWithAssetsTarget",
+        "intent": "Lend or repay",
+        "fields": [
+          {
+            "path": "targetBuyerAssets",
+            "label": "Amount to pay",
+            "format": "tokenAmount",
+            "params": { "tokenPath": "offerFills.[0].offer.market.loanToken" },
+            "visible": "always"
+          },
+          {
+            "path": "minUnits",
+            "label": "Min units to buy",
+            "format": "tokenAmount",
+            "params": { "tokenPath": "offerFills.[0].offer.market.loanToken" },
+            "visible": "always"
+          },
+          { "path": "taker", "$ref": "$.display.definitions.onBehalf", "visible": "always" },
+          { "path": "reduceOnly", "label": "Reduce only", "format": "raw", "visible": "never" },
+          { "path": "loanTokenPermit.kind", "label": "Permit kind", "format": "raw", "visible": "never" },
+          { "path": "loanTokenPermit.data", "label": "Permit data", "format": "raw", "visible": "never" },
+          { "path": "offerFills.[0].offer.market.maturity", "$ref": "$.display.definitions.maturity", "visible": "always" },
+          { "path": "offerFills.[]", "label": "Offers", "format": "raw", "visible": "never" },
+          { "path": "collateralWithdrawals.[]", "label": "Withdrawals", "format": "raw", "visible": "never" },
+          { "path": "collateralReceiver", "$ref": "$.display.definitions.collateralRecipient", "visible": "always" },
+          { "path": "referralFeePct", "$ref": "$.display.definitions.referralFee", "visible": "always" },
+          { "path": "referralFeeRecipient", "$ref": "$.display.definitions.feeRecipient", "visible": "always" },
+          { "path": "maxContinuousFee", "label": "Max continuous fee", "format": "raw", "visible": "never" },
+          { "path": "deadline", "$ref": "$.display.definitions.validUntil", "visible": "optional" }
+        ]
+      },
+      "midnightBundlesV1SupplyCollateralAndSellWithUnitsTarget(uint256 targetUnits,uint256 minSellerAssets,address taker,bool reduceOnly,address receiver,(uint256 collateralIndex,uint256 assets,(uint8 kind,bytes data) permit)[] collateralSupplies,(((uint256 chainId,address midnight,address loanToken,(address token,uint256 lltv,uint256 liquidationCursor,address oracle)[] collateralParams,uint256 maturity,uint256 rcfThreshold,address enterGate,address liquidatorGate) market,bool buy,address maker,uint256 start,uint256 expiry,uint256 tick,bytes32 group,address callback,bytes callbackData,address receiverIfMakerIsSeller,address ratifier,bool reduceOnly,uint128 maxUnits,uint128 maxAssets,uint256 continuousFeeCap) offer,bytes ratifierData,uint256 units)[] offerFills,uint256 referralFeePct,address referralFeeRecipient,uint256 maxContinuousFee,uint256 deadline)": {
+        "$id": "sellWithUnitsTarget",
+        "intent": "Borrow or sell",
+        "fields": [
+          { "path": "collateralSupplies.[]", "label": "Supplies", "format": "raw", "visible": "never" },
+          {
+            "path": "targetUnits",
+            "label": "Units to sell",
+            "format": "tokenAmount",
+            "params": { "tokenPath": "offerFills.[0].offer.market.loanToken" },
+            "visible": "always"
+          },
+          {
+            "path": "minSellerAssets",
+            "label": "Min to receive",
+            "format": "tokenAmount",
+            "params": { "tokenPath": "offerFills.[0].offer.market.loanToken" },
+            "visible": "always"
+          },
+          { "path": "taker", "$ref": "$.display.definitions.onBehalf", "visible": "always" },
+          { "path": "reduceOnly", "label": "Reduce only", "format": "raw", "visible": "never" },
+          { "path": "receiver", "$ref": "$.display.definitions.recipient", "visible": "always" },
+          { "path": "offerFills.[0].offer.market.maturity", "$ref": "$.display.definitions.maturity", "visible": "always" },
+          { "path": "offerFills.[]", "label": "Offers", "format": "raw", "visible": "never" },
+          { "path": "referralFeePct", "$ref": "$.display.definitions.referralFee", "visible": "always" },
+          { "path": "referralFeeRecipient", "$ref": "$.display.definitions.feeRecipient", "visible": "always" },
+          { "path": "maxContinuousFee", "label": "Max continuous fee", "format": "raw", "visible": "never" },
+          { "path": "deadline", "$ref": "$.display.definitions.validUntil", "visible": "optional" }
+        ]
+      },
+      "midnightBundlesV1SupplyCollateralAndSellWithAssetsTarget(uint256 targetSellerAssets,uint256 maxUnits,address taker,bool reduceOnly,address receiver,(uint256 collateralIndex,uint256 assets,(uint8 kind,bytes data) permit)[] collateralSupplies,(((uint256 chainId,address midnight,address loanToken,(address token,uint256 lltv,uint256 liquidationCursor,address oracle)[] collateralParams,uint256 maturity,uint256 rcfThreshold,address enterGate,address liquidatorGate) market,bool buy,address maker,uint256 start,uint256 expiry,uint256 tick,bytes32 group,address callback,bytes callbackData,address receiverIfMakerIsSeller,address ratifier,bool reduceOnly,uint128 maxUnits,uint128 maxAssets,uint256 continuousFeeCap) offer,bytes ratifierData,uint256 units)[] offerFills,uint256 referralFeePct,address referralFeeRecipient,uint256 maxContinuousFee,uint256 deadline)": {
+        "$id": "sellWithAssetsTarget",
+        "intent": "Borrow or sell",
+        "fields": [
+          { "path": "collateralSupplies.[]", "label": "Supplies", "format": "raw", "visible": "never" },
+          {
+            "path": "targetSellerAssets",
+            "label": "Amount to receive",
+            "format": "tokenAmount",
+            "params": { "tokenPath": "offerFills.[0].offer.market.loanToken" },
+            "visible": "always"
+          },
+          {
+            "path": "maxUnits",
+            "label": "Max units to sell",
+            "format": "tokenAmount",
+            "params": { "tokenPath": "offerFills.[0].offer.market.loanToken" },
+            "visible": "always"
+          },
+          { "path": "taker", "$ref": "$.display.definitions.onBehalf", "visible": "always" },
+          { "path": "reduceOnly", "label": "Reduce only", "format": "raw", "visible": "never" },
+          { "path": "receiver", "$ref": "$.display.definitions.recipient", "visible": "always" },
+          { "path": "offerFills.[0].offer.market.maturity", "$ref": "$.display.definitions.maturity", "visible": "always" },
+          { "path": "offerFills.[]", "label": "Offers", "format": "raw", "visible": "never" },
+          { "path": "referralFeePct", "$ref": "$.display.definitions.referralFee", "visible": "always" },
+          { "path": "referralFeeRecipient", "$ref": "$.display.definitions.feeRecipient", "visible": "always" },
+          { "path": "maxContinuousFee", "label": "Max continuous fee", "format": "raw", "visible": "never" },
+          { "path": "deadline", "$ref": "$.display.definitions.validUntil", "visible": "optional" }
+        ]
+      },
+      "midnightBundlesV1RepayAndWithdrawCollateral((uint256 chainId,address midnight,address loanToken,(address token,uint256 lltv,uint256 liquidationCursor,address oracle)[] collateralParams,uint256 maturity,uint256 rcfThreshold,address enterGate,address liquidatorGate) market,uint256 assets,address onBehalf,(uint8 kind,bytes data) loanTokenPermit,(uint256 collateralIndex,uint256 assets)[] collateralWithdrawals,address collateralReceiver,uint256 referralFeePct,address referralFeeRecipient,uint256 deadline)": {
+        "$id": "repayAndWithdrawCollateral",
+        "intent": "Repay and withdraw collateral",
+        "fields": [
+          { "path": "market.chainId", "label": "Market chain ID", "format": "raw", "visible": "never" },
+          { "path": "market.midnight", "label": "Midnight", "format": "raw", "visible": "never" },
+          {
+            "path": "market.loanToken",
+            "label": "Loan token",
+            "format": "addressName",
+            "params": { "types": ["token"] },
+            "visible": "always"
+          },
+          { "path": "market.collateralParams.[]", "label": "Collateral params", "format": "raw", "visible": "never" },
+          { "path": "market.maturity", "$ref": "$.display.definitions.maturity", "visible": "always" },
+          { "path": "market.rcfThreshold", "label": "RCF threshold", "format": "raw", "visible": "never" },
+          { "path": "market.enterGate", "label": "Enter gate", "format": "raw", "visible": "never" },
+          { "path": "market.liquidatorGate", "label": "Liquidator gate", "format": "raw", "visible": "never" },
+          {
+            "path": "assets",
+            "label": "Repay amount",
+            "format": "tokenAmount",
+            "params": { "tokenPath": "market.loanToken" },
+            "visible": "always"
+          },
+          { "path": "onBehalf", "$ref": "$.display.definitions.onBehalf", "visible": "always" },
+          { "path": "loanTokenPermit.kind", "label": "Permit kind", "format": "raw", "visible": "never" },
+          { "path": "loanTokenPermit.data", "label": "Permit data", "format": "raw", "visible": "never" },
+          { "path": "collateralWithdrawals.[]", "label": "Withdrawals", "format": "raw", "visible": "never" },
+          { "path": "collateralReceiver", "$ref": "$.display.definitions.collateralRecipient", "visible": "always" },
+          { "path": "referralFeePct", "$ref": "$.display.definitions.referralFee", "visible": "always" },
+          { "path": "referralFeeRecipient", "$ref": "$.display.definitions.feeRecipient", "visible": "always" },
+          { "path": "deadline", "$ref": "$.display.definitions.validUntil", "visible": "optional" }
+        ]
+      }
+    }
+  }
+}
