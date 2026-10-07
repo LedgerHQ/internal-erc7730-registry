@@ -44,7 +44,7 @@
           },
           { "path": "offer.start", "label": "Offer start", "format": "raw", "visible": "never" },
           { "path": "offer.expiry", "label": "Offer expiry", "format": "raw", "visible": "never" },
-          { "path": "offer.tick", "label": "Price tick", "format": "raw", "visible": "never" },
+          { "path": "offer.tick", "label": "Price tick", "format": "raw", "visible": "always" },
           { "path": "offer.group", "label": "Offer group", "format": "raw", "visible": "never" },
           { "path": "offer.callback", "label": "Maker callback", "format": "raw", "visible": "never" },
           { "path": "offer.callbackData", "label": "Callback data", "format": "raw", "visible": "never" },
@@ -63,7 +63,11 @@
             "visible": "always"
           },
           { "path": "taker", "$ref": "$.display.definitions.onBehalf", "visible": "always" },
-          { "path": "receiverIfTakerIsSeller", "$ref": "$.display.definitions.recipient", "visible": "optional" },
+          {
+            "path": "receiverIfTakerIsSeller",
+            "$ref": "$.display.definitions.recipient",
+            "visible": { "ifNotIn": ["0x0000000000000000000000000000000000000000"] }
+          },
           {
             "path": "takerCallback",
             "label": "Taker callback",

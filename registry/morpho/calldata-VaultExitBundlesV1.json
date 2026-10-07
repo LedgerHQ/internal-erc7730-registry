@@ -32,7 +32,7 @@
         "intent": "Force withdraw",
         "fields": [
           { "path": "vault", "$ref": "$.display.definitions.vault", "visible": "always" },
-          { "path": "adapter", "$ref": "$.display.definitions.adapter", "visible": "optional" },
+          { "path": "adapter", "$ref": "$.display.definitions.adapter", "visible": "always" },
           { "path": "exitAssets", "label": "Withdraw amount", "format": "raw", "visible": "always" },
           { "path": "minSharePriceE27", "label": "Min share price", "format": "raw", "visible": "never" },
           { "path": "sharesPermit.value", "label": "Permit value", "format": "raw", "visible": "never" },
@@ -51,15 +51,9 @@
         "intent": "Redeem in kind",
         "fields": [
           { "path": "vault", "$ref": "$.display.definitions.vault", "visible": "always" },
-          { "path": "adapter", "$ref": "$.display.definitions.adapter", "visible": "optional" },
+          { "path": "adapter", "$ref": "$.display.definitions.adapter", "visible": "always" },
           { "path": "marketParamsList.[]", "label": "Markets", "format": "raw", "visible": "never" },
-          {
-            "path": "exitAssets",
-            "label": "Exit amount",
-            "format": "tokenAmount",
-            "params": { "tokenPath": "marketParamsList.[0].loanToken" },
-            "visible": "always"
-          },
+          { "path": "exitAssets", "label": "Exit amount", "format": "raw", "visible": "always" },
           { "path": "sharesPermit.value", "label": "Permit value", "format": "raw", "visible": "never" },
           { "path": "sharesPermit.nonce", "label": "Permit nonce", "format": "raw", "visible": "never" },
           { "path": "sharesPermit.deadline", "label": "Permit deadline", "format": "raw", "visible": "never" },
@@ -75,13 +69,7 @@
         "fields": [
           { "path": "vault", "$ref": "$.display.definitions.vault", "visible": "always" },
           { "path": "marketParamsList.[]", "label": "Markets", "format": "raw", "visible": "never" },
-          {
-            "path": "exitAssets",
-            "label": "Exit amount",
-            "format": "tokenAmount",
-            "params": { "tokenPath": "marketParamsList.[0].loanToken" },
-            "visible": "always"
-          },
+          { "path": "exitAssets", "label": "Exit amount", "format": "raw", "visible": "always" },
           { "path": "sharesPermit.value", "label": "Permit value", "format": "raw", "visible": "never" },
           { "path": "sharesPermit.nonce", "label": "Permit nonce", "format": "raw", "visible": "never" },
           { "path": "sharesPermit.deadline", "label": "Permit deadline", "format": "raw", "visible": "never" },
