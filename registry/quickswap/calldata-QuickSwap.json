@@ -139,6 +139,50 @@
           { "path": "deadline", "label": "Deadline", "format": "date", "params": { "encoding": "timestamp" } }
         ]
       },
+      "swapETHForExactTokens(uint256 amountOut, address[] path, address to, uint256 deadline)": {
+        "$id": "swapETHForExactTokens",
+        "intent": "Swap",
+        "fields": [
+          { "path": "@.value", "label": "Maximum to Send", "format": "amount", "visible": "always" },
+          {
+            "path": "amountOut",
+            "label": "Amount to Receive",
+            "format": "tokenAmount",
+            "params": { "tokenPath": "path.[-1]" },
+            "visible": "always"
+          },
+          {
+            "path": "to",
+            "label": "Beneficiary",
+            "format": "addressName",
+            "params": { "types": ["eoa"], "sources": ["local", "ens"] },
+            "visible": "always"
+          },
+          { "path": "deadline", "label": "Deadline", "format": "date", "params": { "encoding": "timestamp" } }
+        ]
+      },
+      "swapExactTokensForETHSupportingFeeOnTransferTokens(uint256 amountIn, uint256 amountOutMin, address[] path, address to, uint256 deadline)": {
+        "$id": "swapExactTokensForETHSupportingFeeOnTransferTokens",
+        "intent": "Swap",
+        "fields": [
+          {
+            "path": "amountIn",
+            "label": "Amount to Send",
+            "format": "tokenAmount",
+            "params": { "tokenPath": "path.[0]" },
+            "visible": "always"
+          },
+          { "path": "amountOutMin", "label": "Minimum to Receive", "format": "amount", "visible": "always" },
+          {
+            "path": "to",
+            "label": "Beneficiary",
+            "format": "addressName",
+            "params": { "types": ["eoa"], "sources": ["local", "ens"] },
+            "visible": "always"
+          },
+          { "path": "deadline", "label": "Deadline", "format": "date", "params": { "encoding": "timestamp" } }
+        ]
+      },
       "swapTokensForExactETH(uint256 amountOut, uint256 amountInMax, address[] path, address to, uint256 deadline)": {
         "$id": "swapTokensForExactETH",
         "intent": "Swap",
@@ -243,6 +287,7 @@
             "params": { "tokenPath": "token" },
             "visible": "always"
           },
+          { "path": "@.value", "label": "Desired amount", "format": "amount", "visible": "always" },
           { "path": "amountETHMin", "label": "Minimum amount", "format": "amount", "visible": "always" },
           {
             "path": "to",
@@ -258,6 +303,13 @@
         "$id": "removeLiquidity",
         "intent": "Remove Liquidity",
         "fields": [
+          {
+            "path": "liquidity",
+            "label": "Liquidity to remove",
+            "format": "unit",
+            "params": { "base": "LP", "decimals": 18 },
+            "visible": "always"
+          },
           {
             "path": "amountAMin",
             "label": "Minimum amount",
@@ -287,6 +339,13 @@
         "intent": "Remove Liquidity",
         "fields": [
           {
+            "path": "liquidity",
+            "label": "Liquidity to remove",
+            "format": "unit",
+            "params": { "base": "LP", "decimals": 18 },
+            "visible": "always"
+          },
+          {
             "path": "amountTokenMin",
             "label": "Minimum amount",
             "format": "tokenAmount",
@@ -308,6 +367,13 @@
         "$id": "removeLiquidityWithPermit",
         "intent": "Remove Liquidity",
         "fields": [
+          {
+            "path": "liquidity",
+            "label": "Liquidity to remove",
+            "format": "unit",
+            "params": { "base": "LP", "decimals": 18 },
+            "visible": "always"
+          },
           {
             "path": "amountAMin",
             "label": "Minimum amount",
@@ -337,6 +403,13 @@
         "intent": "Remove Liquidity",
         "fields": [
           {
+            "path": "liquidity",
+            "label": "Liquidity to remove",
+            "format": "unit",
+            "params": { "base": "LP", "decimals": 18 },
+            "visible": "always"
+          },
+          {
             "path": "amountTokenMin",
             "label": "Minimum amount",
             "format": "tokenAmount",
@@ -359,6 +432,13 @@
         "intent": "Remove Liquidity",
         "fields": [
           {
+            "path": "liquidity",
+            "label": "Liquidity to remove",
+            "format": "unit",
+            "params": { "base": "LP", "decimals": 18 },
+            "visible": "always"
+          },
+          {
             "path": "amountTokenMin",
             "label": "Minimum amount",
             "format": "tokenAmount",
@@ -380,6 +460,13 @@
         "$id": "removeLiquidityETHWithPermitSupportingFeeOnTransferTokens",
         "intent": "Remove Liquidity",
         "fields": [
+          {
+            "path": "liquidity",
+            "label": "Liquidity to remove",
+            "format": "unit",
+            "params": { "base": "LP", "decimals": 18 },
+            "visible": "always"
+          },
           {
             "path": "amountTokenMin",
             "label": "Minimum amount",
