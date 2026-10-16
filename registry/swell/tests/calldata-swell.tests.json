@@ -36,6 +36,144 @@
         "To",
         "kens?"
       ]
+    },
+    {
+      "description": "deposit (real onchain) - chain 1",
+      "rawTx": "0x02f87601238408f0d180840d7262008302328094fae103dc9cf190ed75350761e95403b7b8afa6c0870775f05a07400084d0e30db0c080a0943630e30cf3fcefba47f30e88e4c2653d08bac0b80cd79cb7d72d6948406292a0128760b9bb1feb4e6bf3a33afc5c7377fb4a49686a1623a927aeb10e2e0a18ad",
+      "txHash": "0xa4a8f3b2963b307155f3e6595aa5008789faa8ac0810d879fcecf2f69b767d0f",
+      "expectedTexts": ["Stake ETH", "Amount", "0.0021 ETH"]
+    },
+    {
+      "description": "depositWithReferral (synthetic) - chain 1",
+      "rawTx": "0x02f8580180843b9aca008506fc23ac00830493e094fae103dc9cf190ed75350761e95403b7b8afa6c08806f05b59d3b20000a4c18d7cb70000000000000000000000001b61c2307b179087669758dcfb71c53e9819fc9bc0800101",
+      "expectedTexts": [
+        "Stake ETH",
+        "Amount",
+        "0.5 ETH",
+        "Referral",
+        "0x1b61c2307b179087669758DCfb71C53e9819FC9b"
+      ]
+    },
+    {
+      "description": "increaseAllowance (real onchain) - chain 1",
+      "rawTx": "0x02f8b20182011f8423c3460084294fdde08301adb694fae103dc9cf190ed75350761e95403b7b8afa6c080b8443950935100000000000000000000000007ea776756a9051517d8263cb630af5296439cbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc080a0d3e57e6756fc173c31d789a1fb2debba40a91a06bb8a38ca65b3d27b302ea48da02ada1aa3c61df1c12ef43fafbbed78724e432804e388e8afd82dfecd3d76b8fc",
+      "txHash": "0x743dcd12e8c10cc5569bd6a97f8344abfd494f7973dbf0a0c4c80a57d8688321",
+      "expectedTexts": [
+        "Increase allowance",
+        "Spender",
+        "0x07ea776756a9051517D8263CB630aF5296439CBb",
+        "Added Value",
+        "Unlimited rswETH"
+      ]
+    },
+    {
+      "description": "decreaseAllowance (synthetic) - chain 1",
+      "rawTx": "0x02f8710180843b9aca008506fc23ac00830493e094fae103dc9cf190ed75350761e95403b7b8afa6c080b844a457c2d700000000000000000000000071c7656ec7ab88b098defb751b7401b5f6d8976f0000000000000000000000000000000000000000000000000de0b6b3a7640000c0800101",
+      "expectedTexts": [
+        "Decrease allowance",
+        "Spender",
+        "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+        "Subtracted Value",
+        "1 rswETH"
+      ]
+    },
+    {
+      "description": "transferFrom (synthetic) - chain 1",
+      "rawTx": "0x02f8910180843b9aca008506fc23ac00830493e094fae103dc9cf190ed75350761e95403b7b8afa6c080b86423b872dd0000000000000000000000001b61c2307b179087669758dcfb71c53e9819fc9b00000000000000000000000071c7656ec7ab88b098defb751b7401b5f6d8976f0000000000000000000000000000000000000000000000001bc16d674ec80000c0800101",
+      "expectedTexts": [
+        "Transfer From",
+        "From",
+        "0x1b61c2307b179087669758DCfb71C53e9819FC9b",
+        "To",
+        "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+        "Amount",
+        "2 rswETH"
+      ]
+    },
+    {
+      "description": "burn (synthetic) - chain 1",
+      "rawTx": "0x02f8500180843b9aca008506fc23ac00830493e094fae103dc9cf190ed75350761e95403b7b8afa6c080a442966c6800000000000000000000000000000000000000000000000029a2241af62c0000c0800101",
+      "expectedTexts": ["Burn rswETH", "Amount", "3 rswETH"]
+    },
+    {
+      "description": "withdrawERC20 (synthetic) - chain 1",
+      "rawTx": "0x02f8500180843b9aca008506fc23ac00830493e094fae103dc9cf190ed75350761e95403b7b8afa6c080a4f4f3b200000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48c0800101",
+      "expectedTexts": ["Withdraw ERC20 tokens", "Token", "USD Coin"]
+    },
+    {
+      "description": "initialize (synthetic) - chain 1",
+      "rawTx": "0x02f8500180843b9aca008506fc23ac00830493e094fae103dc9cf190ed75350761e95403b7b8afa6c080a4c4d66de8000000000000000000000000625087d72c762254a72cb22cc2ecb22ddb8b7b3dc0800101",
+      "expectedTexts": [
+        "Initialize",
+        "Control manager",
+        "0x625087d72c762254a72CB22CC2ECb22Ddb8b7b3d"
+      ]
+    },
+    {
+      "description": "addToWhitelist (synthetic) - chain 1",
+      "rawTx": "0x02f8500180843b9aca008506fc23ac00830493e094fae103dc9cf190ed75350761e95403b7b8afa6c080a4e43252d700000000000000000000000071c7656ec7ab88b098defb751b7401b5f6d8976fc0800101",
+      "expectedTexts": [
+        "Add to whitelist",
+        "Address",
+        "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"
+      ]
+    },
+    {
+      "description": "removeFromWhitelist (synthetic) - chain 1",
+      "rawTx": "0x02f8500180843b9aca008506fc23ac00830493e094fae103dc9cf190ed75350761e95403b7b8afa6c080a48ab1d68100000000000000000000000071c7656ec7ab88b098defb751b7401b5f6d8976fc0800101",
+      "expectedTexts": [
+        "Unwhitelist",
+        "Address",
+        "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"
+      ]
+    },
+    {
+      "description": "batchAddToWhitelist (synthetic) - chain 1",
+      "rawTx": "0x02f8b10180843b9aca008506fc23ac00830493e094fae103dc9cf190ed75350761e95403b7b8afa6c080b8842db6fa360000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000200000000000000000000000071c7656ec7ab88b098defb751b7401b5f6d8976f0000000000000000000000001b61c2307b179087669758dcfb71c53e9819fc9bc0800101",
+      "expectedTexts": [
+        "Add to whitelist",
+        "Addresses",
+        "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+        "Addresses",
+        "0x1b61c2307b179087669758DCfb71C53e9819FC9b"
+      ]
+    },
+    {
+      "description": "batchRemoveFromWhitelist (synthetic) - chain 1",
+      "rawTx": "0x02f8b10180843b9aca008506fc23ac00830493e094fae103dc9cf190ed75350761e95403b7b8afa6c080b884045fb8880000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000200000000000000000000000071c7656ec7ab88b098defb751b7401b5f6d8976f0000000000000000000000001b61c2307b179087669758dcfb71c53e9819fc9bc0800101",
+      "expectedTexts": [
+        "Remove addresses",
+        "Addresses",
+        "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+        "Addresses",
+        "0x1b61c2307b179087669758DCfb71C53e9819FC9b"
+      ]
+    },
+    {
+      "description": "reprice (synthetic) - chain 1",
+      "rawTx": "0x02f8910180843b9aca008506fc23ac00830493e094fae103dc9cf190ed75350761e95403b7b8afa6c080b8647342bbd400000000000000000000000000000000000000000000152d02c7e14af6800000000000000000000000000000000000000000000000000000a688906bd8b0000000000000000000000000000000000000000000000000130ee8e7179044400000c0800101",
+      "expectedTexts": [
+        "Reprice",
+        "Pre Reward Reserves",
+        "100000 ETH",
+        "New ETH Rewards",
+        "12 ETH",
+        "rswETH Total Supply",
+        "90000 rswETH"
+      ]
+    },
+    {
+      "description": "depositViaDepositManager (synthetic) - chain 1",
+      "rawTx": "0x02f8910180843b9aca008506fc23ac00830493e094fae103dc9cf190ed75350761e95403b7b8afa6c080b86498ec183f0000000000000000000000000000000000000000000000000de0b6b3a764000000000000000000000000000071c7656ec7ab88b098defb751b7401b5f6d8976f0000000000000000000000000000000000000000000000000d2f13f7789f0000c0800101",
+      "expectedTexts": [
+        "Deposit via Manager",
+        "Amount",
+        "1 ETH",
+        "To",
+        "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+        "Minimum rswETH",
+        "0.95 rswETH"
+      ]
     }
   ]
 }

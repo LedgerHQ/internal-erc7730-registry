@@ -12,18 +12,19 @@
         "intent": "Add to whitelist",
         "fields": [{ "label": "Address", "format": "addressName", "params": { "types": ["wallet", "eoa", "contract"] }, "path": "#._address" }]
       },
-      "allowance(address owner, address spender)": {
-        "intent": "Check Allowance",
-        "fields": [
-          { "label": "Owner", "format": "addressName", "params": { "types": ["wallet", "eoa", "contract"] }, "path": "#.owner" },
-          { "label": "Spender", "format": "addressName", "params": { "types": ["contract"] }, "path": "#.spender" }
-        ]
-      },
       "approve(address spender, uint256 amount)": {
         "intent": "Approve spender",
         "fields": [
           { "label": "Spender", "format": "addressName", "params": { "types": ["wallet", "eoa", "contract"] }, "path": "#.spender" },
-          { "label": "Amount", "format": "tokenAmount", "path": "amount", "params": { "token": "$.metadata.constants.swellToken" } }
+          {
+            "label": "Amount",
+            "format": "tokenAmount",
+            "path": "amount",
+            "params": {
+              "token": "$.metadata.constants.swellToken",
+              "threshold": "0x8000000000000000000000000000000000000000000000000000000000000000"
+            }
+          }
         ]
       },
       "batchAddToWhitelist(address[] _addresses)": {
@@ -48,7 +49,10 @@
           }
         ]
       },
-      "burn(uint256 amount)": { "fields": [{ "label": "Amount", "format": "tokenAmount", "path": "#.amount", "params": { "tokenPath": "@.to" } }] },
+      "burn(uint256 amount)": {
+        "intent": "Burn rswETH",
+        "fields": [{ "label": "Amount", "format": "tokenAmount", "path": "#.amount", "params": { "tokenPath": "@.to" } }]
+      },
       "decreaseAllowance(address spender, uint256 subtractedValue)": {
         "intent": "Decrease allowance",
         "fields": [
@@ -56,26 +60,49 @@
           { "label": "Subtracted Value", "format": "tokenAmount", "path": "#.subtractedValue", "params": { "tokenPath": "@.to" } }
         ]
       },
+      "deposit()": { "intent": "Stake ETH", "fields": [{ "label": "Amount", "format": "amount", "path": "@.value", "visible": "always" }] },
       "depositViaDepositManager(uint256 _amount, address _to, uint256 _minRswETH)": {
         "intent": "Deposit via Manager",
         "fields": [
           { "label": "Amount", "format": "amount", "path": "#._amount" },
           { "label": "To", "format": "addressName", "params": { "types": ["wallet", "eoa", "contract"] }, "path": "#._to" },
-          { "label": "Min Rsw ETH", "format": "raw", "path": "#._minRswETH" }
+          {
+            "label": "Minimum rswETH",
+            "format": "tokenAmount",
+            "path": "#._minRswETH",
+            "params": { "token": "$.metadata.constants.swellToken" }
+          }
         ]
       },
       "depositWithReferral(address referral)": {
-        "intent": "Deposit",
+        "intent": "Stake ETH",
         "fields": [
-          { "label": "Referral", "format": "addressName", "params": { "types": ["wallet", "eoa", "contract"] }, "path": "#.referral" },
-          { "label": "Amount", "format": "amount", "path": "@.value" }
+          { "label": "Amount", "format": "amount", "path": "@.value", "visible": "always" },
+          { "label": "Referral", "format": "addressName", "params": { "types": ["wallet", "eoa", "contract"] }, "path": "#.referral" }
         ]
       },
       "increaseAllowance(address spender, uint256 addedValue)": {
         "intent": "Increase allowance",
         "fields": [
           { "label": "Spender", "format": "addressName", "params": { "types": ["wallet", "eoa", "contract"] }, "path": "#.spender" },
-          { "label": "Added Value", "format": "tokenAmount", "path": "#.addedValue", "params": { "tokenPath": "@.to" } }
+          {
+            "label": "Added Value",
+            "format": "tokenAmount",
+            "path": "#.addedValue",
+            "params": { "tokenPath": "@.to", "threshold": "0x8000000000000000000000000000000000000000000000000000000000000000" }
+          }
+        ]
+      },
+      "initialize(address _accessControlManager)": {
+        "intent": "Initialize",
+        "fields": [
+          {
+            "label": "Control manager",
+            "format": "addressName",
+            "params": { "types": ["contract"] },
+            "path": "#._accessControlManager",
+            "visible": "always"
+          }
         ]
       },
       "removeFromWhitelist(address _address)": {
@@ -85,9 +112,14 @@
       "reprice(uint256 _preRewardETHReserves, uint256 _newETHRewards, uint256 _rswETHTotalSupply)": {
         "intent": "Reprice",
         "fields": [
-          { "label": "Pre Reward Reserves", "format": "raw", "path": "#._preRewardETHReserves" },
-          { "label": "New ETH Rewards", "format": "raw", "path": "#._newETHRewards" },
-          { "label": "Rsw ETH Total Supply", "format": "raw", "path": "#._rswETHTotalSupply" }
+          { "label": "Pre Reward Reserves", "format": "amount", "path": "#._preRewardETHReserves" },
+          { "label": "New ETH Rewards", "format": "amount", "path": "#._newETHRewards" },
+          {
+            "label": "rswETH Total Supply",
+            "format": "tokenAmount",
+            "path": "#._rswETHTotalSupply",
+            "params": { "token": "$.metadata.constants.swellToken" }
+          }
         ]
       },
       "transfer(address to, uint256 amount)": {
@@ -105,7 +137,10 @@
           { "label": "Amount", "format": "tokenAmount", "path": "amount", "params": { "tokenPath": "@.to" } }
         ]
       },
-      "withdrawERC20(address _token)": { "fields": [{ "label": "Token", "format": "addressName", "params": { "types": ["token"] }, "path": "#._token" }] }
+      "withdrawERC20(address _token)": {
+        "intent": "Withdraw ERC20 tokens",
+        "fields": [{ "label": "Token", "format": "addressName", "params": { "types": ["token"] }, "path": "#._token" }]
+      }
     }
   }
 }
