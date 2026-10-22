@@ -1,0 +1,23 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "includes": "common-erc4626-vaults-multichain.json",
+  "metadata": {
+    "owner": "Clearstar",
+    "info": { "url": "https://www.clearstar.xyz/" },
+    "constants": { "underlyingTicker": "USDC", "vaultTicker": "CSUSDC" },
+    "maps": {
+      "underlyingToken": {
+        "$keyType": "chainId",
+        "values": { "1": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48", "8453": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913" }
+      }
+    }
+  },
+  "context": {
+    "contract": {
+      "deployments": [
+        { "chainId": 1, "address": "0x62fE596d59fB077c2Df736dF212E0AFfb522dC78" },
+        { "chainId": 8453, "address": "0x1D3b1Cd0a0f242d598834b3F2d126dC6bd774657" }
+      ]
+    }
+  }
+}

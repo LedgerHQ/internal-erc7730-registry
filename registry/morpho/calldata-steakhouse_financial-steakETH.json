@@ -1,10 +1,28 @@
 {
   "$schema": "../../specs/erc7730-v2.schema.json",
-  "includes": "../../ercs/calldata-erc4626-vaults.json",
+  "includes": "common-erc4626-vaults-multichain.json",
   "metadata": {
     "owner": "Steakhouse Financial",
     "info": { "url": "https://www.steakhouse.financial" },
-    "constants": { "underlyingToken": "0x4200000000000000000000000000000000000006", "underlyingTicker": "WETH", "vaultTicker": "steakETH" }
+    "constants": { "underlyingTicker": "WETH", "vaultTicker": "steakETH" },
+    "maps": {
+      "underlyingToken": {
+        "$keyType": "chainId",
+        "values": {
+          "1": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+          "143": "0xEE8c0E9f1BFFb4Eb878d8f15f368A02a35481242",
+          "8453": "0x4200000000000000000000000000000000000006"
+        }
+      }
+    }
   },
-  "context": { "contract": { "deployments": [{ "chainId": 8453, "address": "0xbEEf050a7485865A7a8d8Ca0CC5f7536b7a3443e" }] } }
+  "context": {
+    "contract": {
+      "deployments": [
+        { "chainId": 1, "address": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4" },
+        { "chainId": 143, "address": "0xba8424EBBEd6C51bEa6d6D903B8815838E6a0322" },
+        { "chainId": 8453, "address": "0xbEEf050a7485865A7a8d8Ca0CC5f7536b7a3443e" }
+      ]
+    }
+  }
 }

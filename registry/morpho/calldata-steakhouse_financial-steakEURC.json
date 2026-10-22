@@ -1,10 +1,23 @@
 {
   "$schema": "../../specs/erc7730-v2.schema.json",
-  "includes": "../../ercs/calldata-erc4626-vaults.json",
+  "includes": "common-erc4626-vaults-multichain.json",
   "metadata": {
     "owner": "Steakhouse Financial",
     "info": { "url": "https://www.steakhouse.financial" },
-    "constants": { "underlyingToken": "0x60a3E35Cc302bFA44Cb288Bc5a4F316Fdb1adb42", "underlyingTicker": "EURC", "vaultTicker": "steakEURC" }
+    "constants": { "underlyingTicker": "EURC", "vaultTicker": "steakEURC" },
+    "maps": {
+      "underlyingToken": {
+        "$keyType": "chainId",
+        "values": { "1": "0x1aBaEA1f7C830bD89Acc67eC4af516284b1bC33c", "8453": "0x60a3E35Cc302bFA44Cb288Bc5a4F316Fdb1adb42" }
+      }
+    }
   },
-  "context": { "contract": { "deployments": [{ "chainId": 8453, "address": "0xBeEF086b8807Dc5E5A1740C5E3a7C4c366eA6ab5" }] } }
+  "context": {
+    "contract": {
+      "deployments": [
+        { "chainId": 1, "address": "0xbEeF087c8430C0f9dCBa39BA866Eb7c22200599B" },
+        { "chainId": 8453, "address": "0xBeEF086b8807Dc5E5A1740C5E3a7C4c366eA6ab5" }
+      ]
+    }
+  }
 }
