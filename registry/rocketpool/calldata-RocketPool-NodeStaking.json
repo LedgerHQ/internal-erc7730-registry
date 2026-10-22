@@ -1,0 +1,60 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "context": {
+    "$id": "Rocket Pool NodeStaking",
+    "contract": { "deployments": [{ "chainId": 1, "address": "0x0d8d8f8541b12a0e1194b7cc4b6d954b90ab82ec" }] }
+  },
+  "metadata": {
+    "owner": "Rocket Pool",
+    "info": { "url": "https://rocketpool.net/" },
+    "contractName": "Rocket Pool Node Staking",
+    "constants": { "RPL": "0xd33526068d116ce69f19a9ee46f0bd304f21a51f" }
+  },
+  "display": {
+    "formats": {
+      "stakeRPL(uint256 _amount)": {
+        "intent": "Stake RPL",
+        "fields": [
+          {
+            "path": "#._amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": { "token": "$.metadata.constants.RPL" },
+            "visible": "always"
+          }
+        ]
+      },
+      "withdrawRPL(uint256 _amount)": {
+        "intent": "Withdraw RPL",
+        "fields": [
+          {
+            "path": "#._amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": { "token": "$.metadata.constants.RPL" },
+            "visible": "always"
+          }
+        ]
+      },
+      "stakeRPLFor(address _nodeAddress, uint256 _amount)": {
+        "intent": "Stake RPL for node",
+        "fields": [
+          {
+            "path": "#._nodeAddress",
+            "label": "Node",
+            "format": "addressName",
+            "params": { "types": ["eoa", "wallet", "contract"], "sources": ["local", "ens"] },
+            "visible": "always"
+          },
+          {
+            "path": "#._amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": { "token": "$.metadata.constants.RPL" },
+            "visible": "always"
+          }
+        ]
+      }
+    }
+  }
+}

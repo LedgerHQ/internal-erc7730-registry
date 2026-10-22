@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../specs/erc7730-tests.schema.json",
+  "tests": [
+    {
+      "description": "deposit (real onchain) - chain 1",
+      "rawTx": "0x02f877018084055d0a0c840b95e0798305840d94dd3f50f8a6cafbe9b31a427582963f465e745af8880d7621dc5821000084d0e30db0c001a075b811c5a8e347e7e7be8fe8b59bc463a054b6f3baaae9c61cebd1a28ddc96eaa0503ab356be5c02839da25f5d1bc8b7e0eb32b2cbf9933ee2b055920bbd62da17",
+      "txHash": "0x2ecf9b593d071e9a6525987c84c7ee09e141956cada68be06bb4c6057e0f97d0",
+      "expectedTexts": ["Stake ETH for rETH", "Amount", "0.97 ETH"]
+    }
+  ]
+}

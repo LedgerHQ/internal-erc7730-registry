@@ -1,0 +1,16 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "context": {
+    "$id": "Rocket Pool DepositPool",
+    "contract": { "deployments": [{ "chainId": 1, "address": "0xdd3f50f8a6cafbe9b31a427582963f465e745af8" }] }
+  },
+  "metadata": { "owner": "Rocket Pool", "info": { "url": "https://rocketpool.net/" }, "contractName": "Rocket Pool Deposit Pool" },
+  "display": {
+    "formats": {
+      "deposit()": {
+        "intent": "Stake ETH for rETH",
+        "fields": [{ "path": "@.value", "label": "Amount", "format": "amount", "visible": "always" }]
+      }
+    }
+  }
+}

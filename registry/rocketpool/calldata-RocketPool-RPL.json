@@ -1,0 +1,29 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "context": {
+    "$id": "Rocket Pool RPL",
+    "contract": { "deployments": [{ "chainId": 1, "address": "0xd33526068d116ce69f19a9ee46f0bd304f21a51f" }] }
+  },
+  "metadata": {
+    "owner": "Rocket Pool",
+    "info": { "url": "https://rocketpool.net/" },
+    "contractName": "Rocket Pool Protocol",
+    "constants": { "legacyRPL": "0xb4efd85c19999d84251304bda99e90b92300bd93" }
+  },
+  "display": {
+    "formats": {
+      "swapTokens(uint256 _amount)": {
+        "intent": "Swap legacy RPL for new RPL",
+        "fields": [
+          {
+            "path": "#._amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": { "token": "$.metadata.constants.legacyRPL" },
+            "visible": "always"
+          }
+        ]
+      }
+    }
+  }
+}

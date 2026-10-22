@@ -1,0 +1,39 @@
+{
+  "$schema": "../../../specs/erc7730-tests.schema.json",
+  "tests": [
+    {
+      "description": "burn (real onchain) - chain 1",
+      "rawTx": "0x02f891018203728432fc5e408432fc5e4083032a0c94ae78736cd615f374d3085123a210448e74fc639380a442966c68000000000000000000000000000000000000000000000000000135cfb4815b7cc080a09bd22111e647d542d7b07d89a7986db73eacf532d65b5fc64b92824d38e86225a01a596ae96091bbd7a90054877225e14f139a39a1c2893f22631349c36812fa8a",
+      "txHash": "0x72eb10dd138e9fe76735e014cfcaeb30eb81fd125926b33285643f334b230f98",
+      "expectedTexts": [
+        "Burn rETH for ETH",
+        "Amount",
+        "0.0003406411795895 rETH"
+      ]
+    },
+    {
+      "description": "rETH transfer via native ERC-20 clear signing (real onchain) - chain 1",
+      "rawTx": "0x02f8af0173840bd43e9d840faac88f82b65894ae78736cd615f374d3085123a210448e74fc639380b844a9059cbb000000000000000000000000a652340f6e7e64b45b6b919856645af4fd46e8090000000000000000000000000000000000000000000000000de0b6b3a7640000c080a060bc1451bfc1cffd2980c8fceeb9a1ce9c1861e80fccbf884864a8870ea25909a015ff1d0a32325e837ab3fcec40159a84b47a8cdd2e6862a00b015bcf9327f17f",
+      "txHash": "0x2119f5605458d69c7f3c6a760f1a1b2bf60edfdd3ed5946d9efc1e7e930915bb",
+      "expectedTexts": [
+        "Send",
+        "Amount",
+        "1 rETH",
+        "To",
+        "0xA652340f6E7E64B45b6b919856645Af4fD46E809"
+      ]
+    },
+    {
+      "description": "rETH approve via native ERC-20 clear signing (real onchain) - chain 1",
+      "rawTx": "0x02f8af01228423c34600842721652082aafc94ae78736cd615f374d3085123a210448e74fc639380b844095ea7b30000000000000000000000001111111254eeb25477b68fb85ed929f73a9605820000000000000000000000000000000000000000000000000000000000000000c001a0f8bcb576f668917c1b3714437991f6d7e50bf377b6bb8ff358f368bc6f4a40d8a03cecc1b92a4ed6bd5a7674d413750107e959cc3239e515ee6abc517d505b1559",
+      "txHash": "0xab2e97e05bdcc6e93e219d9e53684fbcc6e1bb0df1606f48c0d9dfb4c734bce5",
+      "expectedTexts": [
+        "Approve",
+        "Spender",
+        "AggregationRouterV5",
+        "Amount",
+        "0 rETH"
+      ]
+    }
+  ]
+}
