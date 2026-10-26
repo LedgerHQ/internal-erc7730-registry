@@ -1,0 +1,37 @@
+{
+  "$schema": "../../../specs/erc7730-tests.schema.json",
+  "tests": [
+    {
+      "description": "deposit (real onchain) - chain 1",
+      "rawTx": "0x02f87701808423c34600842983bf2083050b4694ce15294273cfb9d9b628f4d61636623decdf4fdc886ad5152b70ba29c584d0e30db0c080a0dd0f151aad704344d97ef4cbce339ff56eb37c6231b40f0b219de060947ada24a00efc91f2f6f8372a5c818d54f48644ff6c822f453a4aaf5aef51723f034cf012",
+      "txHash": "0x67d2ba9d3eb0df2dc886f556ba75152ef49157465aa6db60edeb18ff5ba26413",
+      "expectedTexts": [
+        "Stake ETH for rETH",
+        "Amount",
+        "7.698082414378756549 ETH"
+      ]
+    },
+    {
+      "description": "withdrawCredit (real onchain) - chain 1",
+      "rawTx": "0x02f88f01118477359400847a07feac8303b7dc94ce15294273cfb9d9b628f4d61636623decdf4fdc80a4ef6f886a000000000000000000000000000000000000000000000001bc16d674ec800000c001a07f5534c008b4c01e90f41cc09e2452cd519758d64aaec81140a24151059a2f28a0160bfd658acb268d9661307f56a2a1bf114f83946f8eba7b0223f0b29375f71b",
+      "txHash": "0x0f980200bf084ff8436cecbe033ff7638b68794cd9c53b756e3a9bece949975a",
+      "expectedTexts": [
+        "Withdraw ETH credit as rETH",
+        "ETH credit",
+        "32 ETH"
+      ]
+    },
+    {
+      "description": "withdrawCreditFor (real onchain) - chain 1",
+      "rawTx": "0x02f8b0010b8477359400847a1d4ce183023b0894ce15294273cfb9d9b628f4d61636623decdf4fdc80b844a559a645000000000000000000000000fbe56603b0dcd0414e5a62e22641d853873471a10000000000000000000000000000000000000000000000006f05b59d3b200000c080a0bb5b86bc7ff2787312eb3bb8ec4992d464df19ad89744cd655fb47eb0c025226a02debf71d4021eb025b44622bba3874498df322c2ae547b38c8d6f074cf71f074",
+      "txHash": "0x9f260a1cf25b0cdf93266fdc353627c4fa2a792a3db1a6c666e441460e69b6a7",
+      "expectedTexts": [
+        "Withdraw ETH credit as rETH",
+        "Node",
+        "0xfbe56603B0dcD0414E5A62E22641D853873471a1",
+        "ETH credit",
+        "8 ETH"
+      ]
+    }
+  ]
+}

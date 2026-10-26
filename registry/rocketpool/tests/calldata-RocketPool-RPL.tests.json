@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../specs/erc7730-tests.schema.json",
+  "tests": [
+    {
+      "description": "swapTokens (real onchain) - chain 1",
+      "rawTx": "0x02f88f011d8412ae4650844d7b31da8301425e94d33526068d116ce69f19a9ee46f0bd304f21a51f80a4fe784eaa0000000000000000000000000000000000000000000000c328093e61ee400000c001a0b8f6240b548887f7420f052544603e30019ec2ba1e865980044edf9bc93cbd07a056f0038d814acf70a6db2c9263ea29e649ed81ee45f430a0fd91a83bd8a168ae",
+      "txHash": "0x7c7df1bb5ef27006ee60bb468c99c835e43c1d35374835a1b2efd51b5ed3fe51",
+      "expectedTexts": ["Swap legacy RPL for new RPL", "Amount", "3600 RPL_"]
+    },
+    {
+      "description": "RPL transfer via native ERC-20 clear signing (real onchain) - chain 1",
+      "rawTx": "0x02f8b40183f80072843b9aca00852794ca24008303291894d33526068d116ce69f19a9ee46f0bd304f21a51f80b844a9059cbb00000000000000000000000034d20a0e73f81746d9cdde9997531dd32dd72c470000000000000000000000000000000000000000000000017594efe0741bf800c080a0e63ebfeb6388b14c636acc033bf8c1d162395255b79829c0238cc5de17bb2940a02a871161e754f567f3fc2e26b3eb8521bba82a0d38edc2a9ca9a564a49a1fa6a",
+      "txHash": "0xc15ba9f7d143dc71c3fd6136a07d030ecdb8c99a9c69e62cf189b8f477cdf973",
+      "expectedTexts": [
+        "Send",
+        "Amount",
+        "26.91940462 RPL",
+        "To",
+        "0x34D20A0E73F81746d9CDdE9997531dD32dd72C47"
+      ]
+    },
+    {
+      "description": "RPL approve via native ERC-20 clear signing (real onchain) - chain 1",
+      "rawTx": "0x02f8b001088408f0d180841a33c380830110d894d33526068d116ce69f19a9ee46f0bd304f21a51f80b844095ea7b3000000000000000000000000edfc7dcae43ff954577a2875a9d805874490ee3e000000000000000000000000000000000000000000000001c9268c594d34ad63c080a06bc8c5fad1f8ae28c08d42d1e1e7dfdbceaf7b0ab501aa9981820a8d928dbedba006e9034fa8c9e0e7232b084c384bcc8559a4da93ff1278fed5b568f14424f93f",
+      "txHash": "0x73bccb103dea5adfe7704cf7ba5b12224d0beb2ed6daffb42f2bccefa1561c7b",
+      "expectedTexts": [
+        "Approve",
+        "Spender",
+        "0xedFc7DCaE43fF954577a2875a9D805874490eE3E",
+        "Amount",
+        "32.941170839623347555 RPL"
+      ]
+    }
+  ]
+}

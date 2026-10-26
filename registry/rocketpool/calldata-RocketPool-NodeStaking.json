@@ -1,0 +1,169 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "context": {
+    "$id": "Rocket Pool NodeStaking",
+    "contract": { "deployments": [{ "chainId": 1, "address": "0xedfc7dcae43ff954577a2875a9d805874490ee3e" }] }
+  },
+  "metadata": {
+    "owner": "Rocket Pool",
+    "info": { "url": "https://rocketpool.net/" },
+    "contractName": "Rocket Pool Node Staking",
+    "constants": { "RPL": "0xd33526068d116ce69f19a9ee46f0bd304f21a51f" }
+  },
+  "display": {
+    "formats": {
+      "stakeRPL(uint256 _amount)": {
+        "intent": "Stake RPL",
+        "fields": [
+          {
+            "path": "#._amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": { "token": "$.metadata.constants.RPL" },
+            "visible": "always"
+          }
+        ]
+      },
+      "stakeRPLFor(address _nodeAddress, uint256 _amount)": {
+        "intent": "Stake RPL for node",
+        "fields": [
+          {
+            "path": "#._nodeAddress",
+            "label": "Node",
+            "format": "addressName",
+            "params": { "types": ["eoa", "wallet", "contract"], "sources": ["local", "ens"] },
+            "visible": "always"
+          },
+          {
+            "path": "#._amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": { "token": "$.metadata.constants.RPL" },
+            "visible": "always"
+          }
+        ]
+      },
+      "unstakeRPL(uint256 _amount)": {
+        "intent": "Unstake RPL",
+        "fields": [
+          {
+            "path": "#._amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": { "token": "$.metadata.constants.RPL" },
+            "visible": "always"
+          }
+        ]
+      },
+      "unstakeRPLFor(address _nodeAddress, uint256 _amount)": {
+        "intent": "Unstake RPL for node",
+        "fields": [
+          {
+            "path": "#._nodeAddress",
+            "label": "Node",
+            "format": "addressName",
+            "params": { "types": ["eoa", "wallet", "contract"], "sources": ["local", "ens"] },
+            "visible": "always"
+          },
+          {
+            "path": "#._amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": { "token": "$.metadata.constants.RPL" },
+            "visible": "always"
+          }
+        ]
+      },
+      "unstakeLegacyRPL(uint256 _amount)": {
+        "intent": "Unstake legacy RPL",
+        "fields": [
+          {
+            "path": "#._amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": { "token": "$.metadata.constants.RPL" },
+            "visible": "always"
+          }
+        ]
+      },
+      "unstakeLegacyRPLFor(address _nodeAddress, uint256 _amount)": {
+        "intent": "Unstake legacy RPL for node",
+        "fields": [
+          {
+            "path": "#._nodeAddress",
+            "label": "Node",
+            "format": "addressName",
+            "params": { "types": ["eoa", "wallet", "contract"], "sources": ["local", "ens"] },
+            "visible": "always"
+          },
+          {
+            "path": "#._amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": { "token": "$.metadata.constants.RPL" },
+            "visible": "always"
+          }
+        ]
+      },
+      "withdrawRPL()": { "intent": "Withdraw unstaked RPL", "fields": [] },
+      "withdrawRPLFor(address _nodeAddress)": {
+        "intent": "Withdraw unstaked RPL",
+        "fields": [
+          {
+            "path": "#._nodeAddress",
+            "label": "Node",
+            "format": "addressName",
+            "params": { "types": ["eoa", "wallet", "contract"], "sources": ["local", "ens"] },
+            "visible": "always"
+          }
+        ]
+      },
+      "setStakeRPLForAllowed(address _caller, bool _allowed)": {
+        "intent": "Allow staking RPL for node",
+        "fields": [
+          {
+            "path": "#._caller",
+            "label": "Caller",
+            "format": "addressName",
+            "params": { "types": ["eoa", "wallet", "contract"], "sources": ["local", "ens"] },
+            "visible": "always"
+          },
+          { "path": "#._allowed", "label": "Allowed", "format": "raw", "visible": "always" }
+        ]
+      },
+      "setStakeRPLForAllowed(address _nodeAddress, address _caller, bool _allowed)": {
+        "intent": "Allow staking RPL for node",
+        "fields": [
+          {
+            "path": "#._nodeAddress",
+            "label": "Node",
+            "format": "addressName",
+            "params": { "types": ["eoa", "wallet", "contract"], "sources": ["local", "ens"] },
+            "visible": "always"
+          },
+          {
+            "path": "#._caller",
+            "label": "Caller",
+            "format": "addressName",
+            "params": { "types": ["eoa", "wallet", "contract"], "sources": ["local", "ens"] },
+            "visible": "always"
+          },
+          { "path": "#._allowed", "label": "Allowed", "format": "raw", "visible": "always" }
+        ]
+      },
+      "setRPLLockingAllowed(address _nodeAddress, bool _allowed)": {
+        "intent": "Allow RPL locking",
+        "fields": [
+          {
+            "path": "#._nodeAddress",
+            "label": "Node",
+            "format": "addressName",
+            "params": { "types": ["eoa", "wallet", "contract"], "sources": ["local", "ens"] },
+            "visible": "always"
+          },
+          { "path": "#._allowed", "label": "Allowed", "format": "raw", "visible": "always" }
+        ]
+      }
+    }
+  }
+}

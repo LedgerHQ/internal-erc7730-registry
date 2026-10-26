@@ -1,0 +1,150 @@
+{
+  "$schema": "../../../specs/erc7730-tests.schema.json",
+  "tests": [
+    {
+      "description": "stakeRPL (real onchain) - chain 1",
+      "rawTx": "0x02f890018190841dcd65008432f82ae383051fea94edfc7dcae43ff954577a2875a9d805874490ee3e80a43e200d4b0000000000000000000000000000000000000000000000407d1d7d5f856accadc001a016d070293dd4f68dd658d592fc2721665f7e8acfeb8711670ffed6cd7939c2eba00c25e942c54dea8e9686162901ca774add8ba058e4665c63e3ec5fa24dadb3e3",
+      "txHash": "0x9032694f55c63a415790ee38b91ae21d6f68b853fbce9f2abe50605685121113",
+      "expectedTexts": [
+        "Stake RPL",
+        "Amount",
+        "1189.607120595690638509 RPL"
+      ]
+    },
+    {
+      "description": "stakeRPLFor (real onchain) - chain 1",
+      "rawTx": "0x02f8b20182018b8477359400847bb3063b8303883394edfc7dcae43ff954577a2875a9d805874490ee3e80b844cb1c8321000000000000000000000000c0e7c12756954454937943316b2ad99e4ebe11ac000000000000000000000000000000000000000000000a75386dbdc201680000c080a0b0a8c6132a38ccdd0589e4c53fe27d47fa4679c9310ecc79980be4198c53beaaa045651af3bce7512546ffafaf40b8b3dca2ee65f24c4357d3f79c6c68ccb4088e",
+      "txHash": "0x486a4ff4938f16725dd6057bae1aafedc566ad4a4683abfe227ab45d66b2f3be",
+      "expectedTexts": [
+        "Stake RPL for node",
+        "Node",
+        "mandos.eth",
+        "Amount",
+        "49386 RPL"
+      ]
+    },
+    {
+      "description": "unstakeRPL (real onchain) - chain 1",
+      "rawTx": "0x02f88f011084773594008479f184a98304ae0094edfc7dcae43ff954577a2875a9d805874490ee3e80a4ed2fde70000000000000000000000000000000000000000000000a2a15d09519be000000c080a0fc5319513c48f1d43c450b9f716b35612ff3a0764a3101f43400802cb91a847ba07f415e8de695d0d4fbf5e95fcec88b260e93326dbec97809b0ac012adbeede58",
+      "txHash": "0xe7f9bb3f1a023d2eb6e516c4cfd202c2d3cf811586ae4fc1cc236ed84c89b237",
+      "expectedTexts": [
+        "Unstake RPL",
+        "Amount",
+        "48000 RPL"
+      ]
+    },
+    {
+      "description": "unstakeRPLFor (real onchain) - chain 1",
+      "rawTx": "0x02f8b001018423c34600849c488b808304af2794edfc7dcae43ff954577a2875a9d805874490ee3e80b844f4410be400000000000000000000000071dd99490c5e36a22b2a73f31225fa5fa40223d100000000000000000000000000000000000000000000009c8c5ce65c3fbf947fc080a07068c5e85cb6cd5d6cc46bb1513912612f1c1ef0abdecc5c48b9288126a53425a053d4adee9ad8f7d40fc25ebcd27becea30e88a9c1ac2776d6a299bebd56371a3",
+      "txHash": "0xc7a0fa1f71878a0af98016ba5ff7637e8f599447d3bf38f5a7f6ee7fd61b8826",
+      "expectedTexts": [
+        "Unstake RPL for node",
+        "Node",
+        "rocketfool.eth",
+        "Amount",
+        "2887.806287645738243199 RPL"
+      ]
+    },
+    {
+      "description": "unstakeLegacyRPL (real onchain) - chain 1",
+      "rawTx": "0x02f88e0113839896808402f72d4d83054be994edfc7dcae43ff954577a2875a9d805874490ee3e80a4a06286bf0000000000000000000000000000000000000000000000272c7763a1a0c1628cc080a08d1050a9b032d15ee7e4a13d4bd076343a592442aa8e712fe34602ac33ab6171a06f162cb5a45b02d34277f8620d2a34246ce3220a7bdeb870171d63565119919e",
+      "txHash": "0x0ebf66f422b22c10b43329d9c199cd2d1e37039c6ed361e9b4f5ceccff1e584a",
+      "expectedTexts": [
+        "Unstake legacy RPL",
+        "Amount",
+        "722.627158080407822988 RPL"
+      ]
+    },
+    {
+      "description": "unstakeLegacyRPLFor (real onchain) - chain 1",
+      "rawTx": "0x02f8b00181f0839896808404c4b400830388ef94edfc7dcae43ff954577a2875a9d805874490ee3e80b844d35e8c83000000000000000000000000cba537db4903657a18092d7f58fe4d0f45ca2cc500000000000000000000000000000000000000000000032b597026462cf2d1dac001a0ed7d542d84cf52e640a2a626d556584a4f64ce0925255ef056915ed8f887704ca04a5304d1a39d9b87d0b16a3838752fe87299adba3ccfca3b7ed9e162a29d6172",
+      "txHash": "0x7c0d5600481de68ba03dcbcf270661d92299ea588e32bbd9851402dd2bc8d0e6",
+      "expectedTexts": [
+        "Unstake legacy RPL for node",
+        "Node",
+        "0xcbA537Db4903657a18092D7F58fe4D0f45cA2cC5",
+        "Amount",
+        "14966.754136928057217498 RPL"
+      ]
+    },
+    {
+      "description": "withdrawRPL (real onchain) - chain 1",
+      "rawTx": "0x02f86f015684773594008479ecefca8302f23294edfc7dcae43ff954577a2875a9d805874490ee3e808433621a76c080a0b06247c9ca35dd092e4da7cfbab707b85fd2ea582fa5fac8b97355a68e7915eaa06b55d80bcc521ab3f6f98784f160c735614842b22f62b1b2c6943fcabb91b0c6",
+      "txHash": "0x4c383909e168eee44be71cde2c75042e04aba08bfe5dd27f3b9972ff4342643a",
+      "expectedTexts": [
+        "Withdraw unstaked RPL"
+      ]
+    },
+    {
+      "description": "withdrawRPLFor (real onchain) - chain 1",
+      "rawTx": "0x02f88f01078408f0d180840c28cb008302f58e94edfc7dcae43ff954577a2875a9d805874490ee3e80a454e8ca0a000000000000000000000000bdc6fc0f56ca6ea1b99e84f0458544b60191282ec001a0f13ad14a26f9439eec1a8ac83c10c39d6e2876e806324bb33ec6381f82040385a0026a4659f13adcbbe7bb190410b4a484d4c0752acc4f6a8e9ac3476c05ea81bf",
+      "txHash": "0xf74427d117042774ee905ec07519c69608c985385005f0ed887b97c209b909e6",
+      "expectedTexts": [
+        "Withdraw unstaked RPL",
+        "Node",
+        "0xbDc6fc0f56ca6eA1B99E84F0458544b60191282e"
+      ]
+    },
+    {
+      "description": "setStakeRPLForAllowed allowed=true (real onchain) - chain 1",
+      "rawTx": "0x02f8af011283989680840430d0a08301ae2d94edfc7dcae43ff954577a2875a9d805874490ee3e80b844088903a4000000000000000000000000b431be7f477560ab9b45b6afd108a466964948100000000000000000000000000000000000000000000000000000000000000001c080a039cbf29cf00a1523fd0ecf5c9092361c123b6ec6ca6b63f89c9f41fc6737363ea05c288e330016755cc5b86d79e2276ca5bbeaa629016852ed73e265c5f3e363f9",
+      "txHash": "0x43a80df607464e6e5eacd0a407b656a5436286ace834bd1831952d8afe879d6b",
+      "expectedTexts": [
+        "Allow staking RPL for node",
+        "Caller",
+        "feltgood.eth",
+        "Allowed",
+        "true"
+      ]
+    },
+    {
+      "description": "setStakeRPLForAllowed allowed=false (real onchain) - chain 1",
+      "rawTx": "0x02f8af010583989680840268f1808301460894edfc7dcae43ff954577a2875a9d805874490ee3e80b844088903a4000000000000000000000000e8512ac0acdffe9cc50e6f83020760b9715a7fe40000000000000000000000000000000000000000000000000000000000000000c080a09ba15facac0378f7401d66e2ea8f5b301aea0f5cb2f912a43943b9604b7592eaa0676ac3bef60c81c168351d526181cde2bf3421316e7b9b82ea300fb850647ade",
+      "txHash": "0x6a4e7452d859660b516e8be1f2fe99c313707a9d6e72afe916c1022d08facbb5",
+      "expectedTexts": [
+        "Allow staking RPL for node",
+        "Caller",
+        "0xe8512Ac0ACDfFe9Cc50e6F83020760B9715a7fe4",
+        "Allowed",
+        "false"
+      ]
+    },
+    {
+      "description": "setStakeRPLForAllowed (node, caller) (synthetic) - chain 1",
+      "rawTx": "0x02f8910180843b9aca008506fc23ac00830493e094edfc7dcae43ff954577a2875a9d805874490ee3e80b8643d65c1fa00000000000000000000000071c7656ec7ab88b098defb751b7401b5f6d8976f0000000000000000000000001b61c2307b179087669758dcfb71c53e9819fc9b0000000000000000000000000000000000000000000000000000000000000001c0800101",
+      "expectedTexts": [
+        "Allow staking RPL for node",
+        "Node",
+        "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+        "Caller",
+        "0x1b61c2307b179087669758DCfb71C53e9819FC9b",
+        "Allowed",
+        "true"
+      ]
+    },
+    {
+      "description": "setRPLLockingAllowed allowed=true (real onchain) - chain 1",
+      "rawTx": "0x02f8af010b839896808402dd3a288301991494edfc7dcae43ff954577a2875a9d805874490ee3e80b844194c63d800000000000000000000000005b5d811536b43a0fa1e9d3092990d7d559e5ed10000000000000000000000000000000000000000000000000000000000000001c001a02b8c5cab92c0d930fe39525f9361347ee5a1f2efb4f5989d201ab82eece6339ba0151d6e87175558cf167535fa95359ba3b95040dd54fc47b4bd2a356e69dc845d",
+      "txHash": "0x4255e00e187f786b1aeba4f10e0d0a289172aeb01504b7b091faff4d45fed0cf",
+      "expectedTexts": [
+        "Allow RPL locking",
+        "Node",
+        "0x05B5d811536b43a0fa1e9D3092990D7D559e5Ed1",
+        "Allowed",
+        "true"
+      ]
+    },
+    {
+      "description": "setRPLLockingAllowed allowed=false (real onchain) - chain 1",
+      "rawTx": "0x02f8b2018203708423c346008428ecaf40830133ef94edfc7dcae43ff954577a2875a9d805874490ee3e80b844194c63d80000000000000000000000008c2141da5aa1048eff84c979df27eae47b2406da0000000000000000000000000000000000000000000000000000000000000000c001a08e23e32257f080444312d634b738b36d7aa079a3295f3ca95167f214d64e5f23a024ca91e2009320aaa40ac02990c6a2f29647867dcf699ca7fe4df76a6dc71840",
+      "txHash": "0xd4216ea600decdd74c760b9fe49c0b08051475b0e98d0280ca0ca14245db5f72",
+      "expectedTexts": [
+        "Allow RPL locking",
+        "Node",
+        "0x8c2141Da5AA1048EFF84c979dF27eAE47b2406Da",
+        "Allowed",
+        "false"
+      ]
+    }
+  ]
+}

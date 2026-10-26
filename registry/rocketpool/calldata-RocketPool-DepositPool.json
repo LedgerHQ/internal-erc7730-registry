@@ -1,0 +1,33 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "context": {
+    "$id": "Rocket Pool DepositPool",
+    "contract": { "deployments": [{ "chainId": 1, "address": "0xce15294273cfb9d9b628f4d61636623decdf4fdc" }] }
+  },
+  "metadata": { "owner": "Rocket Pool", "info": { "url": "https://rocketpool.net/" }, "contractName": "Rocket Pool Deposit Pool" },
+  "display": {
+    "formats": {
+      "deposit()": {
+        "intent": "Stake ETH for rETH",
+        "fields": [{ "path": "@.value", "label": "Amount", "format": "amount", "visible": "always" }]
+      },
+      "withdrawCredit(uint256 _amount)": {
+        "intent": "Withdraw ETH credit as rETH",
+        "fields": [{ "path": "#._amount", "label": "ETH credit", "format": "amount", "visible": "always" }]
+      },
+      "withdrawCreditFor(address _nodeAddress, uint256 _amount)": {
+        "intent": "Withdraw ETH credit as rETH",
+        "fields": [
+          {
+            "path": "#._nodeAddress",
+            "label": "Node",
+            "format": "addressName",
+            "params": { "types": ["eoa", "wallet", "contract"], "sources": ["local", "ens"] },
+            "visible": "always"
+          },
+          { "path": "#._amount", "label": "ETH credit", "format": "amount", "visible": "always" }
+        ]
+      }
+    }
+  }
+}
