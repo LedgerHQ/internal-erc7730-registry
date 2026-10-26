@@ -429,6 +429,7 @@
   "eip155:1:0xe12e0f117d23a5ccc57f8935cd8c4e80cd91ff01": "registry/1inch/calldata-NativeOrderFactory.json",
   "eip155:1:0xe3e9ba8c8c696f8537cf16b23eddf118bbd7f21f": "registry/yieldxyz/calldata-yieldxyz-pol-validator.json",
   "eip155:1:0xe69884a372571af24fcb94fb3f6948d1b0146533": "registry/kiln/calldata-Vault-EURC-Morpho-Gauntlet-Core.json",
+  "eip155:1:0xe6d8d8ac54461b1c5ed15740eee322043f696c08": "registry/chorus-one/calldata-ChorusOne-StakeWise-Vault.json",
   "eip155:1:0xe75d77b1865ae93c7eaa3040b038d7aa7bc02f70": "registry/origin/calldata-OUSD-vault.json",
   "eip155:1:0xe87ed29896b91421ff43f69257abf78300e40c7a": "registry/morpho/calldata-re7_labs-Re7wstETH.json",
   "eip155:1:0xebfa750279defa89b8d99bdd145a016f6292757b": "registry/morpho/calldata-gauntlet-gtUSDCmkr.json",
