@@ -1,0 +1,58 @@
+{
+  "$schema": "../../../specs/erc7730-tests.schema.json",
+  "tests": [
+    {
+      "description": "deposit (real onchain) - yvUSDC-ETH-Put vault",
+      "rawTx": "0x02f88e011c8303e9e384076f80738301ca2094cc323557c71c0d1d20a1861dc69c06c5f3cc962480a4b6b55f2500000000000000000000000000000000000000000000000000000000000f4240c080a06a634d6d8933ec9e876852598db2bab89acdaa81f805dda9c471d4bd68dccff9a022e333c4c36625cc8e64855bcef1ddbdedc986da2f82bc523ac8accea56c6b85",
+      "expectedTexts": ["Deposit", "Vault", "Ribbon yvUSDC ETH Put Vault", "Amount", "1 USDC"]
+    },
+    {
+      "description": "depositFor (synthetic) - yvUSDC-ETH-Put vault",
+      "rawTx": "0x02f8710180843b9aca008506fc23ac0083061a8094cc323557c71c0d1d20a1861dc69c06c5f3cc962480b84436efd16f000000000000000000000000000000000000000000000000000000000016e3600000000000000000000000008bda12496bf61cd2ea89ad32562670bcdfdc5404c0800101",
+      "expectedTexts": [
+        "Deposit",
+        "Vault",
+        "Ribbon yvUSDC ETH Put Vault",
+        "Amount",
+        "1.5 USDC",
+        "Beneficiary",
+        "0x8bDA12496BF61cd2ea89AD32562670BcdFDc5404"
+      ]
+    },
+    {
+      "description": "withdrawInstantly (real onchain) - yvUSDC-ETH-Put vault",
+      "rawTx": "0x02f8900181d18404c3556f840a351a518301e10394cc323557c71c0d1d20a1861dc69c06c5f3cc962480a42775d01c00000000000000000000000000000000000000000000000000000000000f4240c080a07824547e471f1a0b5217e7e35db66710a36c8c617f82c5416aabd9a03951c36ca04f52daf323cb3d46b6a368910a66c30a2a555695f718bf17bec70ef9fba5cc57",
+      "expectedTexts": ["Instant Withdraw", "Vault", "Ribbon yvUSDC ETH Put Vault", "Amount", "1 USDC"]
+    },
+    {
+      "description": "initiateWithdraw (real onchain) - yvUSDC-ETH-Put vault",
+      "rawTx": "0x02f891018203418423c34600842736c1e08302a5c494cc323557c71c0d1d20a1861dc69c06c5f3cc962480a47e108d520000000000000000000000000000000000000000000000000000000000cca71dc001a01efd9ffe875f466ab3a75ded3307458842fc5cc3faa0d3623ea90041ab6c83b1a018c2b01ffba4aeb90ceadc0dc0f1a8a5914ef574f775cab71fa24d7fd8b9dee4",
+      "expectedTexts": ["Initiate Withdraw", "Vault", "Ribbon yvUSDC ETH Put Vault", "Shares", "13.412125 shares"]
+    },
+    {
+      "description": "completeWithdraw (real onchain) - yvUSDC-ETH-Put vault",
+      "rawTx": "0x02f87101820524845b4134c0845f4ecdc08302570c94cc323557c71c0d1d20a1861dc69c06c5f3cc96248084f756fa21c001a0761f8946decd5983b3eae0356d8869efc422d8bcbf67f8162a542acdfb3c8441a02172c6af8fc926c06fb85a9fb43d55f36457183cf13256a78659e9831c49c9e3",
+      "expectedTexts": ["Complete Withdraw", "Vault", "Ribbon yvUSDC ETH Put Vault"]
+    },
+    {
+      "description": "redeem (synthetic) - yvUSDC-ETH-Put vault",
+      "rawTx": "0x02f8500180843b9aca008506fc23ac0083061a8094cc323557c71c0d1d20a1861dc69c06c5f3cc962480a4db006a75000000000000000000000000000000000000000000000000000000000016e360c0800101",
+      "expectedTexts": ["Redeem shares", "Vault", "Ribbon yvUSDC ETH Put Vault", "Shares", "1.5 shares"]
+    },
+    {
+      "description": "maxRedeem (real onchain) - yvUSDC-ETH-Put vault",
+      "rawTx": "0x02f8700104840106792c85048b6dd2158301e00494cc323557c71c0d1d20a1861dc69c06c5f3cc962480846f31ab34c001a0c7b98510672fa00ea428881612e73f7f7326d0c85998bb8343397d4240654dbda0242b98f85b27cbb2d515adc774bb688cc3b16c88e12d71e853d981447f00ed44",
+      "expectedTexts": ["Redeem all shares", "Vault", "Ribbon yvUSDC ETH Put Vault"]
+    },
+    {
+      "description": "stake (real onchain) - yvUSDC-ETH-Put vault",
+      "rawTx": "0x02f8910181c1847735940085051f4d5c008307a12094cc323557c71c0d1d20a1861dc69c06c5f3cc962480a4a694fc3a0000000000000000000000000000000000000000000000000000000029c75915c001a034a43cc3318896914879ebaef71183b4cc923f94560ca12c2669896f611f416da02bf460b2450851c811ecdd492a50d3c1b5192a373b1dd2294d74c44dfca18dc4",
+      "expectedTexts": ["Stake shares", "Vault", "Ribbon yvUSDC ETH Put Vault", "Shares", "700.930325 shares"]
+    },
+    {
+      "description": "pausePosition (real onchain) - yvUSDC-ETH-Put vault",
+      "rawTx": "0x02f8700103847735940085046c7cfe008302fe6794cc323557c71c0d1d20a1861dc69c06c5f3cc96248084ca594094c080a0bd76fda852fefd8b38eed63665b96e5d61bba1fbc69cd55336faafe915c143e3a021f23ac8bd657eb781fef9e786f9c269bf6268903721c6f22d20e01c838369e8",
+      "expectedTexts": ["Pause position", "Vault", "Ribbon yvUSDC ETH Put Vault"]
+    }
+  ]
+}
