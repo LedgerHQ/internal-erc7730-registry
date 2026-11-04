@@ -1,0 +1,48 @@
+{
+  "$schema": "../../../specs/erc7730-tests.schema.json",
+  "tests": [
+    {
+      "description": "deposit (real onchain) - APE vault",
+      "rawTx": "0x02f8900101843b9aca00850a0eebb0008302635594c0cf10dd710aefb209d9dc67bc746510ffd98a5380a4b6b55f25000000000000000000000000000000000000000000000000a51c00aafd4b0400c001a09397e5ac3bdcf6c842aba7216319062c77b2cdd1121833c867a01769293e054ca01c440a13f6189bd0947afe470d58e2292ac6a2e67ebd751931903c46c46c4fb5",
+      "expectedTexts": ["Deposit", "Vault", "Ribbon APE Theta Vault", "Amount", "11.89738505 APE"]
+    },
+    {
+      "description": "depositFor (synthetic) - APE vault",
+      "rawTx": "0x02f8710180843b9aca008506fc23ac0083061a8094c0cf10dd710aefb209d9dc67bc746510ffd98a5380b84436efd16f00000000000000000000000000000000000000000000000014d1120d7b1600000000000000000000000000008bda12496bf61cd2ea89ad32562670bcdfdc5404c0800101",
+      "expectedTexts": [
+        "Deposit",
+        "Vault",
+        "Ribbon APE Theta Vault",
+        "Amount",
+        "1.5 APE",
+        "Beneficiary",
+        "0x8bDA12496BF61cd2ea89AD32562670BcdFDc5404"
+      ]
+    },
+    {
+      "description": "withdrawInstantly (real onchain) - APE vault",
+      "rawTx": "0x02f89001188459682f0085051b0c5549830157f494c0cf10dd710aefb209d9dc67bc746510ffd98a5380a42775d01c0000000000000000000000000000000000000000000000016fc2e998d3da0000c001a0e7f3ada1260b7c7991c1165273bcb8a0da01065fc7b67f16d7ac16be951eb5d4a0218ce626b4464c46424d4002451f5b1c2271586447d532191bb01c434a5b8405",
+      "expectedTexts": ["Instant Withdraw", "Vault", "Ribbon APE Theta Vault", "Amount", "26.5 APE"]
+    },
+    {
+      "description": "initiateWithdraw (real onchain) - APE vault",
+      "rawTx": "0x02f8900135843b9aca0085017a9274178301c45894c0cf10dd710aefb209d9dc67bc746510ffd98a5380a47e108d520000000000000000000000000000000000000000000000001b9157d29c36d79cc080a02d332d365bfcf6ab6e459a939fbdf0713cbaeb93d8d52fbea095a0f77465dc0ea0063605b1e3eb5b41560a7840a46e0d4e217974fe8a16a6be91ac726743df04c2",
+      "expectedTexts": ["Initiate Withdraw", "Vault", "Ribbon APE Theta Vault", "Shares", "1.9864654727226879 shares"]
+    },
+    {
+      "description": "completeWithdraw (real onchain) - APE vault",
+      "rawTx": "0x02f870010e8405f5e10085060528da808301a67a94c0cf10dd710aefb209d9dc67bc746510ffd98a538084f756fa21c001a027e98a983bb6a92bf7f41291144494aec4ec5b0b7a3d899349c2490e6f448a17a04b7bf5fefa982672a07744c774944d60de6dc6ada9852d766c5ace72526af9cb",
+      "expectedTexts": ["Complete Withdraw", "Vault", "Ribbon APE Theta Vault"]
+    },
+    {
+      "description": "redeem (synthetic) - APE vault",
+      "rawTx": "0x02f8500180843b9aca008506fc23ac0083061a8094c0cf10dd710aefb209d9dc67bc746510ffd98a5380a4db006a7500000000000000000000000000000000000000000000000014d1120d7b160000c0800101",
+      "expectedTexts": ["Redeem shares", "Vault", "Ribbon APE Theta Vault", "Shares", "1.5 shares"]
+    },
+    {
+      "description": "maxRedeem (real onchain) - APE vault",
+      "rawTx": "0x02f8700104843b9aca0085029503bd7a83010d2994c0cf10dd710aefb209d9dc67bc746510ffd98a5380846f31ab34c080a0b0c5d4ca8a2bb874cc5891f9a50c18198150f549f5e4e53a61e3c69684709e20a01ad1aaa338e55131e00a7f5b912664b3acae99bd799bb2d096c6d85df9662acd",
+      "expectedTexts": ["Redeem all shares", "Vault", "Ribbon APE Theta Vault"]
+    }
+  ]
+}

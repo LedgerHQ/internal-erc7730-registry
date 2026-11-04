@@ -1,0 +1,76 @@
+{
+  "$schema": "../../../specs/erc7730-tests.schema.json",
+  "tests": [
+    {
+      "description": "depositETH (real onchain) - stETH vault",
+      "rawTx": "0xf86e0a842e7ddb008301dc0a9453773e034d9784153471813dacaff53dbbb78e8c865af3107a400084f6326fb325a088972e4d590dbaae8a0b974c6c807b46bb93e1b834a7c04e31bd991caf769183a07f7d49c82ed78ade464e64f5d6f3e0512115966615f94da9054784b3332ab87f",
+      "expectedTexts": ["Deposit", "Vault", "Ribbon stETH Theta Vault", "Amount", "0.0001 ETH"]
+    },
+    {
+      "description": "depositFor (synthetic) - stETH vault",
+      "rawTx": "0x02f8580180843b9aca008506fc23ac0083061a809453773e034d9784153471813dacaff53dbbb78e8c8806f05b59d3b20000a4aa67c9190000000000000000000000008bda12496bf61cd2ea89ad32562670bcdfdc5404c0800101",
+      "expectedTexts": [
+        "Deposit",
+        "Vault",
+        "Ribbon stETH Theta Vault",
+        "Amount",
+        "0.5 ETH",
+        "Beneficiary",
+        "0x8bDA12496BF61cd2ea89AD32562670BcdFDc5404"
+      ]
+    },
+    {
+      "description": "depositYieldToken (real onchain) - stETH vault",
+      "rawTx": "0x02f890010f847735940085013aac669c8302689a9453773e034d9784153471813dacaff53dbbb78e8c80a431807e42000000000000000000000000000000000000000000000000080f618186f0156ec001a0d2bbd001886ed4ea71576f5f670a1aa1166e10b4caec3341c704a84e7382c561a0016929276e02731566ecaa66018eaecacf4c9a2b2fe9a9357bfdc8fb07290445",
+      "expectedTexts": ["Deposit", "Vault", "Ribbon stETH Theta Vault", "Amount", "0.580790085896639854 stETH"]
+    },
+    {
+      "description": "depositYieldTokenFor (synthetic) - stETH vault",
+      "rawTx": "0x02f8710180843b9aca008506fc23ac0083061a809453773e034d9784153471813dacaff53dbbb78e8c80b84465ea421e00000000000000000000000000000000000000000000000014d1120d7b1600000000000000000000000000008bda12496bf61cd2ea89ad32562670bcdfdc5404c0800101",
+      "expectedTexts": [
+        "Deposit",
+        "Vault",
+        "Ribbon stETH Theta Vault",
+        "Amount",
+        "1.5 stETH",
+        "Beneficiary",
+        "0x8bDA12496BF61cd2ea89AD32562670BcdFDc5404"
+      ]
+    },
+    {
+      "description": "withdrawInstantly (real onchain) - stETH vault",
+      "rawTx": "0x02f8b10181848477359400847a47f3328302c3809453773e034d9784153471813dacaff53dbbb78e8c80b844c63218390000000000000000000000000000000000000000000000000137fe90258ac5ec0000000000000000000000000000000000000000000000000000000000000000c001a009ee2b63c052a00ed5c73003c476d746188c749fa2514bba9790cfa43ef4bf5ba03abd12e9b9c4d7f8ec2d633c08192aab57d1448b1a34af0a6e3e8bb437723c5d",
+      "expectedTexts": ["Instant Withdraw", "Vault", "Ribbon stETH Theta Vault", "Amount", "0.087818612815611372 ETH"]
+    },
+    {
+      "description": "initiateWithdraw (real onchain) - stETH vault",
+      "rawTx": "0x02f88f01488423c346008466e0ab80830187599453773e034d9784153471813dacaff53dbbb78e8c80a47e108d520000000000000000000000000000000000000000000000000000000000000001c001a0a072fbfc5a89631c572a99e22c6f2664d77c6783592620d947af5a5e54409df0a051b30409b32c3002c8d46be14832b1fcb859e82e67d5fcbee2b1b86a750c80be",
+      "expectedTexts": ["Initiate Withdraw", "Vault", "Ribbon stETH Theta Vault", "Shares", "0.000000000000000001 shares"]
+    },
+    {
+      "description": "completeWithdraw (real onchain) - stETH vault",
+      "rawTx": "0x02f87001821d9a8334a4908403c224a483036add9453773e034d9784153471813dacaff53dbbb78e8c8084f756fa21c080a069c56af49fb13ebe0e4af01d9ed8b9a9c4e900d709e013222286821f6a40847ba0190a66a6a283e09d79dad3fa41ca2e1d53359b360b23048148c0b51303e9691e",
+      "expectedTexts": ["Complete Withdraw", "Vault", "Ribbon stETH Theta Vault"]
+    },
+    {
+      "description": "redeem (synthetic) - stETH vault",
+      "rawTx": "0x02f8500180843b9aca008506fc23ac0083061a809453773e034d9784153471813dacaff53dbbb78e8c80a4db006a7500000000000000000000000000000000000000000000000014d1120d7b160000c0800101",
+      "expectedTexts": ["Redeem shares", "Vault", "Ribbon stETH Theta Vault", "Shares", "1.5 shares"]
+    },
+    {
+      "description": "maxRedeem (real onchain) - stETH vault",
+      "rawTx": "0x02f87001108405f5e1008507d656118583010d089453773e034d9784153471813dacaff53dbbb78e8c80846f31ab34c080a033766e5138668d914ada993d225bf04929535533d43e4fca36527075cb32c4d3a0247e0f0b54573ded5c0857faf089237b070fc2d23cea56f91e8c61f2d1d3f931",
+      "expectedTexts": ["Redeem all shares", "Vault", "Ribbon stETH Theta Vault"]
+    },
+    {
+      "description": "stake (real onchain) - stETH vault",
+      "rawTx": "0x02f89001578405f5e100850583830ea88307a1209453773e034d9784153471813dacaff53dbbb78e8c80a4a694fc3a000000000000000000000000000000000000000000000000c39c1509fd9d5a0bc080a07ad45d9cf335693eb8f32f29f313de3e7453ce3aad4a1776773355e29be11ad5a01f3a37e693b5619dd81adea3ffd650393ceb612e8681c3923fcf2892b5d7ac7f",
+      "expectedTexts": ["Stake shares", "Vault", "Ribbon stETH Theta Vault", "Shares", "14.095164066416646667 shares"]
+    },
+    {
+      "description": "pausePosition (real onchain) - stETH vault",
+      "rawTx": "0x02f870016f8405f5e10085040ca460d9830298d99453773e034d9784153471813dacaff53dbbb78e8c8084ca594094c001a0958048429b89cca26fe180a6b65ad4e642862c7ceb5b65d83636e23cd1b6a288a04f906411ebef3e71070238322f3b21a97a029358f54fa2cd29c81365fa01a293",
+      "expectedTexts": ["Pause position", "Vault", "Ribbon stETH Theta Vault"]
+    }
+  ]
+}
