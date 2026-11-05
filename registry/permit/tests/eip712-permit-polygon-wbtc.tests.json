@@ -8,8 +8,8 @@
           "EIP712Domain": [
             { "name": "name", "type": "string" },
             { "name": "version", "type": "string" },
-            { "name": "chainId", "type": "uint256" },
-            { "name": "verifyingContract", "type": "address" }
+            { "name": "verifyingContract", "type": "address" },
+            { "name": "salt", "type": "bytes32" }
           ],
           "Permit": [
             { "name": "owner", "type": "address" },
@@ -20,7 +20,12 @@
           ]
         },
         "primaryType": "Permit",
-        "domain": { "name": "Wrapped BTC", "version": "1", "chainId": 137, "verifyingContract": "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6" },
+        "domain": {
+          "name": "(PoS) Wrapped BTC",
+          "version": "1",
+          "verifyingContract": "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6",
+          "salt": "0x0000000000000000000000000000000000000000000000000000000000000089"
+        },
         "message": {
           "owner": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
           "spender": "0x1111111254EEB25477B68fb85Ed929f73A960582",

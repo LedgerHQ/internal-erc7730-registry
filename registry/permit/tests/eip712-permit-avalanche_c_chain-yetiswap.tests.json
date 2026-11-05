@@ -7,7 +7,6 @@
         "types": {
           "EIP712Domain": [
             { "name": "name", "type": "string" },
-            { "name": "version", "type": "string" },
             { "name": "chainId", "type": "uint256" },
             { "name": "verifyingContract", "type": "address" }
           ],
@@ -20,7 +19,7 @@
           ]
         },
         "primaryType": "Permit",
-        "domain": { "name": "Example", "version": "1", "chainId": 43114, "verifyingContract": "0x488f73cddda1de3664775ffd91623637383d6404" },
+        "domain": { "name": "YetiSwap", "chainId": 43114, "verifyingContract": "0x488f73cddda1de3664775ffd91623637383d6404" },
         "message": {
           "owner": "0x1111111111111111111111111111111111111111",
           "spender": "0x1111111111111111111111111111111111111111",
