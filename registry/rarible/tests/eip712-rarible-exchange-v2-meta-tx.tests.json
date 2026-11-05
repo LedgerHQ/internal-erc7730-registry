@@ -19,9 +19,9 @@
         },
         "primaryType": "MetaTransaction",
         "domain": {
-          "name": "Rarible",
+          "name": "ExchangeMetaV2",
           "version": "1",
-          "verifyingContract": "0x7f19564c35c681099c0c857a7141836cf7edaa53",
+          "verifyingContract": "0x12b3897a36fDB436ddE2788C06Eff0ffD997066e",
           "salt": "0x0000000000000000000000000000000000000000000000000000000000000089"
         },
         "message": {
