@@ -1,0 +1,57 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "context": {
+    "$id": "ENS ETH Registrar Controller",
+    "contract": { "deployments": [{ "chainId": 1, "address": "0x59E16fcCd424Cc24e280Be16E11Bcd56fb0CE547" }] }
+  },
+  "metadata": {
+    "owner": "ENS",
+    "info": { "url": "https://ens.domains" },
+    "contractName": "ETHRegistrarController",
+    "enums": { "primaryName": { "0": "Not set", "1": "Ethereum", "2": "Default (all chains)", "3": "Ethereum + default" } }
+  },
+  "display": {
+    "formats": {
+      "commit(bytes32 commitment)": { "intent": "Commit to register a name", "fields": [{ "path": "#.commitment", "label": "Commitment", "format": "raw" }] },
+      "register((string label,address owner,uint256 duration,bytes32 secret,address resolver,bytes[] data,uint8 reverseRecord,bytes32 referrer) registration)": {
+        "intent": "Register ENS name",
+        "fields": [
+          { "path": "#.registration.label", "label": "Name (.eth)", "format": "raw" },
+          {
+            "path": "#.registration.owner",
+            "label": "Owner",
+            "format": "addressName",
+            "params": { "types": ["eoa", "wallet", "contract"], "sources": ["local", "ens"] }
+          },
+          { "path": "#.registration.duration", "label": "Duration", "format": "duration" },
+          { "path": "@.value", "label": "Maximum payment", "format": "amount" },
+          {
+            "path": "#.registration.resolver",
+            "label": "Resolver",
+            "format": "addressName",
+            "params": { "types": ["eoa", "wallet", "contract"], "sources": ["local", "ens"] }
+          },
+          {
+            "path": "#.registration.reverseRecord",
+            "label": "Primary name",
+            "format": "enum",
+            "params": { "$ref": "$.metadata.enums.primaryName" }
+          },
+          { "path": "#.registration.secret", "label": "Secret", "visible": "never" },
+          { "path": "#.registration.data.[]", "label": "Data", "visible": "never" },
+          { "path": "#.registration.referrer", "label": "Referrer", "visible": "never" }
+        ]
+      },
+      "renew(string label,uint256 duration,bytes32 referrer)": {
+        "intent": "Renew ENS name",
+        "fields": [
+          { "path": "#.label", "label": "Name (.eth)", "format": "raw" },
+          { "path": "#.duration", "label": "Extend by", "format": "duration" },
+          { "path": "@.value", "label": "Maximum payment", "format": "amount" },
+          { "path": "#.referrer", "label": "Referrer", "visible": "never" }
+        ]
+      },
+      "withdraw()": { "intent": "Send fees to ENS", "fields": [] }
+    }
+  }
+}
