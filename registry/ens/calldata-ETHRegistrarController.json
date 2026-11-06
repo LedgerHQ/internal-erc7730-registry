@@ -38,7 +38,12 @@
             "params": { "$ref": "$.metadata.enums.primaryName" }
           },
           { "path": "#.registration.secret", "label": "Secret", "visible": "never" },
-          { "path": "#.registration.data.[]", "label": "Data", "visible": "never" },
+          {
+            "path": "#.registration.data.[]",
+            "label": "Resolver record",
+            "format": "calldata",
+            "params": { "calleePath": "#.registration.resolver" }
+          },
           { "path": "#.registration.referrer", "label": "Referrer", "visible": "never" }
         ]
       },

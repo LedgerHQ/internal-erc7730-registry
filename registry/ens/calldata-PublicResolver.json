@@ -64,19 +64,6 @@
           { "path": "#.y", "label": "Y", "format": "raw" }
         ]
       },
-      "setInterface(bytes32 node,bytes4 interfaceID,address implementer)": {
-        "intent": "Set interface",
-        "fields": [
-          { "path": "#.node", "label": "Node", "format": "raw" },
-          { "path": "#.interfaceID", "label": "Interface ID", "visible": "never" },
-          {
-            "path": "#.implementer",
-            "label": "Implementer",
-            "format": "addressName",
-            "params": { "types": ["eoa", "wallet", "contract"], "sources": ["local", "ens"] }
-          }
-        ]
-      },
       "setDNSRecords(bytes32 node,bytes data)": {
         "intent": "Set DNS records",
         "fields": [{ "path": "#.node", "label": "Node", "format": "raw" }, { "path": "#.data", "label": "Records", "format": "raw" }]
