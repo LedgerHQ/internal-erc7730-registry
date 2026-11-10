@@ -20,7 +20,7 @@
           ]
         },
         "primaryType": "Permit",
-        "domain": { "name": "Sonne", "version": "1", "chainId": 10, "verifyingContract": "0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b" },
+        "domain": { "name": "BOB", "version": "1", "chainId": 10, "verifyingContract": "0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b" },
         "message": {
           "owner": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
           "spender": "0xE592427A0AEce92De3Edee1F18E0157C05861564",
