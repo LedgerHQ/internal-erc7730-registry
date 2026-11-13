@@ -1,0 +1,21 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "includes": "common-Quote.json",
+  "metadata": {
+    "maps": {
+      "coverToken": {
+        "$keyType": "OpenCover asset id",
+        "values": { "0": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619", "2": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359" }
+      },
+      "paymentToken": {
+        "$keyType": "OpenCover asset id",
+        "values": {
+          "2": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+          "3": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+          "4": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
+        }
+      }
+    }
+  },
+  "context": { "contract": { "deployments": [{ "chainId": 137, "address": "0x0AC34fe133BdE3A2eF589a18A4E10b6a7d253829" }] } }
+}

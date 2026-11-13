@@ -1,0 +1,23 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "includes": "common-erc4626-vaults-multichain.json",
+  "metadata": {
+    "owner": "Steakhouse Financial",
+    "info": { "url": "https://www.steakhouse.financial" },
+    "constants": { "underlyingTicker": "USDT0", "vaultTicker": "bbqUSDT0" },
+    "maps": {
+      "underlyingToken": {
+        "$keyType": "chainId",
+        "values": { "137": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F", "143": "0xe7cd86e13AC4309349F30B3435a9d337750fC82D" }
+      }
+    }
+  },
+  "context": {
+    "contract": {
+      "deployments": [
+        { "chainId": 137, "address": "0xB7c9988D3922F25a336a469F3bB26CA61FE79e24" },
+        { "chainId": 143, "address": "0x961a59Fe249b9795FAE7fA35f9E89629689D5278" }
+      ]
+    }
+  }
+}

@@ -1,10 +1,28 @@
 {
   "$schema": "../../specs/erc7730-v2.schema.json",
-  "includes": "../../ercs/calldata-erc4626-vaults.json",
+  "includes": "common-erc4626-vaults-multichain.json",
   "metadata": {
     "owner": "Gauntlet",
     "info": { "url": "https://www.gauntlet.xyz/" },
-    "constants": { "underlyingToken": "0x078D782b760474a361dDA0AF3839290b0EF57AD6", "underlyingTicker": "USDC", "vaultTicker": "gtusdcc" }
+    "constants": { "underlyingTicker": "USDC", "vaultTicker": "gtUSDCc" },
+    "maps": {
+      "underlyingToken": {
+        "$keyType": "chainId",
+        "values": {
+          "999": "0xb88339CB7199b77E23DB6E890353E22632Ba630f",
+          "8453": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+          "42161": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+        }
+      }
+    }
   },
-  "context": { "contract": { "deployments": [{ "chainId": 130, "address": "0x38f4f3B6533de0023b9DCd04b02F93d36ad1F9f9" }] } }
+  "context": {
+    "contract": {
+      "deployments": [
+        { "chainId": 999, "address": "0x08C00F8279dFF5B0CB5a04d349E7d79708Ceadf3" },
+        { "chainId": 8453, "address": "0xc0c5689e6f4D256E861F65465b691aeEcC0dEb12" },
+        { "chainId": 42161, "address": "0x7e97fa6893871A2751B5fE961978DCCb2c201E65" }
+      ]
+    }
+  }
 }

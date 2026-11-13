@@ -1,10 +1,23 @@
 {
   "$schema": "../../specs/erc7730-v2.schema.json",
-  "includes": "../../ercs/calldata-erc4626-vaults.json",
+  "includes": "common-erc4626-vaults-multichain.json",
   "metadata": {
     "owner": "Gauntlet",
     "info": { "url": "https://www.gauntlet.xyz/" },
-    "constants": { "underlyingToken": "0xecAc9C5F704e954931349Da37F60E39f515c11c1", "underlyingTicker": "LBTC", "vaultTicker": "gtLBTCc" }
+    "constants": { "underlyingTicker": "LBTC", "vaultTicker": "gtLBTCc" },
+    "maps": {
+      "underlyingToken": {
+        "$keyType": "chainId",
+        "values": { "1": "0x8236a87084f8B84306f72007F36F2618A5634494", "8453": "0xecAc9C5F704e954931349Da37F60E39f515c11c1" }
+      }
+    }
   },
-  "context": { "contract": { "deployments": [{ "chainId": 8453, "address": "0x0D05e6ec0A10f9fFE9229EAA785c11606a1d13Fb" }] } }
+  "context": {
+    "contract": {
+      "deployments": [
+        { "chainId": 1, "address": "0xdC94785959B73F7A168452b3654E44fEc6A750e4" },
+        { "chainId": 8453, "address": "0x0D05e6ec0A10f9fFE9229EAA785c11606a1d13Fb" }
+      ]
+    }
+  }
 }
