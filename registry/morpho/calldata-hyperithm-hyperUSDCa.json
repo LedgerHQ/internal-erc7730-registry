@@ -1,0 +1,23 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "includes": "common-erc4626-vaults-multichain.json",
+  "metadata": {
+    "owner": "Hyperithm",
+    "info": { "url": "https://www.hyperithm.com/" },
+    "constants": { "underlyingTicker": "USDC", "vaultTicker": "hyperUSDCa" },
+    "maps": {
+      "underlyingToken": {
+        "$keyType": "chainId",
+        "values": { "1": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48", "42161": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831" }
+      }
+    }
+  },
+  "context": {
+    "contract": {
+      "deployments": [
+        { "chainId": 1, "address": "0x777791C4d6DC2CE140D00D2828a7C93503c67777" },
+        { "chainId": 42161, "address": "0x4B6F1C9E5d470b97181786b26da0d0945A7cf027" }
+      ]
+    }
+  }
+}

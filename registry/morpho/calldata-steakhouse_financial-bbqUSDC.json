@@ -1,10 +1,32 @@
 {
   "$schema": "../../specs/erc7730-v2.schema.json",
-  "includes": "../../ercs/calldata-erc4626-vaults.json",
+  "includes": "common-erc4626-vaults-multichain.json",
   "metadata": {
     "owner": "Steakhouse Financial",
     "info": { "url": "https://www.steakhouse.financial" },
-    "constants": { "underlyingToken": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48", "underlyingTicker": "USDC", "vaultTicker": "bbqUSDC" }
+    "constants": { "underlyingTicker": "USDC", "vaultTicker": "bbqUSDC" },
+    "maps": {
+      "underlyingToken": {
+        "$keyType": "chainId",
+        "values": {
+          "1": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+          "137": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+          "143": "0x754704Bc059F8C67012fEd69BC8A327a5aafb603",
+          "8453": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+          "42161": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+        }
+      }
+    }
   },
-  "context": { "contract": { "deployments": [{ "chainId": 1, "address": "0xBEeFFF209270748ddd194831b3fa287a5386f5bC" }] } }
+  "context": {
+    "contract": {
+      "deployments": [
+        { "chainId": 1, "address": "0xBEeFFF209270748ddd194831b3fa287a5386f5bC" },
+        { "chainId": 137, "address": "0xAcB0DCe4b0FF400AD8F6917f3ca13E434C9ed6bC" },
+        { "chainId": 143, "address": "0x802c91d807A8DaCA257c4708ab264B6520964e44" },
+        { "chainId": 8453, "address": "0xBEEFA7B88064FeEF0cEe02AAeBBd95D30df3878F" },
+        { "chainId": 42161, "address": "0x5c0C306Aaa9F877de636f4d5822cA9F2E81563BA" }
+      ]
+    }
+  }
 }
