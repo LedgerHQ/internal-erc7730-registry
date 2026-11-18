@@ -14,7 +14,7 @@
         "fields": [
           { "path": "account", "label": "Account", "format": "raw", "visible": "always" },
           { "path": "notice", "label": "Notice", "format": "raw", "visible": "always" },
-          { "path": "action", "label": "Action", "format": "raw", "visible": "never" }
+          { "path": "action", "label": "Action", "format": "raw", "visible": { "mustMatch": ["Confirm account ownership"] } }
         ]
       }
     }
