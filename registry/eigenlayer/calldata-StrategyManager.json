@@ -1,0 +1,19 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "context": {
+    "$id": "EigenLayer StrategyManager",
+    "contract": { "deployments": [{ "chainId": 1, "address": "0x858646372CC42E1A627fcE94aa7A7033e7CF075A" }] }
+  },
+  "metadata": { "owner": "EigenLayer", "info": { "url": "https://www.eigenlayer.xyz" }, "contractName": "StrategyManager" },
+  "display": {
+    "formats": {
+      "depositIntoStrategy(address strategy,address token,uint256 amount)": {
+        "intent": "Restake",
+        "fields": [
+          { "path": "#.amount", "label": "Amount", "format": "tokenAmount", "params": { "tokenPath": "#.token" } },
+          { "path": "#.strategy", "label": "Strategy", "format": "raw" }
+        ]
+      }
+    }
+  }
+}

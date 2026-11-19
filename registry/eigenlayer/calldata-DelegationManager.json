@@ -1,0 +1,83 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "context": {
+    "$id": "EigenLayer DelegationManager",
+    "contract": { "deployments": [{ "chainId": 1, "address": "0x39053D51B77DC0d36036Fc1fCc8Cb819df8Ef37A" }] }
+  },
+  "metadata": { "owner": "EigenLayer", "info": { "url": "https://www.eigenlayer.xyz" }, "contractName": "DelegationManager" },
+  "display": {
+    "formats": {
+      "delegateTo(address operator,(bytes signature,uint256 expiry) approverSignatureAndExpiry,bytes32 approverSalt)": {
+        "intent": "Delegate stake",
+        "fields": [
+          {
+            "path": "#.operator",
+            "label": "Operator",
+            "format": "addressName",
+            "params": { "types": ["eoa", "wallet", "contract"], "sources": ["local", "ens"] }
+          },
+          { "path": "#.approverSignatureAndExpiry.signature", "label": "Approver signature", "visible": "never" },
+          { "path": "#.approverSignatureAndExpiry.expiry", "label": "Approver expiry", "visible": "never" },
+          { "path": "#.approverSalt", "label": "Approver salt", "visible": "never" }
+        ]
+      },
+      "undelegate(address staker)": {
+        "intent": "Undelegate",
+        "fields": [
+          {
+            "path": "#.staker",
+            "label": "Staker",
+            "format": "addressName",
+            "params": { "types": ["eoa", "wallet", "contract"], "sources": ["local", "ens"] }
+          }
+        ]
+      },
+      "queueWithdrawals((address[] strategies,uint256[] depositShares,address __deprecated_withdrawer)[] params)": {
+        "intent": "Queue withdrawal",
+        "fields": [
+          { "path": "#.params.[].strategies.[]", "label": "Strategy", "format": "raw" },
+          { "path": "#.params.[].depositShares.[]", "label": "Shares", "format": "raw" },
+          { "path": "#.params.[].__deprecated_withdrawer", "label": "Withdrawer", "visible": "never" }
+        ]
+      },
+      "completeQueuedWithdrawal((address staker,address delegatedTo,address withdrawer,uint256 nonce,uint32 startBlock,address[] strategies,uint256[] scaledShares) withdrawal,address[] tokens,bool receiveAsTokens)": {
+        "intent": "Complete withdrawal",
+        "fields": [
+          {
+            "path": "#.withdrawal.withdrawer",
+            "label": "Withdrawer",
+            "format": "addressName",
+            "params": { "types": ["eoa", "wallet", "contract"], "sources": ["local", "ens"] }
+          },
+          { "path": "#.withdrawal.strategies.[]", "label": "Strategy", "format": "raw" },
+          { "path": "#.withdrawal.scaledShares.[]", "label": "Shares", "format": "raw" },
+          { "path": "#.tokens.[]", "label": "Token", "format": "raw" },
+          { "path": "#.receiveAsTokens", "label": "Receive as tokens", "format": "raw" },
+          { "path": "#.withdrawal.staker", "label": "Staker", "visible": "never" },
+          { "path": "#.withdrawal.delegatedTo", "label": "Delegated to", "visible": "never" },
+          { "path": "#.withdrawal.nonce", "label": "Nonce", "visible": "never" },
+          { "path": "#.withdrawal.startBlock", "label": "Start block", "visible": "never" }
+        ]
+      },
+      "completeQueuedWithdrawals((address staker,address delegatedTo,address withdrawer,uint256 nonce,uint32 startBlock,address[] strategies,uint256[] scaledShares)[] withdrawals,address[][] tokens,bool[] receiveAsTokens)": {
+        "intent": "Complete withdrawals",
+        "fields": [
+          {
+            "path": "#.withdrawals.[].withdrawer",
+            "label": "Withdrawer",
+            "format": "addressName",
+            "params": { "types": ["eoa", "wallet", "contract"], "sources": ["local", "ens"] }
+          },
+          { "path": "#.withdrawals.[].strategies.[]", "label": "Strategy", "format": "raw" },
+          { "path": "#.withdrawals.[].scaledShares.[]", "label": "Shares", "format": "raw" },
+          { "path": "#.tokens.[].[]", "label": "Token", "format": "raw" },
+          { "path": "#.receiveAsTokens.[]", "label": "Receive as tokens", "format": "raw" },
+          { "path": "#.withdrawals.[].staker", "label": "Staker", "visible": "never" },
+          { "path": "#.withdrawals.[].delegatedTo", "label": "Delegated to", "visible": "never" },
+          { "path": "#.withdrawals.[].nonce", "label": "Nonce", "visible": "never" },
+          { "path": "#.withdrawals.[].startBlock", "label": "Start block", "visible": "never" }
+        ]
+      }
+    }
+  }
+}
