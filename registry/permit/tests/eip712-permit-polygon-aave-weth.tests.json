@@ -20,7 +20,12 @@
           ]
         },
         "primaryType": "Permit",
-        "domain": { "name": "Example", "version": "1", "chainId": 137, "verifyingContract": "0x28424507fefb6f7f8e9d3860f56504e4e5f5f390" },
+        "domain": {
+          "name": "Aave Matic Market WETH",
+          "version": "1",
+          "chainId": 137,
+          "verifyingContract": "0x28424507fefb6f7f8e9d3860f56504e4e5f5f390"
+        },
         "message": {
           "owner": "0x1111111111111111111111111111111111111111",
           "spender": "0x1111111111111111111111111111111111111111",

@@ -2,8 +2,8 @@
   "$schema": "../../specs/erc7730-v2.schema.json",
   "context": {
     "eip712": {
-      "deployments": [{ "chainId": 137, "address": "0x7f19564c35c681099c0c857a7141836cf7edaa53" }],
-      "domain": { "name": "Rarible" },
+      "deployments": [{ "chainId": 137, "address": "0x12b3897a36fDB436ddE2788C06Eff0ffD997066e" }],
+      "domain": { "name": "ExchangeMetaV2", "version": "1", "salt": "0x0000000000000000000000000000000000000000000000000000000000000089" },
       "schemas": [
         {
           "primaryType": "MetaTransaction",

@@ -18,7 +18,12 @@
           ]
         },
         "primaryType": "unlink_with_sig",
-        "domain": { "name": "Example", "version": "1", "chainId": 137, "verifyingContract": "0xd4f2f33680fccb36748fa9831851643781608844" },
+        "domain": {
+          "name": "TokenHandleRegistry",
+          "version": "1",
+          "chainId": 137,
+          "verifyingContract": "0xd4f2f33680fccb36748fa9831851643781608844"
+        },
         "message": { "handle_id": "1000000000000000000", "profile_id": "1000000000000000000", "signatureDeadline": "1000000000000000000" }
       },
       "expectedTexts": ["handle_id", "100000000000000000 0", "profile_id", "100000000000000000 0", "signatureDeadline", "100000000000000000 0"]
@@ -42,8 +47,8 @@
         },
         "primaryType": "unlink",
         "domain": {
-          "name": "Lens Protocol Profiles",
-          "version": "2",
+          "name": "TokenHandleRegistry",
+          "version": "1",
           "chainId": 137,
           "verifyingContract": "0xD4F2F33680FCCb36748FA9831851643781608844"
         },
