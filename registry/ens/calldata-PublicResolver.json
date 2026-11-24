@@ -3,10 +3,7 @@
   "context": {
     "$id": "ENS Public Resolver",
     "contract": {
-      "deployments": [
-        { "chainId": 1, "address": "0xF29100983E058B709F3D539b0c765937B804AC15" },
-        { "chainId": 1, "address": "0x231b0Ee14048e9dCcD1d247744d114a4EB5E8E63" }
-      ]
+      "deployments": [{ "chainId": 1, "address": "0xF29100983E058B709F3D539b0c765937B804AC15" }]
     }
   },
   "metadata": { "owner": "ENS", "info": { "url": "https://ens.domains" }, "contractName": "PublicResolver" },

@@ -217,7 +217,7 @@
   "eip155:1:0x1fce9396c3add4c3a2ed6b4461425b36ebc4bf87": "registry/kiln/calldata-Vault-USDC-Euler-Yield.json",
   "eip155:1:0x1fe17936c1cdc73c857263997716e3a60b9291c7": "registry/midas/calldata-RedemptionVault.json",
   "eip155:1:0x225c119ffaf1caddcfcdb493283edf4b816bf773": "registry/morpho/calldata-mev_capital-USUALUSDT.json",
-  "eip155:1:0x231b0ee14048e9dccd1d247744d114a4eb5e8e63": "registry/ens/calldata-PublicResolver.json",
+  "eip155:1:0x231b0ee14048e9dccd1d247744d114a4eb5e8e63": "registry/ens/calldata-PublicResolverLegacy.json",
   "eip155:1:0x2371e134e3455e0593363cbf89d3b6cf53740618": "registry/morpho/calldata-gauntlet-gtWETH.json",
   "eip155:1:0x23be839a14cec3d6d716d904f09368bbf9c750eb": "registry/p2p/calldata-P2pOrgUnlimitedEthDepositor.json",
   "eip155:1:0x25751853eab4d0eb3652b5eb6ecb102a2789644b": "registry/ribbon/calldata-Ribbon-ThetaVault-ETH.json",
