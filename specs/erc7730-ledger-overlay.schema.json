@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/LedgerHQ/clear-signing-erc7730-registry/blob/master/specs/erc7730-ledger-overlay.schema.json",
+  "title": "ERC-7730 Ledger overlay",
+  "description": "Ledger extensions for the descriptors of one registry folder, kept out of the descriptors so that they stay plain ERC-7730 files. The file registry/<entity>/ledger.json applies to the calldata-*.json and eip712-*.json descriptors of registry/<entity>/. See specs/erc7730-ledger-profile.md.",
+  "type": "object",
+  "required": ["$schema", "ledgerhq"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "const": "../../specs/erc7730-ledger-overlay.schema.json",
+      "description": "Reference to this schema, relative to registry/<entity>/ledger.json."
+    },
+    "ledgerhq": {
+      "type": "object",
+      "description": "The Ledger namespace. It holds every Ledger extension of the folder, so there is one thing to version.",
+      "required": ["version"],
+      "minProperties": 2,
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "const": 1,
+          "description": "Version of the Ledger namespace payload."
+        },
+        "icon": {
+          "$ref": "#/definitions/icon",
+          "description": "Default icon of every descriptor of the folder."
+        },
+        "descriptors": {
+          "type": "object",
+          "description": "Per-descriptor exceptions to the folder defaults, keyed by descriptor file name.",
+          "minProperties": 1,
+          "propertyNames": {
+            "pattern": "^(calldata|eip712)-[A-Za-z0-9._+-]+\\.json(?![\\s\\S])"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "minProperties": 1,
+            "additionalProperties": false,
+            "properties": {
+              "icon": {
+                "oneOf": [{ "$ref": "#/definitions/icon" }, { "type": "null" }],
+                "description": "Icon of this descriptor, or null for no icon (network icon, as today)."
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "icon": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*(?![\\s\\S])",
+      "maxLength": 32,
+      "description": "Identifier of a dApp icon in LedgerHQ/ledger-network-icons (icons/dapps/dapp_<icon>_<size>px.gif). Shown in place of the network icon in the clear-signing flow of every function of the descriptor."
+    }
+  }
+}

@@ -599,13 +599,25 @@ function findErc7730Files(dir) {
 }
 
 /**
+ * Schemas of this repository whose name starts with erc7730- but that are not descriptor schemas.
+ */
+const NON_DESCRIPTOR_SCHEMA = /erc7730-(tests|ledger-overlay)\.schema\.json/;
+
+/**
+ * Check if a $schema value is the one of an ERC-7730 descriptor (v1 or v2).
+ */
+function isDescriptorSchema(schema) {
+  return typeof schema === "string" && schema.includes("erc7730-") && !NON_DESCRIPTOR_SCHEMA.test(schema);
+}
+
+/**
  * Check if JSON file is an ERC-7730 descriptor (v1 or v2).
  */
 function isErc7730DescriptorFile(filePath) {
   try {
     const content = fs.readFileSync(filePath, "utf8");
     const json = JSON.parse(content);
-    return typeof json?.$schema === "string" && json.$schema.includes("erc7730-");
+    return isDescriptorSchema(json?.$schema);
   } catch (e) {
     return false;
   }
@@ -618,7 +630,7 @@ function readDescriptorJson(filePath) {
   try {
     const content = fs.readFileSync(filePath, "utf8");
     const json = JSON.parse(content);
-    if (typeof json?.$schema === "string" && json.$schema.includes("erc7730-")) {
+    if (isDescriptorSchema(json?.$schema)) {
       return json;
     }
   } catch (e) {

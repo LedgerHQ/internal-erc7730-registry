@@ -19,4 +19,6 @@ Do not edit these files directly — changes should be made upstream and will be
 | File | Description |
 |---|---|
 | `erc7730-tests.schema.json` | JSON schema for device test files (`*.tests.json`) |
+| `erc7730-ledger-profile.md` | Ledger profile: how Ledger extensions are added next to a descriptor without changing it |
+| `erc7730-ledger-overlay.schema.json` | JSON schema for Ledger overlay files (`registry/<entity>/ledger.json`) |
 | `templates/` | Descriptor templates for new contributions |

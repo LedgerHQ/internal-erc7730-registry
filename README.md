@@ -12,8 +12,11 @@ specs/
   erc-7730.md                                # most advanced version of the spec but reference should be the ERC
   erc7730-v1.schema.json                     # the json schema of the latest version of the extension
   erc7730-tests.schema.json                  # json schema for test files
+  erc7730-ledger-profile.md                  # Ledger extensions next to the descriptors (icon)
+  erc7730-ledger-overlay.schema.json         # json schema for ledger.json
 registry/
   $entity_name/                              # official entity name submitting metadata information
+    ledger.json                              # optional Ledger extensions, see specs/erc7730-ledger-profile.md
     calldata-$contractName1.json             # metadata for contract $contractName1, including the contract version in name
     calldata-$contractName2.json
     eip712-$messageName.json                 # metadata for EIP712 message $messageName
