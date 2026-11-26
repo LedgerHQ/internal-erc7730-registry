@@ -91,7 +91,11 @@ jobs:
   detect-tests:
     name: Detect test files
     needs: check-permissions
-    if: needs.check-permissions.outputs.can_run_tests == 'true'
+    # The label condition repeats check-permissions where CodeQL can see it: on pull_request_target, the PR head is
+    # checked out only once a maintainer has added the run-tests label.
+    if: >-
+      needs.check-permissions.outputs.can_run_tests == 'true' &&
+      (github.event_name != 'pull_request_target' || github.event.label.name == 'run-tests')
     runs-on: ubuntu-latest
     outputs:
       has_tests: ${{ steps.detect.outputs.has_tests }}
@@ -167,7 +171,10 @@ jobs:
   run-tests:
     name: Run tests for ${{ matrix.test.entity }}/${{ matrix.test.descriptor_name }} (${{ matrix.device }})
     needs: [check-permissions, detect-tests]
-    if: needs.detect-tests.outputs.has_tests == 'true'
+    # See detect-tests for the label condition.
+    if: >-
+      needs.detect-tests.outputs.has_tests == 'true' &&
+      (github.event_name != 'pull_request_target' || github.event.label.name == 'run-tests')
     # Speculinho is reached from Ledger's runners, like the device-sdk-ts CI does.
     runs-on: public-ledgerhq-shared-small
     strategy:
