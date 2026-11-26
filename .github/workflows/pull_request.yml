@@ -71,6 +71,13 @@ jobs:
             ercs/**/*.json
           files_ignore: registry/**/tests/**
 
+      - name: Get changed Ledger overlays
+        timeout-minutes: 5
+        id: changed-overlays
+        uses: tj-actions/changed-files@v47.0.5
+        with:
+          files: registry/*/ledger.json
+
       - name: Setup python
         timeout-minutes: 10
         if: steps.changed-json-files.outputs.any_changed == 'true'
@@ -131,3 +138,45 @@ jobs:
             echo "::error::One or more files failed JSON schema validation"
             exit 1
           fi
+
+      - name: Check Ledger overlays
+        timeout-minutes: 5
+        env:
+          CHANGED_OVERLAYS: ${{ steps.changed-overlays.outputs.all_changed_files }}
+        run: |
+          shopt -s nullglob
+          OVERLAYS=(registry/*/ledger.json)
+          [ ${#OVERLAYS[@]} -eq 0 ] && exit 0
+
+          # Every overlay against the Ledger overlay schema, whatever its $schema says
+          pipx run check-jsonschema --schemafile specs/erc7730-ledger-overlay.schema.json "${OVERLAYS[@]}"
+
+          FAILED=0
+
+          # Every exception names an existing descriptor of the same folder
+          for overlay in "${OVERLAYS[@]}"; do
+            while IFS= read -r name; do
+              if [ ! -f "$(dirname "$overlay")/$name" ]; then
+                echo "::error file=$overlay::No descriptor $name in this folder"
+                FAILED=1
+              fi
+            done < <(jq -r '.ledgerhq.descriptors // {} | keys[]' "$overlay")
+          done
+
+          # Every icon of the overlays changed in this pull request exists in LedgerHQ/ledger-network-icons
+          # in the three sizes. Only those: an icon removed there later must not block unrelated pull requests.
+          if [ -n "$CHANGED_OVERLAYS" ]; then
+            ICONS_REPO="$RUNNER_TEMP/ledger-network-icons"
+            git clone --quiet --depth 1 --filter=blob:none --sparse https://github.com/LedgerHQ/ledger-network-icons.git "$ICONS_REPO"
+            git -C "$ICONS_REPO" sparse-checkout set icons/dapps
+            for icon in $(jq -r '.ledgerhq | .icon, .descriptors[]?.icon | strings' $CHANGED_OVERLAYS | sort -u); do
+              for size in 14 48 64; do
+                if [ ! -f "$ICONS_REPO/icons/dapps/dapp_${icon}_${size}px.gif" ]; then
+                  echo "::error::Icon $icon has no ${size}px file in LedgerHQ/ledger-network-icons (icons/dapps/dapp_${icon}_${size}px.gif)"
+                  FAILED=1
+                fi
+              done
+            done
+          fi
+
+          exit $FAILED
