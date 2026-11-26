@@ -3,8 +3,8 @@ name: Clear Signing Tests
 # Runs the `tests/*.tests.json` cases of the changed descriptors on emulated devices, with the clear-signing tester of
 # LedgerHQ/device-sdk-ts. The tester books Speculos pods from Speculinho; the descriptors under test are signed with
 # the Speculos test keys by the descriptor API of the device-sdk-ts sample app, started locally, so a descriptor is
-# tested as it is in the PR, before it reaches CAL. In that test mode, names signed with production keys (ENS, trusted
-# names) are rejected by the device, so a case expecting one fails.
+# tested as it is in the PR, before it reaches CAL. Names (ENS, trusted names) keep their production signatures and
+# certificates.
 
 on:
   pull_request:
@@ -35,8 +35,9 @@ env:
   DMK_REF: "develop"
   RUN_TESTS_LABEL: "run-tests"
   DESCRIPTOR_API_PORT: "5328"
-  # Tested when only this workflow changes, so a change to it is tested in its own PR: one calldata, one EIP-712.
-  SELF_TEST_DESCRIPTORS: "registry/lido/calldata-stETH.json registry/1inch/eip712-1inch-limit-order.json"
+  # Tested when only this workflow changes, so a change to it is tested in its own PR: one calldata, one EIP-712, one
+  # showing ENS names.
+  SELF_TEST_DESCRIPTORS: "registry/lido/calldata-stETH.json registry/1inch/eip712-1inch-limit-order.json registry/ens/calldata-PublicResolver.json"
 
 jobs:
   check-permissions:
@@ -226,7 +227,16 @@ jobs:
         working-directory: dmk/apps/sample
         run: |
           python -m pip install -r requirements.txt
-          nohup python -m flask --app api/index run --port "$DESCRIPTOR_API_PORT" > "$RUNNER_TEMP/descriptor-api.log" 2>&1 &
+          # The API hands the device test certificates for the CAL keys, the name keys included. Names are not
+          # injected: the metadata service signs them with the production keys, so keep their production certificates,
+          # or the device rejects every name (ENS, trusted names) and falls back to blind signing.
+          nohup python -c '
+          import sys
+          sys.path.insert(0, "api")
+          import index
+          index.CAL_CERTIFICATES_OVERRIDES.difference_update({"domain_metadata_key", "cal_trusted_name"})
+          index.app.run(port=int(sys.argv[1]))
+          ' "$DESCRIPTOR_API_PORT" > "$RUNNER_TEMP/descriptor-api.log" 2>&1 &
           for _ in $(seq 1 30); do
             curl -sf "http://127.0.0.1:$DESCRIPTOR_API_PORT/api/certificates" > /dev/null && exit 0
             sleep 1
