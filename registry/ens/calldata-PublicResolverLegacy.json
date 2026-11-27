@@ -2,9 +2,7 @@
   "$schema": "../../specs/erc7730-v2.schema.json",
   "context": {
     "$id": "ENS Public Resolver (legacy)",
-    "contract": {
-      "deployments": [{ "chainId": 1, "address": "0x231b0Ee14048e9dCcD1d247744d114a4EB5E8E63" }]
-    }
+    "contract": { "deployments": [{ "chainId": 1, "address": "0x231b0Ee14048e9dCcD1d247744d114a4EB5E8E63" }] }
   },
   "metadata": { "owner": "ENS", "info": { "url": "https://ens.domains" }, "contractName": "PublicResolver" },
   "display": {
